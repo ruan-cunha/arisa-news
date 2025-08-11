@@ -200,46 +200,6 @@ document.addEventListener('DOMContentLoaded', () => {
         initializeNewQuiz();
     }
     
-    function renderFieldOperatorPage() {
-        mainContent.innerHTML = `
-            <section class="content-section field-operator-section">
-                <div class="game-container">
-                    <div class="main-layout">
-                        <div class="incident-panel">
-                            <div class="info-box">
-                                <h3>INCIDENT REPORT</h3>
-                                <h2 id="incident-title">Loading Incident...</h2>
-                                <p id="incident-description"></p>
-                            </div>
-                            <div class="info-box" style="flex-grow: 1;">
-                                <h3>FIELD INTEL</h3>
-                                <div class="details-content" id="incident-details"></div>
-                            </div>
-                        </div>
-                        <div class="dispatch-panel">
-                            <div class="info-box" style="flex-grow: 1;">
-                                <h3>AVAILABLE ASSETS</h3>
-                                <div class="dispatch-grid" id="dispatch-grid"></div>
-                            </div>
-                            <div class="info-box">
-                                <h3>TIMER</h3>
-                                <div class="timer-bar-container"><div id="timer-bar"></div></div>
-                            </div>
-                            <button id="dispatch-button" disabled>DISPATCH ASSET</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="result-overlay" id="result-overlay" style="display: none;">
-                    <div class="result-modal">
-                        <h2 id="result-title"></h2>
-                        <p id="result-description"></p>
-                        <button id="next-incident-button">Next Incident</button>
-                    </div>
-                </div>
-            </section>
-        `;
-        initializeFieldOperatorSim();
-    }
 
     // --- Navigation Menu Logic ---
     function setupNavigation() {
@@ -538,4 +498,5 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Portal Initialization ---
     setupNavigation();
 });
+
 
