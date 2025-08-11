@@ -77,11 +77,22 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function renderAssetDatabasePage() {
-        let assetsHTML = loreData.map((asset, index) => `
-            <div class="asset-card" style="animation-delay: ${index * 0.05}s">
+        // Synthesize dossier from other fields if it doesn't exist
+        const getDossier = (hero) => {
+            if (hero.dossier) return hero.dossier;
+            // Create a simple dossier from other available data as a fallback
+            let summary = `Codename ${hero.codinome} is an active asset affiliated with ${hero.afiliacao}. `;
+            if(hero.failureReason) {
+                summary += `Known operational challenges include: ${hero.failureReason}`;
+            }
+            return summary;
+        };
+        
+        let assetsHTML = loreData.filter(item => item.tipo === 'personagem').map((asset, index) => `
+            <div class="asset-card" data-id="${asset.id}" style="animation-delay: ${index * 0.05}s">
                 <p class="affiliation">${asset.afiliacao}</p>
                 <h2 class="codename">${asset.codinome}</h2>
-                <p class="dossier-preview">${asset.dossier}</p>
+                <p class="dossier-preview">${getDossier(asset)}</p>
             </div>
         `).join('');
 
@@ -94,7 +105,73 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 </div>
             </section>
+            <div class="modal-overlay" id="hero-modal-overlay"></div>
         `;
+        
+        document.querySelectorAll('.asset-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const heroId = card.dataset.id;
+                const heroData = loreData.find(h => h.id === heroId);
+                renderHeroDetailModal(heroData);
+            });
+        });
+    }
+
+    function renderHeroDetailModal(hero) {
+        const modalOverlay = document.getElementById('hero-modal-overlay');
+        
+        const getDossier = (hero) => {
+            if (hero.dossier) return hero.dossier;
+            let summary = `Codename ${hero.codinome} is an active asset affiliated with ${hero.afiliacao}. `;
+             if(hero.failureReason) {
+                summary += `Known operational challenges include: ${hero.failureReason}`;
+            }
+            return summary;
+        };
+
+        const dialogueHTML = hero.dialogue ? Object.entries(hero.dialogue).map(([key, value]) => {
+            let dialogueContent = '';
+            if (Array.isArray(value)) {
+                dialogueContent = value.map(line => `<p>"${line}"</p>`).join('');
+            } else if (typeof value === 'object') {
+                dialogueContent = Object.entries(value).map(([subKey, subLine]) => `<p><strong>vs. ${subKey}:</strong> "${subLine}"</p>`).join('');
+            }
+            return `<div class="dialogue-item"><strong>On ${key.replace(/([A-Z])/g, ' $1')}:</strong> ${dialogueContent}</div>`;
+        }).join('') : '<p>No dialogue data available.</p>';
+        
+        modalOverlay.innerHTML = `
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div>
+                        <h2 class="codename">${hero.codinome}</h2>
+                        <p class="affiliation">${hero.afiliacao} // Status: ${hero.status}</p>
+                    </div>
+                    <button class="modal-close-button" id="modal-close">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <h4>Full Dossier</h4>
+                    <p>${getDossier(hero)}</p>
+                    
+                    <h4>Operational Limitations</h4>
+                    <p>${hero.failureReason || 'No specific limitations noted.'}</p>
+                    
+                    <h4>Recorded Dialogue Fragments</h4>
+                    <div class="dialogue-grid">${dialogueHTML}</div>
+                </div>
+            </div>
+        `;
+        
+        modalOverlay.classList.add('active');
+        
+        document.getElementById('modal-close').addEventListener('click', () => {
+            modalOverlay.classList.remove('active');
+        });
+        
+        modalOverlay.addEventListener('click', (e) => {
+            if (e.target === modalOverlay) {
+                modalOverlay.classList.remove('active');
+            }
+        });
     }
 
     function renderNotFoundPage(page) {
@@ -458,3 +535,4 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Inicialização do Portal ---
     setupNavigation();
 });
+
