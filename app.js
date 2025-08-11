@@ -8,12 +8,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Roteador de Páginas Simples ---
     function navigateTo(page) {
-        // Atualiza o link ativo na navegação
         navLinks.forEach(link => {
-            link.classList.toggle('active', link.dataset.page === page);
+            // Usa o href para encontrar a página correta
+            const linkPage = new URL(link.href).hash.substring(1) || 'home';
+            link.classList.toggle('active', linkPage === page);
         });
 
-        // Renderiza o conteúdo da página correspondente
         switch(page) {
             case 'home':
                 renderHomePage();
@@ -21,12 +21,13 @@ document.addEventListener('DOMContentLoaded', () => {
             case 'news':
                 renderNewsPage();
                 break;
-            // Casos para outras páginas serão adicionados aqui no futuro
+            case 'database':
+                renderAssetDatabasePage();
+                break;
             default:
-                renderNotFoundPage();
+                renderHomePage(); // Volta para a Home se a página não for encontrada
         }
         
-        // Fecha o menu mobile após a navegação
         if (mainNav.classList.contains('is-open')) {
             mainNav.classList.remove('is-open');
             mobileNavToggle.classList.remove('is-open');
@@ -45,18 +46,16 @@ document.addEventListener('DOMContentLoaded', () => {
             <section class="content-section">
                 <div class="section-container">
                     <h2>LATEST DIRECTIVES</h2>
-                    <p>Content for latest news will go here later.</p>
+                    <p>Content for the latest news and public advisories will be displayed here.</p>
                 </div>
             </section>
         `;
     }
 
     function renderNewsPage() {
-        // Acessa a variável `newsData` do arquivo news.js
         const sortedNews = newsData.sort((a, b) => new Date(b.date) - new Date(a.date));
-
-        let articlesHTML = sortedNews.map(article => `
-            <div class="news-article" style="animation-delay: ${sortedNews.indexOf(article) * 0.1}s">
+        let articlesHTML = sortedNews.map((article, index) => `
+            <div class="news-article" style="animation-delay: ${index * 0.1}s">
                 <p class="meta">${article.category} // ${article.date}</p>
                 <h3>${article.headline}</h3>
                 <p>${article.body}</p>
@@ -75,40 +74,57 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
     }
 
-    function renderNotFoundPage() {
+    // NEW: Função para renderizar o banco de dados de heróis
+    function renderAssetDatabasePage() {
+        // Acessa a variável `loreData` do arquivo lore.js
+        let assetsHTML = loreData.map((asset, index) => `
+            <div class="asset-card" style="animation-delay: ${index * 0.05}s">
+                <p class="affiliation">${asset.afiliacao}</p>
+                <h2 class="codename">${asset.codinome}</h2>
+                <p class="dossier-preview">${asset.dossier}</p>
+            </div>
+        `).join('');
+
         mainContent.innerHTML = `
             <section class="content-section">
                 <div class="section-container">
-                    <h2>SECTION NOT AVAILABLE</h2>
-                    <p>This section of the portal is currently under development. Please check back later for updates.</p>
+                    <h2>ASSET DATABASE</h2>
+                    <div class="asset-grid">
+                        ${assetsHTML}
+                    </div>
                 </div>
             </section>
         `;
     }
 
-
     // --- Lógica do Menu de Navegação ---
-    navLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const page = e.target.dataset.page;
-            // Adiciona um "data-page" aos links do header para funcionar
-            if (page) {
+    // Atualizado para usar hashes na URL para navegação
+    function setupNavigation() {
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const page = new URL(e.currentTarget.href).hash.substring(1) || 'home';
+                history.pushState(null, '', `#${page}`);
                 navigateTo(page);
-            } else {
-                navigateTo('home'); // Página padrão
-            }
+            });
         });
-    });
+
+        // Garante que a página correta seja carregada ao usar os botões de voltar/avançar do navegador
+        window.addEventListener('popstate', () => {
+            const page = location.hash.substring(1) || 'home';
+            navigateTo(page);
+        });
+
+        // Carrega a página inicial ou a página no hash da URL
+        const initialPage = location.hash.substring(1) || 'home';
+        navigateTo(initialPage);
+    }
 
     mobileNavToggle.addEventListener('click', () => {
         mainNav.classList.toggle('is-open');
         mobileNavToggle.classList.toggle('is-open');
     });
 
-
     // --- Inicialização ---
-    // Começa na página inicial
-    navigateTo('home');
-
+    setupNavigation();
 });
