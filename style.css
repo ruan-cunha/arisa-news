@@ -257,7 +257,7 @@ body {
     border-radius: 8px;
     padding: 20px;
     transition: all 0.2s ease-in-out;
-    opacity: 0;
+    opacity: 1;
     animation: fadeIn 0.5s ease-out forwards;
 }
 .asset-card:hover {
@@ -288,6 +288,7 @@ body {
     -webkit-box-orient: vertical;  
     overflow: hidden;
 }
+
 
 
 
