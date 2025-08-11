@@ -2,69 +2,71 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>ARISA Official Portal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARISA - Official Portal</title>
     
-    <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#161b22">
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="portal-container">
+    <div class="portal-wrapper">
         <aside class="sidebar">
-            <div class="logo">A R I S A</div>
-            <nav id="main-nav">
-                <a href="#home" class="nav-item active" data-page="home">
-                    <span class="icon">■</span> Home
-                </a>
-                <a href="#news" class="nav-item" data-page="news">
-                    <span class="icon">📰</span> News Wire
-                </a>
-                <a href="#seraph" class="nav-item" data-page="seraph">
-                    <span class="icon">🎮</span> SERAPH Sim
-                </a>
-                <a href="#aptitude" class="nav-item" data-page="aptitude">
-                    <span class="icon">📝</span> Aptitude Test
-                </a>
-                <a href="#alerts" class="nav-item" data-page="alerts">
-                    <span class="icon">⚠️</span> Alerts
-                </a>
+            <div class="logo-container">
+                <div class="logo">A R I S A</div>
+                <span>Awakened Response, Investigation & Security Agency</span>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#home" class="nav-item active" data-page="home"><span class="icon">🏠</span> Home</a></li>
+                    <li><a href="#news" class="nav-item" data-page="news"><span class="icon">📰</span> News Wire</a></li>
+                    <li><a href="#seraph" class="nav-item" data-page="seraph"><span class="icon">🎮</span> SERAPH Simulation</a></li>
+                    <li><a href="#aptitude" class="nav-item" data-page="aptitude"><span class="icon">📝</span> Aptitude Test</a></li>
+                    <li><a href="#alerts" class="nav-item" data-page="alerts"><span class="icon">⚠️</span> Threat Alerts</a></li>
+                </ul>
             </nav>
-            <footer>
+            <footer class="sidebar-footer">
                 <p>ARISA &copy; 2025</p>
                 <p>Public Trust Division</p>
             </footer>
         </aside>
 
-        <main id="main-content">
-            <section id="page-home" class="page-section active">
-                <header>
-                    <h1>Official Portal</h1>
-                    <p>Awakened Response, Investigation & Security Agency</p>
-                </header>
-                <div class="content-body">
-                    <h2>Our Mission: Contain. Protect. Inform. Adapt.</h2>
-                    <p>Welcome to the official ARISA public portal. Here you will find verified news, access to public simulations, and critical emergency alerts. Our mission is to ensure the safety and security of all citizens in an era of unprecedented change. Through transparency and diligence, we build trust and foster a peaceful coexistence between Awakened individuals and the public.</p>
-                </div>
-            </section>
-
-            <section id="page-news" class="page-section">
-                <header>
-                    <h1>ARISA News Wire</h1>
-                    <p>Official press releases and field reports.</p>
-                </header>
-                <div id="news-feed-content" class="content-body">
+        <main class="main-content">
+            <div id="page-content">
+                
+                <section id="home" class="page active">
+                    <header class="page-header">
+                        <h1>ARISA Command Portal</h1>
+                        <p>Centralized hub for all agency operations and public-facing initiatives.</p>
+                    </header>
+                    <div class="hero-section">
+                        <h2>Contain. Protect. Inform. Adapt.</h2>
+                        <p>Welcome, Operator. This portal is your access point to the core functions of the Awakened Response, Investigation & Security Agency. Your actions here directly impact public safety and global stability.</p>
                     </div>
-            </section>
+                    <div class="dashboard">
+                        <div class="dashboard-card">
+                            <h3>News Wire</h3>
+                            <p>Access the latest official press releases and field reports.</p>
+                            <a href="#news" class="card-link" data-page="news">View Feed &rarr;</a>
+                        </div>
+                        <div class="dashboard-card">
+                            <h3>Operator Training</h3>
+                            <p>Hone your tactical skills in the SERAPH dispatch simulation.</p>
+                            <a href="#seraph" class="card-link" data-page="seraph">Begin Simulation &rarr;</a>
+                        </div>
+                        <div class="dashboard-card">
+                            <h3>Aptitude Test</h3>
+                            <p>Discover your operational profile with our standardized assessment.</p>
+                            <a href="#aptitude" class="card-link" data-page="aptitude">Take the Test &rarr;</a>
+                        </div>
+                    </div>
+                </section>
 
-            </main>
+            </div>
+        </main>
     </div>
-
-    <script src="news.js"></script>
     <script src="app.js"></script>
 </body>
 </html>
