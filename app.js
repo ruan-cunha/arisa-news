@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     console.log("ARISA Official Portal Initialized.");
 
-    // Seletores dos elementos principais da UI
-    const mainContent = document.querySelector('main');
+    // O seletor agora encontrará o elemento correto
+    const mainContent = document.getElementById('main-content');
     const navLinks = document.querySelectorAll('.nav-link');
     const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
     const mainNav = document.querySelector('.main-nav');
@@ -14,8 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function navigateTo(page) {
         // Atualiza qual link de navegação está com a classe 'active'
         navLinks.forEach(link => {
-            // O href do link (removendo o '#') deve ser igual à página
-            link.classList.toggle('active', link.hash === `#${page}`);
+            link.classList.toggle('active', link.hash === `#${page}` || (page === 'home' && link.hash === '#home'));
         });
 
         // Com base no identificador, chama a função que renderiza o conteúdo correto
@@ -30,9 +29,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 renderAssetDatabasePage();
                 break;
             default:
-                // Se a página não for encontrada, renderiza a página 'home' como padrão
-                // ou uma página de "não encontrado", se preferir.
-                renderHomePage(); 
+                // Se a página não for encontrada, renderiza uma página de "não encontrado"
+                renderNotFoundPage(page);
         }
         
         // Se o menu mobile estiver aberto, fecha ele após o clique
@@ -107,6 +105,17 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
     }
     
+    function renderNotFoundPage(page) {
+        mainContent.innerHTML = `
+            <section class="content-section">
+                <div class="section-container">
+                    <h2>SECTION [${page.toUpperCase()}] NOT AVAILABLE</h2>
+                    <p>This section of the portal is currently under development. Please check back later for updates.</p>
+                </div>
+            </section>
+        `;
+    }
+
     // --- Lógica do Menu de Navegação ---
     
     // Adiciona o "ouvinte" de clique para cada link da navegação
