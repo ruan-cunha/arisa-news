@@ -3,70 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ARISA - Official Portal</title>
+    <title>ARISA | Awakened Response, Investigation & Security Agency</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Roboto+Mono:wght@700&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="style.css">
-</head>
+    </head>
 <body>
-    <div class="portal-wrapper">
-        <aside class="sidebar">
-            <div class="logo-container">
-                <div class="logo">A R I S A</div>
-                <span>Awakened Response, Investigation & Security Agency</span>
-            </div>
+
+    <header class="main-header">
+        <div class="header-container">
+            <a href="#" class="header-logo">A R I S A</a>
             <nav class="main-nav">
                 <ul>
-                    <li><a href="#home" class="nav-item active" data-page="home"><span class="icon">🏠</span> Home</a></li>
-                    <li><a href="#news" class="nav-item" data-page="news"><span class="icon">📰</span> News Wire</a></li>
-                    <li><a href="#seraph" class="nav-item" data-page="seraph"><span class="icon">🎮</span> SERAPH Simulation</a></li>
-                    <li><a href="#aptitude" class="nav-item" data-page="aptitude"><span class="icon">📝</span> Aptitude Test</a></li>
-                    <li><a href="#alerts" class="nav-item" data-page="alerts"><span class="icon">⚠️</span> Threat Alerts</a></li>
+                    <li><a href="#" class="nav-link active">Home</a></li>
+                    <li><a href="#" class="nav-link">News Wire</a></li>
+                    <li><a href="#" class="nav-link">Asset Database</a></li>
+                    <li><a href="#" class="nav-link">Public Advisories</a></li>
+                    <li><a href="#" class="nav-link">Recruitment</a></li>
                 </ul>
             </nav>
-            <footer class="sidebar-footer">
-                <p>ARISA &copy; 2025</p>
-                <p>Public Trust Division</p>
-            </footer>
-        </aside>
+            <button class="mobile-nav-toggle" aria-label="Toggle Navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
 
-        <main class="main-content">
-            <div id="page-content">
-                
-                <section id="home" class="page active">
-                    <header class="page-header">
-                        <h1>ARISA Command Portal</h1>
-                        <p>Centralized hub for all agency operations and public-facing initiatives.</p>
-                    </header>
-                    <div class="hero-section">
-                        <h2>Contain. Protect. Inform. Adapt.</h2>
-                        <p>Welcome, Operator. This portal is your access point to the core functions of the Awakened Response, Investigation & Security Agency. Your actions here directly impact public safety and global stability.</p>
-                    </div>
-                    <div class="dashboard">
-                        <div class="dashboard-card">
-                            <h3>News Wire</h3>
-                            <p>Access the latest official press releases and field reports.</p>
-                            <a href="#news" class="card-link" data-page="news">View Feed &rarr;</a>
-                        </div>
-                        <div class="dashboard-card">
-                            <h3>Operator Training</h3>
-                            <p>Hone your tactical skills in the SERAPH dispatch simulation.</p>
-                            <a href="#seraph" class="card-link" data-page="seraph">Begin Simulation &rarr;</a>
-                        </div>
-                        <div class="dashboard-card">
-                            <h3>Aptitude Test</h3>
-                            <p>Discover your operational profile with our standardized assessment.</p>
-                            <a href="#aptitude" class="card-link" data-page="aptitude">Take the Test &rarr;</a>
-                        </div>
-                    </div>
-                </section>
-
+    <main>
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-motto">CONTAIN. PROTECT. INFORM. ADAPT.</h1>
+                <p class="hero-subtitle">The official mandate of the Awakened Response, Investigation & Security Agency.</p>
             </div>
-        </main>
-    </div>
+        </section>
+
+        <section class="content-section">
+            <div class="section-container">
+                <h2>LATEST DIRECTIVES</h2>
+                <p>Content for latest news will go here later.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <p>&copy; 2025 Awakened Response, Investigation & Security Agency. All rights reserved.</p>
+    </footer>
+
     <script src="app.js"></script>
 </body>
 </html>
