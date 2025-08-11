@@ -245,3 +245,48 @@ body {
     }
 }
 
+/* --- Estilos da Página Asset Database --- */
+.asset-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+}
+.asset-card {
+    background-color: var(--panel-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 20px;
+    transition: all 0.2s ease-in-out;
+    opacity: 0;
+    animation: fadeIn 0.5s ease-out forwards;
+}
+.asset-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-blue);
+}
+.asset-card .affiliation {
+    font-family: var(--font-mono);
+    font-size: 0.9em;
+    font-weight: 700;
+    color: var(--text-secondary);
+    margin: 0;
+}
+.asset-card .codename {
+    font-size: 2em;
+    font-weight: 900;
+    color: var(--text-primary);
+    margin: 5px 0 15px 0;
+}
+.asset-card .dossier-preview {
+    font-size: 1em;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin: 0;
+    /* Limita o texto a 3 linhas */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
+}
+
+
