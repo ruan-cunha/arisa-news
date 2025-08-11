@@ -17,18 +17,21 @@
     <div class="portal-container">
         <aside class="sidebar">
             <div class="logo">A R I S A</div>
-            <nav>
-                <a href="#" class="nav-item active" data-page="news">
+            <nav id="main-nav">
+                <a href="#home" class="nav-item active" data-page="home">
+                    <span class="icon">■</span> Home
+                </a>
+                <a href="#news" class="nav-item" data-page="news">
                     <span class="icon">📰</span> News Wire
                 </a>
-                <a href="#" class="nav-item" data-page="seraph">
-                    <span class="icon">🎮</span> SERAPH Simulation
+                <a href="#seraph" class="nav-item" data-page="seraph">
+                    <span class="icon">🎮</span> SERAPH Sim
                 </a>
-                <a href="#" class="nav-item" data-page="aptitude">
+                <a href="#aptitude" class="nav-item" data-page="aptitude">
                     <span class="icon">📝</span> Aptitude Test
                 </a>
-                <a href="#" class="nav-item" data-page="alerts">
-                    <span class="icon">⚠️</span> Emergency Alerts
+                <a href="#alerts" class="nav-item" data-page="alerts">
+                    <span class="icon">⚠️</span> Alerts
                 </a>
             </nav>
             <footer>
@@ -38,15 +41,27 @@
         </aside>
 
         <main id="main-content">
-            <div id="news-feed-container">
+            <section id="page-home" class="page-section active">
+                <header>
+                    <h1>Official Portal</h1>
+                    <p>Awakened Response, Investigation & Security Agency</p>
+                </header>
+                <div class="content-body">
+                    <h2>Our Mission: Contain. Protect. Inform. Adapt.</h2>
+                    <p>Welcome to the official ARISA public portal. Here you will find verified news, access to public simulations, and critical emergency alerts. Our mission is to ensure the safety and security of all citizens in an era of unprecedented change. Through transparency and diligence, we build trust and foster a peaceful coexistence between Awakened individuals and the public.</p>
+                </div>
+            </section>
+
+            <section id="page-news" class="page-section">
                 <header>
                     <h1>ARISA News Wire</h1>
                     <p>Official press releases and field reports.</p>
                 </header>
-                <div id="news-feed-content">
+                <div id="news-feed-content" class="content-body">
                     </div>
-            </div>
-        </main>
+            </section>
+
+            </main>
     </div>
 
     <script src="news.js"></script>
