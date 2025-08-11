@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>ARISA Official Portal</title>
+    
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#161b22">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="portal-container">
+        <aside class="sidebar">
+            <div class="logo">A R I S A</div>
+            <nav>
+                <a href="#" class="nav-item active" data-page="news">
+                    <span class="icon">📰</span> News Wire
+                </a>
+                <a href="#" class="nav-item" data-page="seraph">
+                    <span class="icon">🎮</span> SERAPH Simulation
+                </a>
+                <a href="#" class="nav-item" data-page="aptitude">
+                    <span class="icon">📝</span> Aptitude Test
+                </a>
+                <a href="#" class="nav-item" data-page="alerts">
+                    <span class="icon">⚠️</span> Emergency Alerts
+                </a>
+            </nav>
+            <footer>
+                <p>ARISA &copy; 2025</p>
+                <p>Public Trust Division</p>
+            </footer>
+        </aside>
+
+        <main id="main-content">
+            <div id="news-feed-container">
+                <header>
+                    <h1>ARISA News Wire</h1>
+                    <p>Official press releases and field reports.</p>
+                </header>
+                <div id="news-feed-content">
+                    </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="news.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
