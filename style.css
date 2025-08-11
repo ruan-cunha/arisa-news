@@ -1,187 +1,150 @@
 :root {
-    --bg-deep: #0d1117;
-    --bg-panel: #161b22;
-    --border-color: #30363d;
-    --text-primary: #e6edf3;
-    --text-secondary: #7d8590;
-    --accent-blue: #58a6ff;
+    --bg-color: #0A0C10;
+    --panel-color: #161B22;
+    --border-color: #30363D;
+    --text-primary: #E6EDF3;
+    --text-secondary: #7D8590;
+    --accent-blue: #388BFD;
+    --accent-blue-hover: #58a6ff;
     --font-sans: 'Inter', sans-serif;
+    --font-mono: 'Roboto Mono', monospace;
 }
 
-* {
+/* --- Reset Básico --- */
+*, *::before, *::after {
     box-sizing: border-box;
 }
-
 body {
-    background-color: var(--bg-deep);
+    background-color: var(--bg-color);
     color: var(--text-primary);
     font-family: var(--font-sans);
     margin: 0;
-    font-size: 16px;
+    padding-top: 70px; /* Space for fixed header */
 }
 
-.portal-wrapper {
-    display: flex;
-    min-height: 100vh;
-}
-
-/* --- Sidebar --- */
-.sidebar {
-    width: 280px;
-    background-color: var(--bg-panel);
-    border-right: 1px solid var(--border-color);
-    padding: 24px;
-    display: flex;
-    flex-direction: column;
-    flex-shrink: 0;
-}
-
-.logo-container {
-    text-align: center;
-    margin-bottom: 48px;
+/* --- Cabeçalho e Navegação --- */
+.main-header {
+    background-color: var(--panel-color);
     border-bottom: 1px solid var(--border-color);
-    padding-bottom: 24px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
 }
-.logo {
-    font-size: 2em;
-    font-weight: 900;
-    color: var(--accent-blue);
-    letter-spacing: 6px;
-}
-.logo-container span {
-    font-size: 0.75em;
-    color: var(--text-secondary);
-}
-
-.main-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-.main-nav li {
-    margin-bottom: 8px;
-}
-.nav-item {
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    height: 70px;
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 16px;
-    padding: 12px 16px;
-    border-radius: 6px;
+}
+.header-logo {
+    font-family: var(--font-mono);
+    font-size: 1.8em;
+    font-weight: 700;
+    color: var(--text-primary);
+    text-decoration: none;
+    letter-spacing: 4px;
+}
+.main-nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+.nav-link {
     color: var(--text-secondary);
     text-decoration: none;
-    font-weight: 500;
-    font-size: 1.05em;
-    transition: all 0.2s ease;
+    font-weight: 700;
+    font-size: 1em;
+    padding: 10px 0;
+    position: relative;
+    transition: color 0.2s ease;
 }
-.nav-item:hover {
-    background-color: #2c333b;
+.nav-link:hover {
     color: var(--text-primary);
 }
-.nav-item.active {
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
     background-color: var(--accent-blue);
-    color: #fff;
-    font-weight: 700;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.3s ease;
 }
-.nav-item .icon {
-    font-size: 1.2em;
+.nav-link.active::after, .nav-link:hover::after {
+    transform: scaleX(1);
 }
-
-.sidebar-footer {
-    margin-top: auto;
-    text-align: center;
-    font-size: 0.8em;
-    color: var(--text-secondary);
-    opacity: 0.6;
-}
-.sidebar-footer p {
-    margin: 4px 0;
+.nav-link.active {
+    color: var(--text-primary);
 }
 
-/* --- Main Content --- */
-.main-content {
-    flex-grow: 1;
-    padding: 48px;
-    overflow-y: auto;
-}
-
-.page-header {
-    border-bottom: 1px solid var(--border-color);
-    padding-bottom: 16px;
-    margin-bottom: 32px;
-}
-.page-header h1 {
-    font-size: 2.5em;
-    margin: 0;
-    font-weight: 900;
-}
-.page-header p {
-    font-size: 1.2em;
-    color: var(--text-secondary);
-    margin: 8px 0 0;
-}
-
+/* --- Seção Herói (Homepage) --- */
 .hero-section {
-    background-color: var(--panel-color);
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    padding: 32px;
-    margin-bottom: 32px;
+    background-image: linear-gradient(rgba(10, 12, 16, 0.8), rgba(10, 12, 16, 0.8)), url('https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=1200&q=80');
+    background-size: cover;
+    background-position: center;
+    padding: 100px 20px;
+    text-align: center;
 }
-.hero-section h2 {
-    margin: 0 0 16px 0;
-    font-size: 1.8em;
-    color: var(--accent-blue);
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
 }
-
-.dashboard {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 24px;
-}
-
-.dashboard-card {
-    background-color: var(--panel-color);
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    padding: 24px;
-    display: flex;
-    flex-direction: column;
-    transition: all 0.2s ease;
-}
-.dashboard-card:hover {
-    transform: translateY(-5px);
-    border-color: var(--accent-blue);
-}
-.dashboard-card h3 {
-    margin: 0 0 8px 0;
-    font-size: 1.3em;
-}
-.dashboard-card p {
-    color: var(--text-secondary);
-    margin: 0;
-    flex-grow: 1;
-}
-.card-link {
-    margin-top: 24px;
-    color: var(--accent-blue);
-    text-decoration: none;
+.hero-motto {
+    font-family: var(--font-mono);
+    font-size: 3em;
     font-weight: 700;
-    align-self: flex-start;
+    letter-spacing: 5px;
+    color: var(--accent-blue);
+    text-shadow: 0 0 15px rgba(56, 139, 253, 0.5);
+    margin: 0;
 }
-.card-link:hover {
-    text-decoration: underline;
+.hero-subtitle {
+    font-size: 1.2em;
+    color: var(--text-secondary);
+    margin-top: 10px;
 }
 
-/* Esconde páginas inativas (usaremos no futuro) */
-.page {
+/* --- Seções de Conteúdo Geral --- */
+.content-section {
+    padding: 60px 20px;
+}
+.section-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+.section-container h2 {
+    font-size: 2.5em;
+    font-weight: 900;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 15px;
+    margin-bottom: 30px;
+}
+
+/* --- Rodapé --- */
+.main-footer {
+    background-color: var(--panel-color);
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+    padding: 20px;
+    color: var(--text-secondary);
+    font-size: 0.9em;
+}
+
+/* --- Menu Mobile (escondido em telas grandes) --- */
+.mobile-nav-toggle {
     display: none;
 }
-.page.active {
-    display: block;
-    animation: contentFadeIn 0.5s ease;
-}
-
-@keyframes contentFadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+@media (max-width: 850px) {
+    .main-nav { display: none; }
+    .mobile-nav-toggle { /* Estilos para o botão "hambúrguer" serão adicionados depois */ display: block; }
 }
