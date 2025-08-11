@@ -1,0 +1,16 @@
+{
+    "name": "ARISA News Wire",
+    "short_name": "ARISA News",
+    "start_url": "/index.html",
+    "display": "standalone",
+    "background_color": "#0d1117",
+    "theme_color": "#161b22",
+    "description": "Official news feed from the Awakened Response, Investigation & Security Agency.",
+    "icons": [
+        {
+            "src": "images/icon.svg",
+            "sizes": "512x512",
+            "type": "image/svg"
+        }
+    ]
+}
