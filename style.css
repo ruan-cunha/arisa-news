@@ -19,7 +19,7 @@ body {
     min-height: 100vh;
 }
 .sidebar {
-    background-color: var(--panel-color);
+    background-color: black;
     border-right: 1px solid var(--border-color);
     width: 250px;
     padding: 25px;
@@ -30,7 +30,7 @@ body {
 .logo {
     font-size: 2em;
     font-weight: 900;
-    color: var(--accent-color);
+    color: var(--text-color);
     letter-spacing: 8px;
     text-align: center;
     margin-bottom: 40px;
@@ -59,6 +59,7 @@ nav {
 .nav-item.active {
     background-color: var(--accent-color);
     color: var(--bg-color);
+    font-weight: 900;
 }
 .nav-item .icon {
     font-size: 1.2em;
@@ -71,22 +72,38 @@ nav {
 }
 main {
     flex-grow: 1;
-    padding: 30px;
+    padding: 40px;
     overflow-y: auto;
 }
-#news-feed-container header {
+.page-section {
+    display: none; /* Todas as páginas começam escondidas */
+}
+.page-section.active {
+    display: block; /* Apenas a página ativa é exibida */
+    animation: fadeIn 0.5s ease-out;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+header {
     border-bottom: 1px solid var(--border-color);
     padding-bottom: 15px;
     margin-bottom: 20px;
 }
-#news-feed-container h1 {
+header h1 {
     font-size: 2.5em;
     margin: 0;
 }
-#news-feed-container p {
+header p {
     color: var(--text-muted);
     margin: 5px 0 0;
     font-size: 1.1em;
+}
+.content-body {
+    font-size: 1.1em;
+    line-height: 1.7;
 }
 .news-article {
     background-color: var(--panel-color);
@@ -96,35 +113,5 @@ main {
     margin-bottom: 20px;
 }
 .news-article h2 { margin: 10px 0; color: var(--accent-color); font-size: 1.4em; }
-.news-article p { color: var(--text-color); line-height: 1.6; margin: 10px 0 0; }
+.news-article p { color: var(--text-color); margin: 10px 0 0; }
 .meta { font-size: 0.9em; color: var(--text-muted); font-weight: 700; text-transform: uppercase; }
-
-/* Simple responsive for mobile */
-@media (max-width: 768px) {
-    .portal-container {
-        flex-direction: column;
-    }
-    .sidebar {
-        width: 100%;
-        height: auto;
-        border-right: none;
-        border-bottom: 1px solid var(--border-color);
-    }
-    .logo {
-        font-size: 1.5em;
-        margin-bottom: 20px;
-    }
-    nav {
-        flex-direction: row;
-        justify-content: center;
-    }
-    .nav-item {
-        padding: 10px;
-    }
-    .nav-item .icon {
-        margin-right: 5px;
-    }
-    main {
-        padding: 20px;
-    }
-}
