@@ -130,6 +130,14 @@ body {
     margin-bottom: 30px;
 }
 
+.quiz-section {
+    display: flex; /* Adicionado */
+    justify-content: center; /* Adicionado */
+    align-items: center; /* Opcional: se você também quiser centralizar verticalmente na viewport */
+    padding: 60px 20px; /* Ajuste o espaçamento superior e inferior conforme necessário */
+    box-sizing: border-box; /* Garante que o padding não aumente a largura total */
+}
+
 /* --- Rodapé --- */
 .main-footer {
     background-color: var(--panel-color);
@@ -524,6 +532,7 @@ body {
         width: 100%;
     }
 }
+
 
 
 
