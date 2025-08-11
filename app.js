@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
     const mainNav = document.querySelector('.main-nav');
 
-    // --- Roteador de Páginas Simples ---
+    // --- Simple Page Router ---
     function navigateTo(page) {
         navLinks.forEach(link => {
             const linkPage = new URL(link.href).hash.substring(1) || 'home';
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // --- Funções de Renderização de Conteúdo do Portal ---
+    // --- Portal Content Rendering Functions ---
     function renderHomePage() {
         mainContent.innerHTML = `
             <section class="hero-section">
@@ -136,7 +136,9 @@ document.addEventListener('DOMContentLoaded', () => {
             } else if (typeof value === 'object') {
                 dialogueContent = Object.entries(value).map(([subKey, subLine]) => `<p><strong>vs. ${subKey}:</strong> "${subLine}"</p>`).join('');
             }
-            return `<div class="dialogue-item"><strong>On ${key.replace(/([A-Z])/g, ' $1')}:</strong> ${dialogueContent}</div>`;
+            // Correctly format the key from camelCase to Title Case
+            const formattedKey = key.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase());
+            return `<div class="dialogue-item"><strong>${formattedKey}:</strong> ${dialogueContent}</div>`;
         }).join('') : '<p>No dialogue data available.</p>';
         
         modalOverlay.innerHTML = `
@@ -237,7 +239,7 @@ document.addEventListener('DOMContentLoaded', () => {
         initializeNewQuiz();
     }
 
-    // --- Lógica do Menu de Navegação ---
+    // --- Navigation Menu Logic ---
     function setupNavigation() {
         navLinks.forEach(link => {
             link.addEventListener('click', (e) => {
@@ -253,31 +255,31 @@ document.addEventListener('DOMContentLoaded', () => {
             navigateTo(page);
         });
 
+        mobileNavToggle.addEventListener('click', () => {
+            mainNav.classList.toggle('is-open');
+            mobileNavToggle.classList.toggle('is-open');
+        });
+
         const initialPage = location.hash.substring(1) || 'home';
         navigateTo(initialPage);
     }
 
-    mobileNavToggle.addEventListener('click', () => {
-        mainNav.classList.toggle('is-open');
-        mobileNavToggle.classList.toggle('is-open');
-    });
-
     // =====================================================================
-    // --- LÓGICA DO NOVO QUIZ INTEGRADA ---
+    // --- INTEGRATED QUIZ LOGIC ---
     // =====================================================================
     function initializeNewQuiz() {
         const startScreen = document.getElementById('start-screen');
+        if (!startScreen) return; // Exit if quiz elements aren't on the page
+
         const quizScreen = document.getElementById('quiz-screen');
         const resultScreen = document.getElementById('result-screen');
         const startBtn = document.getElementById('start-btn');
         const restartBtn = document.getElementById('restart-btn');
-
         const questionContainer = document.getElementById('question-container');
         const minigameContainer = document.getElementById('minigame-container');
         const questionCounterText = document.getElementById('question-counter');
         const questionText = document.getElementById('question-text');
         const answerButtons = document.getElementById('answer-buttons');
-
         const heroMatchName = document.getElementById('hero-match-name');
         const heroMatchDescription = document.getElementById('hero-match-description');
         const userTraitsText = document.getElementById('user-traits');
@@ -398,7 +400,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         score += userScores[trait] * hero.traits[trait];
                     }
                 }
-                score += Math.random() * 0.1;
+                score += Math.random() * 0.1; // Tie-breaker
 
                 if (score > highestScore) {
                     highestScore = score;
@@ -454,7 +456,7 @@ document.addEventListener('DOMContentLoaded', () => {
             timer = setInterval(() => {
                 timeRemaining--;
                 document.getElementById('timer').innerText = `Time: ${timeRemaining}s`;
-                if (timeRemaining <= 0) { endMemoryGame(false); }
+                if (timeRemaining <= 0) { clearInterval(timer); endMemoryGame(false); }
             }, 1000);
 
             function flipCard(card) {
@@ -470,7 +472,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     card2.classList.add('matched');
                     matchedPairs++;
                     flippedCards = [];
-                    if (matchedPairs === symbols.length / 2) { endMemoryGame(true); }
+                    if (matchedPairs === symbols.length / 2) { clearInterval(timer); endMemoryGame(true); }
                 } else {
                     setTimeout(() => {
                         card1.classList.remove('flipped');
@@ -481,7 +483,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             function endMemoryGame(success) {
-                clearInterval(timer);           
                 const traits = success ? { analytical: 1, strategic: 1, disciplined: 1 } : { impulsive: 1 };
                 selectAnswer(traits);
             }
@@ -532,7 +533,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // --- Inicialização do Portal ---
+    // --- Portal Initialization ---
     setupNavigation();
 });
-
