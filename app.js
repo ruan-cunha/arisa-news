@@ -1,20 +1,24 @@
 document.addEventListener('DOMContentLoaded', () => {
     console.log("ARISA Official Portal Initialized.");
 
-    const mainContent = document.getElementById('main-content');
+    // Seletores dos elementos principais da UI
+    const mainContent = document.querySelector('main');
     const navLinks = document.querySelectorAll('.nav-link');
     const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
     const mainNav = document.querySelector('.main-nav');
 
-    // --- Roteador de Páginas Simples ---
+    /**
+     * Função principal que controla a navegação entre as "páginas" do portal.
+     * @param {string} page - O identificador da página a ser exibida (ex: 'home', 'news').
+     */
     function navigateTo(page) {
-        // Atualiza o link ativo na navegação
+        // Atualiza qual link de navegação está com a classe 'active'
         navLinks.forEach(link => {
-            // Compara o data-page do link com a página atual
-            link.classList.toggle('active', link.dataset.page === page);
+            // O href do link (removendo o '#') deve ser igual à página
+            link.classList.toggle('active', link.hash === `#${page}`);
         });
 
-        // Renderiza o conteúdo da página correspondente
+        // Com base no identificador, chama a função que renderiza o conteúdo correto
         switch(page) {
             case 'home':
                 renderHomePage();
@@ -25,19 +29,21 @@ document.addEventListener('DOMContentLoaded', () => {
             case 'database':
                 renderAssetDatabasePage();
                 break;
-            // Casos para outras páginas serão adicionados aqui no futuro
             default:
-                renderNotFoundPage(page);
+                // Se a página não for encontrada, renderiza a página 'home' como padrão
+                // ou uma página de "não encontrado", se preferir.
+                renderHomePage(); 
         }
         
-        // Fecha o menu mobile após a navegação
+        // Se o menu mobile estiver aberto, fecha ele após o clique
         if (mainNav.classList.contains('is-open')) {
             mainNav.classList.remove('is-open');
             mobileNavToggle.classList.remove('is-open');
         }
     }
 
-    // --- Funções de Renderização de Conteúdo ---
+    // --- Funções que "desenham" o conteúdo de cada página ---
+
     function renderHomePage() {
         mainContent.innerHTML = `
             <section class="hero-section">
@@ -56,7 +62,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function renderNewsPage() {
+        // Acessa a variável `newsData` do arquivo news.js
         const sortedNews = newsData.sort((a, b) => new Date(b.date) - new Date(a.date));
+        
         let articlesHTML = sortedNews.map((article, index) => `
             <div class="news-article" style="animation-delay: ${index * 0.1}s">
                 <p class="meta">${article.category} // ${article.date}</p>
@@ -77,8 +85,8 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
     }
 
-    // Função para renderizar o banco de dados de heróis
     function renderAssetDatabasePage() {
+        // Acessa a variável `loreData` do arquivo lore.js
         let assetsHTML = loreData.map((asset, index) => `
             <div class="asset-card" style="animation-delay: ${index * 0.05}s">
                 <p class="affiliation">${asset.afiliacao}</p>
@@ -99,36 +107,22 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
     }
     
-    function renderNotFoundPage(page) {
-        mainContent.innerHTML = `
-            <section class="content-section">
-                <div class="section-container">
-                    <h2>SECTION [${page.toUpperCase()}] NOT AVAILABLE</h2>
-                    <p>This section of the portal is currently under development. Please check back later for updates.</p>
-                </div>
-            </section>
-        `;
-    }
-
-
     // --- Lógica do Menu de Navegação ---
-    // Adiciona o atributo data-page a cada link para facilitar a identificação
+    
+    // Adiciona o "ouvinte" de clique para cada link da navegação
     navLinks.forEach(link => {
-        const pageName = link.textContent.trim().toLowerCase().replace(' ', '');
-        if (pageName === 'newswire') {
-            link.dataset.page = 'news';
-        } else if (pageName === 'assetdatabase') {
-            link.dataset.page = 'database';
-        } else {
-            link.dataset.page = pageName;
-        }
-        
         link.addEventListener('click', (e) => {
-            e.preventDefault();
-            navigateTo(e.currentTarget.dataset.page);
+            e.preventDefault(); // Impede o comportamento padrão de pular a página
+            const page = e.currentTarget.hash.substring(1); // Pega o nome da página do href (ex: #news -> news)
+            
+            // Atualiza a URL para refletir a nova página (bom para compartilhar links)
+            history.pushState(null, '', `#${page}`);
+            
+            navigateTo(page);
         });
     });
 
+    // Adiciona a lógica para o botão de menu mobile
     mobileNavToggle.addEventListener('click', () => {
         mainNav.classList.toggle('is-open');
         mobileNavToggle.classList.toggle('is-open');
@@ -136,6 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // --- Inicialização ---
-    // Começa na página inicial
-    navigateTo('home');
+    // Verifica se a URL já tem um # (ex: se alguém compartilhou o link para a página de notícias)
+    const initialPage = window.location.hash.substring(1) || 'home';
+    navigateTo(initialPage);
 });
