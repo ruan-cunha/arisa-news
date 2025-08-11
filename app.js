@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
         mainContent.innerHTML = `
             <section class="content-section">
                 <div class="section-container">
-                    <h2>ASSET DATABASE</h2>
+                    <h2>OPERATIVE DATABASE</h2>
                     <div class="asset-grid">
                         ${assetsHTML}
                     </div>
@@ -502,3 +502,4 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Portal Initialization ---
     setupNavigation();
 });
+
