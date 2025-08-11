@@ -160,7 +160,7 @@ body {
     padding: 20px;
     display: flex;
     flex-direction: column;
-    opacity: 0;
+    opacity: 1;
     animation: fadeIn 0.5s ease-out forwards;
 }
 .news-article h3 {
@@ -288,5 +288,6 @@ body {
     -webkit-box-orient: vertical;  
     overflow: hidden;
 }
+
 
 
