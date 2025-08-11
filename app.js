@@ -26,6 +26,9 @@ document.addEventListener('DOMContentLoaded', () => {
             case 'recruitment':
                 renderRecruitmentPage();
                 break;
+            case 'field-operator':
+                renderFieldOperatorPage();
+                break;
             default:
                 renderNotFoundPage(page);
         }
@@ -77,7 +80,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function renderAssetDatabasePage() {
-        // CORREÇÃO: Removido o filtro que causava o erro. Agora todos os heróis em lore.js serão renderizados.
         let assetsHTML = loreData.map((asset, index) => `
             <div class="asset-card" data-id="${asset.id}" style="animation-delay: ${index * 0.05}s">
                 <p class="affiliation">${asset.afiliacao}</p>
@@ -89,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
         mainContent.innerHTML = `
             <section class="content-section">
                 <div class="section-container">
-                    <h2>OPERATIVE DATABASE</h2>
+                    <h2>ASSET DATABASE</h2>
                     <div class="asset-grid">
                         ${assetsHTML}
                     </div>
@@ -112,7 +114,6 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderHeroDetailModal(hero) {
         const modalOverlay = document.getElementById('hero-modal-overlay');
         
-        // CORREÇÃO: Simplificado o modal para usar apenas os dados disponíveis em lore.js (codinome, afiliacao, dossier).
         modalOverlay.innerHTML = `
             <div class="modal-content">
                 <div class="modal-header">
@@ -159,9 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="section-container">
                     <div class="container">
                         <div id="start-screen" class="screen active">
-                            <div class="header-logo">
-                                <h1>ARISA APTITUDE TEST</h1>
-                            </div>
+                            <div class="header-logo"><h1>ARISA APTITUDE TEST</h1></div>
                             <p class="subtitle">A PUBLIC ENGAGEMENT INITIATIVE</p>
                             <h2>What's Your Mark?</h2>
                             <p class="description">
@@ -180,9 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <div id="minigame-container"></div>
                         </div>
                         <div id="result-screen" class="screen">
-                            <div class="header-logo">
-                                <h2>Assessment Complete</h2>
-                            </div>
+                            <div class="header-logo"><h2>Assessment Complete</h2></div>
                             <h3>Your Awakened Profile:</h3>
                             <h1 id="hero-match-name"></h1>
                             <p id="hero-match-description"></p>
@@ -193,9 +190,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <p class="share-text">Share your Mark with the world! #WhatsYourMark</p>
                             <div class="result-buttons">
                                 <button id="restart-btn" class="btn">Take the Test Again</button>
-                                <a id="twitter-share-btn" class="btn twitter-btn" href="#" target="_blank" rel="noopener noreferrer">
-                                    Share on 𝕏 (Twitter)
-                                </a>
+                                <a id="twitter-share-btn" class="btn twitter-btn" href="#" target="_blank" rel="noopener noreferrer">Share on 𝕏 (Twitter)</a>
                             </div>
                         </div>
                     </div>
@@ -204,13 +199,54 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
         initializeNewQuiz();
     }
+    
+    function renderFieldOperatorPage() {
+        mainContent.innerHTML = `
+            <section class="content-section field-operator-section">
+                <div class="game-container">
+                    <div class="main-layout">
+                        <div class="incident-panel">
+                            <div class="info-box">
+                                <h3>INCIDENT REPORT</h3>
+                                <h2 id="incident-title">Loading Incident...</h2>
+                                <p id="incident-description"></p>
+                            </div>
+                            <div class="info-box" style="flex-grow: 1;">
+                                <h3>FIELD INTEL</h3>
+                                <div class="details-content" id="incident-details"></div>
+                            </div>
+                        </div>
+                        <div class="dispatch-panel">
+                            <div class="info-box" style="flex-grow: 1;">
+                                <h3>AVAILABLE ASSETS</h3>
+                                <div class="dispatch-grid" id="dispatch-grid"></div>
+                            </div>
+                            <div class="info-box">
+                                <h3>TIMER</h3>
+                                <div class="timer-bar-container"><div id="timer-bar"></div></div>
+                            </div>
+                            <button id="dispatch-button" disabled>DISPATCH ASSET</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="result-overlay" id="result-overlay" style="display: none;">
+                    <div class="result-modal">
+                        <h2 id="result-title"></h2>
+                        <p id="result-description"></p>
+                        <button id="next-incident-button">Next Incident</button>
+                    </div>
+                </div>
+            </section>
+        `;
+        initializeFieldOperatorSim();
+    }
 
     // --- Navigation Menu Logic ---
     function setupNavigation() {
         navLinks.forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
-                const page = new URL(e.currentTarget.href).hash.substring(1) || 'home';
+                const page = new URL(link.href).hash.substring(1) || 'home';
                 history.pushState(null, '', `#${page}`);
                 navigateTo(page);
             });
@@ -235,7 +271,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // =====================================================================
     function initializeNewQuiz() {
         const startScreen = document.getElementById('start-screen');
-        if (!startScreen) return; // Exit if quiz elements aren't on the page
+        if (!startScreen) return; 
 
         const quizScreen = document.getElementById('quiz-screen');
         const resultScreen = document.getElementById('result-screen');
@@ -397,10 +433,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const symbols = ['🛡️', '🧠', '⚡', '🚀', '🌟', '🤫', '🛡️', '🧠', '⚡', '🚀', '🌟', '🤫'];
             symbols.sort(() => 0.5 - Math.random()); 
 
-            minigameContainer.innerHTML = `
-                <div id="timer">Time: ${timeRemaining}s</div>
-                <div class="memory-grid" id="memory-grid"></div>
-            `;
+            minigameContainer.innerHTML = `<div id="timer">Time: ${timeRemaining}s</div><div class="memory-grid" id="memory-grid"></div>`;
             
             const grid = document.getElementById('memory-grid');
             let flippedCards = [];
@@ -408,7 +441,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             symbols.forEach(symbol => {
                 const card = document.createElement('div');
-                card.classList.add('memory-card');
+                card.className = 'memory-card';
                 card.dataset.symbol = symbol;
                 card.innerHTML = `<div class="card-face card-front"></div><div class="card-face card-back">${symbol}</div>`;
                 card.addEventListener('click', () => {
@@ -466,10 +499,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             function showReportQuestion() {
                 const q = reportQuestions[currentReportQuestionIndex];
-                minigameContainer.innerHTML = `
-                    <div class="report-text">${reportText}</div>
-                    <h3>${q.question}</h3>
-                    <div id="report-answers" class="btn-grid"></div>`;
+                minigameContainer.innerHTML = `<div class="report-text">${reportText}</div><h3>${q.question}</h3><div id="report-answers" class="btn-grid"></div>`;
 
                 const answerGrid = document.getElementById('report-answers');
                 q.answers.forEach(text => {
@@ -499,7 +529,144 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // =====================================================================
+    // --- FIELD OPERATOR SIMULATION LOGIC ---
+    // =====================================================================
+    function initializeFieldOperatorSim() {
+        const incidentDataSource = [
+             { id: 'incident-001', title: 'Kinetic Outburst - Chicago', timer: 90, description: 'An unregistered Awakened is causing significant damage downtown. The subject is absorbing and explosively releasing kinetic energy, creating dangerous shockwaves.', details: { witness: "An officer on scene reported: 'This kid... he's terrified. Every time a car horn honks or something loud happens, he flinches and the whole street shakes. He's a walking epicentre and he can't control it.'", seraph_analysis: "S.E.R.A.P.H. Analysis: The subject's power is consistent with [Kinetic Energy] accumulation and discharge. This is a volatile ability that escalates with external stimuli. A counter-asset with similar energy absorption or overload capabilities is recommended for containment." }, solutions: { optimal: 'battery', good: ['flashpoint'], complicated: { 'aegis': "Aegis was durable enough to withstand the blasts and restrain the subject, but his high-profile presence caused a media frenzy, complicating the subject's anonymity." } } },
+            { id: 'incident-002', title: 'Psychic Residue - Financial District', timer: 120, description: 'A high-profile data heist occurred at a corporate tower, but all security systems are intact. No signs of forced entry. Agents on site report a lingering feeling of disorientation and fragmented memories.', details: { witness: "Head of security stated: 'It makes no sense. The vault is sealed. The cameras show nothing. It's like the data just... walked out. My team feels like they're forgetting something important, just on the edge of their minds.'", seraph_analysis: "S.E.R.A.P.H. Analysis: The lack of physical evidence points to a cognitive or psychic infiltration. Standard investigation methods are ineffective. The only remaining evidence may be residual psychic imprints left on the environment and personnel." }, solutions: { optimal: 'mosaic', good: [], complicated: { 'seraphim': "Seraphim's analysis correctly identified the perpetrator and their methods, but the psychic residue had already degraded, leaving insufficient evidence for prosecution." } } },
+            { id: 'incident-003', title: 'Atmospheric Turbulence - Public Park', timer: 75, description: 'A localized, non-weather-related atmospheric disturbance is causing chaos in a downtown park. Sudden, powerful downdrafts and crosswinds are making evacuation difficult and dangerous.', details: { witness: "A news helicopter pilot reported: 'I can't get close! The air itself is fighting me. One second it's calm, the next a blast of wind shoves my chopper sideways. Below, people are being knocked over by invisible walls of air.'", seraph_analysis: "S.E.R.A.P.H. Analysis: The phenomenon is consistent with localized [Air Pressure] manipulation, not a natural weather event. A direct offensive approach would be ineffective. Asset must be capable of meteorological stabilization or wide-area control to secure the zone." }, solutions: { optimal: 'downdraft', good: [], complicated: { 'chisel': "Chisel was able to create a physical barrier to shield a large group of civilians, but could not stop the phenomenon itself, which continued to cause damage elsewhere in the park." } } },
+            { id: 'incident-004', title: 'VIP Extraction - Gala Event', timer: 100, description: 'A hostile Awakened has infiltrated a high-security charity gala. A high-value informant must be neutralized and extracted without alerting the other guests or causing a panic.', details: { witness: "Undercover Agent (via comms): 'Target is on the move. He's surrounded by civilians. We can't go loud. I repeat, do not engage with force. We need a ghost.'", seraph_analysis: "S.E.R.A.P.H. Analysis: Mission profile requires zero collateral damage and complete stealth. Target must be disabled in a high-density civilian area without drawing attention. A close-quarters, non-lethal, precision takedown is the only viable method." }, solutions: { optimal: 'viceroy', good: ['spoiler'], complicated: { 'mosaic': "Mosaic was able to psychically suggest the target leave the party, but the mental strain was obvious and several nearby guests reported feeling nauseous and confused, raising suspicions." } } },
+            { id: 'incident-005', title: 'Armored Siege - Downtown Bank', timer: 80, description: 'An aggressive Awakened with reinforced skin is holding hostages inside a bank vault. They are impervious to standard police munitions and are highly volatile.', details: { witness: "SWAT Captain (on site): 'We can't breach the door and we can't get a shot. This guy is a walking tank. We need heavy, overwhelming firepower, something that can be shaped for any situation.'", seraph_analysis: "S.E.R.A.P.H. Analysis: Target exhibits extreme physical durability, rendering standard munitions ineffective. A sustained, high-energy, and versatile offensive is required to breach its defenses. The asset must be capable of adapting their offensive output in real-time to exploit any potential weakness." }, solutions: { optimal: 'armory', good: ['battery'], complicated: { 'aegis': "Aegis engaged the target in a prolonged physical confrontation. While successful, the extensive property damage lowered public opinion of the intervention." } } }
+        ];
+
+        const heroDataSource = loreData;
+
+        const incidentTitleEl = document.getElementById('incident-title');
+        const incidentDescEl = document.getElementById('incident-description');
+        const incidentDetailsEl = document.getElementById('incident-details');
+        const dispatchGridEl = document.getElementById('dispatch-grid');
+        const timerBarEl = document.getElementById('timer-bar');
+        const dispatchButton = document.getElementById('dispatch-button');
+        const resultOverlay = document.getElementById('result-overlay');
+        const resultTitle = document.getElementById('result-title');
+        const resultDescription = document.getElementById('result-description');
+        const nextIncidentButton = document.getElementById('next-incident-button');
+
+        if (!incidentTitleEl) return; 
+
+        let currentIncidentIndex = -1;
+        let selectedHeroId = null;
+        let timerInterval;
+
+        function setupIncident() {
+            selectedHeroId = null;
+            if (dispatchButton) dispatchButton.disabled = true;
+
+            currentIncidentIndex = (currentIncidentIndex + 1) % incidentDataSource.length;
+            const incident = incidentDataSource[currentIncidentIndex];
+
+            incidentTitleEl.textContent = incident.title;
+            incidentDescEl.textContent = incident.description;
+            
+            let detailsHTML = '';
+            if (incident.details.witness) {
+                detailsHTML += `<p><strong>WITNESS REPORT:</strong> ${incident.details.witness}</p>`;
+            }
+            if (incident.details.seraph_analysis) {
+                detailsHTML += `<p><strong>S.E.R.A.P.H. ANALYSIS:</strong> ${incident.details.seraph_analysis}</p>`;
+            }
+            incidentDetailsEl.innerHTML = detailsHTML;
+
+            renderHeroOptions();
+            startTimer(incident.timer);
+            
+            resultOverlay.style.display = 'none';
+        }
+
+        function renderHeroOptions() {
+            dispatchGridEl.innerHTML = '';
+            heroDataSource.forEach(hero => {
+                const card = document.createElement('div');
+                card.className = 'hero-card';
+                card.dataset.id = hero.id;
+                card.innerHTML = `<h4 class="hero-name">${hero.codinome}</h4><p class="hero-affiliation">${hero.afiliacao}</p>`;
+                card.addEventListener('click', () => selectHero(hero.id, card));
+                dispatchGridEl.appendChild(card);
+            });
+        }
+
+        function selectHero(heroId, cardElement) {
+            selectedHeroId = heroId;
+            document.querySelectorAll('.hero-card').forEach(card => card.classList.remove('selected'));
+            cardElement.classList.add('selected');
+            dispatchButton.disabled = false;
+        }
+
+        function startTimer(duration) {
+            clearInterval(timerInterval);
+            let totalTime = duration;
+            timerBarEl.style.transition = 'none';
+            timerBarEl.style.width = '100%';
+            
+            // Force a reflow to apply the initial state before transition
+            void timerBarEl.offsetWidth; 
+
+            timerBarEl.style.transition = `width ${totalTime}s linear`;
+            timerBarEl.style.width = '0%';
+        }
+        
+        function handleDispatch() {
+            clearInterval(timerInterval);
+
+            const incident = incidentDataSource[currentIncidentIndex];
+            let outcome;
+            let description;
+
+            if (!selectedHeroId) {
+                outcome = 'failure';
+                description = "TIME'S UP. Your hesitation resulted in mission failure. The situation has escalated beyond our control. A less... precise containment team is being dispatched.";
+            } else if (selectedHeroId === incident.solutions.optimal) {
+                outcome = 'success';
+                description = `OPTIMAL SOLUTION. Asset ${selectedHeroId.toUpperCase()} was the perfect choice. The situation was resolved with maximum efficiency and minimal collateral damage. Excellent work, Operator.`;
+            } else if (incident.solutions.good.includes(selectedHeroId)) {
+                outcome = 'success';
+                description = `EFFECTIVE SOLUTION. Asset ${selectedHeroId.toUpperCase()} resolved the threat. While not the most efficient method, the mission was a success. Well done.`;
+            } else if (incident.solutions.complicated[selectedHeroId]) {
+                outcome = 'failure';
+                description = `COMPLICATED OUTCOME. While Asset ${selectedHeroId.toUpperCase()} was deployed, unforeseen complications arose. ${incident.solutions.complicated[selectedHeroId]} The primary objective was compromised. We can do better.`;
+            } else {
+                outcome = 'failure';
+                description = `CRITICAL FAILURE. The selected asset's abilities were fundamentally unsuited for this crisis, leading to catastrophic mission failure. This was the wrong call, Operator. A full review of your decision is now pending.`;
+            }
+
+            showResult(outcome, description);
+        }
+
+        function showResult(outcome, description) {
+            resultTitle.textContent = outcome === 'success' ? 'MISSION SUCCESS' : 'MISSION FAILURE';
+            resultTitle.className = outcome;
+            resultDescription.textContent = description;
+            resultOverlay.style.display = 'flex';
+        }
+
+        // Set up the timeout for the timer bar
+        const incident = incidentDataSource[0]; // Get the timer for the first incident
+        timerInterval = setTimeout(handleDispatch, incident.timer * 1000);
+
+        dispatchButton.addEventListener('click', () => handleDispatch());
+        nextIncidentButton.addEventListener('click', () => {
+             clearTimeout(timerInterval); // Clear previous timeout
+             setupIncident();
+             const newIncident = incidentDataSource[currentIncidentIndex];
+             timerInterval = setTimeout(handleDispatch, newIncident.timer * 1000);
+        });
+
+        setupIncident();
+    }
+
+
     // --- Portal Initialization ---
     setupNavigation();
 });
-
