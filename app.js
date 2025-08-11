@@ -1,14 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const newsFeed = document.getElementById('news-feed');
+    // Apontar para o novo container de notícias
+    const newsFeedContent = document.getElementById('news-feed-content');
 
-    // Carrega e exibe as not�cias do arquivo news.js
     function loadNews() {
         if (!newsData || newsData.length === 0) {
-            newsFeed.innerHTML = "<p>No articles found.</p>";
+            newsFeedContent.innerHTML = "<p>No articles found.</p>";
             return;
         }
 
-        newsData.forEach(article => {
+        // Ordenar notícias pela data mais recente primeiro
+        const sortedNews = newsData.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+        sortedNews.forEach(article => {
             const articleElement = document.createElement('div');
             articleElement.className = 'news-article';
             
@@ -17,11 +20,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 <h2>${article.headline}</h2>
                 <p>${article.body}</p>
             `;
-            newsFeed.appendChild(articleElement);
+            newsFeedContent.appendChild(articleElement);
         });
     }
 
-    // Registra o Service Worker para fazer o app funcionar offline
+    // Registra o Service Worker (inalterado, mas importante)
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
             navigator.serviceWorker.register('/sw.js').then(registration => {
