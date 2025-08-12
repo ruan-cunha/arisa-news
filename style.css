@@ -709,6 +709,35 @@ body {
     color: var(--text-primary);
 }
 
+.codex-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+}
+.codex-card {
+    background-color: var(--panel-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 25px;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+}
+.codex-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-blue);
+    box-shadow: 0 5px 20px rgba(56, 139, 253, 0.1);
+}
+.codex-card h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.5em;
+    color: var(--text-primary);
+}
+.codex-card p {
+    margin: 0;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
 
 
 
