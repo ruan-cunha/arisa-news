@@ -249,36 +249,27 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     
-    function renderOperativeDatabasePage() {
-        let assetsHTML = loreData.map((asset, index) => `
-            <div class="asset-card" data-id="${asset.id}" style="animation-delay: ${index * 0.05}s">
-                <p class="affiliation">${asset.afiliacao}</p>
-                <h2 class="codename">${asset.codinome}</h2>
-                <p class="dossier-preview">${asset.dossier}</p>
+    function renderOperativeDatabasePage(returnAsString = false) {
+        let operativesHTML = loreData.map((operative, index) => `
+            <div class="asset-card" data-id="${operative.id}" style="animation-delay: ${index * 0.05}s">
+                <p class="affiliation">${operative.afiliacao}</p>
+                <h2 class="codename">${operative.codinome}</h2>
+                <p class="dossier-preview">${operative.dossier}</p>
             </div>
         `).join('');
 
-        mainContent.innerHTML = `
-            <section class="content-section">
-                <div class="section-container">
-                    <h2>ASSET DATABASE</h2>
-                    <div class="asset-grid">
-                        ${assetsHTML}
-                    </div>
-                </div>
-            </section>
-            <div class="modal-overlay" id="hero-modal-overlay"></div>
-        `;
+        const pageHTML = `<div class="asset-grid">${operativesHTML}</div>`;
+
+        if (returnAsString) {
+            // This is a temporary solution until we refactor the modal logic
+            setTimeout(() => {
+                attachOperativeCardListeners();
+            }, 0);
+            return pageHTML;
+        }
         
-        document.querySelectorAll('.asset-card').forEach(card => {
-            card.addEventListener('click', () => {
-                const heroId = card.dataset.id;
-                const heroData = loreData.find(h => h.id === heroId);
-                if (heroData) {
-                    renderHeroDetailModal(heroData);
-                }
-            });
-        });
+        // This part is now part of the codex logic
+        // mainContent.innerHTML = ...
     }
 
     function renderHeroDetailModal(hero) {
@@ -668,6 +659,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Portal Initialization ---
     setupNavigation();
 });
+
 
 
 
