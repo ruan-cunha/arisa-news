@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARISA: Field Operator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="login-modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-window" style="border-color: #f7b32b;">
+            <h2>// SERAPH OPERATOR LOGIN //</h2>
+            <p>Please identify yourself to begin your shift.</p>
+            <input type="text" id="operator-name-input" placeholder="Enter Your Name" maxlength="20">
+            <button id="start-shift-button">INITIALIZE SESSION</button>
+        </div>
+    </div>
+    <div id="game-container">
+        <div id="incident-feed" class="panel">
+            <h2>// INCIDENT FEED</h2>
+            <ul id="incident-list"></ul>
+        </div>
+
+        <div id="analysis-panel" class="panel">
+            <div id="score-display">
+                Public Trust: <span id="public-trust-score">100</span>
+                <button id="settings-button" title="Settings">&#9881;</button>
+            </div>
+            <div id="analysis-panel-header">
+                <h1>// INCIDENT ANALYSIS</h1>
+            </div>
+            <div id="dispatch-loader" class="hidden">
+                <div id="dispatch-status-text">INITIALIZING DISPATCH...</div>
+                <div class="loader-bar-container">
+                    <div class="loader-bar-fill"></div>
+                </div>
+            </div>
+            <div id="incident-details">
+                <p class="placeholder">No active incidents. System is nominal.</p>
+            </div>
+            <div id="dispatch-controls" class="hidden">
+                 <h3>// DISPATCH OPTIONS</h3>
+                 <button id="ability-button" class="hidden" disabled title="Use selected asset's special ability"></button>
+                 <button id="dispatch-button" disabled>DISPATCH UNIT</button>
+            </div>
+            <div id="comms-subtitle-container" class="hidden"></div>
+        </div>
+
+        <div id="heroes-panel" class="panel">
+            <h2>// AVAILABLE ASSETS</h2>
+            <ul id="hero-list"></ul>
+            </div>
+    </div>
+
+    <div id="end-game-modal" class="hidden">
+        <div class="modal-overlay"></div>
+        <div class="modal-window">
+            <div id="end-game-content">
+                <h2>// OPERATOR REVIEW //</h2>
+                <p>Public trust has fallen to unacceptable value. Your operational command has been suspended pending a full performance review.</p>
+                
+                <div class="stats-container hidden">
+                    <div class="stat-line">
+                        <span>Final Public Trust:</span>
+                        <span id="final-score-stat">0</span>
+                    </div>
+                    <div class="stat-line">
+                        <span>Incidents Resolved:</span>
+                        <span id="incidents-resolved-stat">--</span>
+                    </div>
+                    <div class="stat-line">
+                        <span>Optimal Decisions:</span>
+                        <span id="optimal-decisions-stat">--</span>
+                    </div>
+                     <div class="stat-line evaluation">
+                        <span>Final Evaluation:</span>
+                        <span id="final-evaluation-stat">UNSATISFACTORY</span>
+                    </div>
+                </div>
+
+                <button id="restart-button">RESTART SIMULATION</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="hero-database-modal" class="hidden">
+        <div class="modal-overlay"></div>
+        <div class="modal-window">
+            <button class="modal-close-btn">&times;</button>
+            <div id="hero-db-content">
+                </div>
+        </div>
+    </div>
+
+    <div id="settings-modal" class="hidden">
+        <div class="modal-overlay"></div>
+        <div class="modal-window">
+            <button class="modal-close-btn">&times;</button>
+            <div id="settings-content">
+                <h2>// OPERATOR PREFERENCES //</h2>
+                <div class="settings-section">
+                    <h4>Terminal Theme</h4>
+                    <p>Select a visual theme for your SERAPH terminal.</p>
+                    <div id="theme-selection-container">
+                        <button class="theme-button" data-theme="default">ARISA Standard</button>
+                        <button class="theme-button" data-theme="paramount">Paramount Gold</button>
+                        <button class="theme-button" data-theme="vanguards">Vanguards Violet</button>
+                        <button class="theme-button" data-theme="crt">Classic CRT</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="lore.js"></script> 
+    <script src="game.js"></script>
+
+</body>
+</html>
