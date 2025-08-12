@@ -738,6 +738,105 @@ body {
     line-height: 1.6;
 }
 
+.timeline-container {
+    position: relative;
+    padding: 20px 0;
+}
+.timeline-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 3px;
+    height: 100%;
+    background-color: var(--border-color);
+}
+.timeline-item {
+    position: relative;
+    width: 50%;
+    padding: 10px 40px;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.timeline-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+.timeline-item:nth-child(odd) {
+    left: 0;
+    padding-right: 30px;
+    text-align: right;
+}
+.timeline-item:nth-child(even) {
+    left: 50%;
+    padding-left: 30px;
+}
+.timeline-dot {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background-color: var(--bg-color);
+    border: 3px solid var(--accent-blue);
+    border-radius: 50%;
+    top: 20px;
+    z-index: 1;
+}
+.timeline-item:nth-child(odd) .timeline-dot {
+    right: -8px;
+}
+.timeline-item:nth-child(even) .timeline-dot {
+    left: -8px;
+}
+.timeline-content {
+    background-color: var(--panel-color);
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+.timeline-date {
+    font-family: var(--font-mono);
+    font-size: 0.9em;
+    font-weight: 700;
+    color: var(--accent-blue);
+    margin: 0 0 10px 0;
+}
+.timeline-title {
+    font-size: 1.4em;
+    font-weight: 900;
+    margin: 0 0 10px 0;
+}
+.timeline-description {
+    margin: 0;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+@media screen and (max-width: 768px) {
+    .timeline-container::before {
+        left: 8px;
+    }
+    .timeline-item {
+        width: 100%;
+        padding-left: 50px;
+        padding-right: 15px;
+    }
+    .timeline-item:nth-child(odd),
+    .timeline-item:nth-child(even) {
+        left: 0;
+        text-align: left;
+    }
+    .timeline-dot {
+        left: 0;
+    }
+    .timeline-item:nth-child(odd) .timeline-dot,
+    .timeline-item:nth-child(even) .timeline-dot {
+        left: 0;
+    }
+}
+
+
 
 
 
