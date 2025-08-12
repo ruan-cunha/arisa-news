@@ -396,8 +396,9 @@ body {
 .quiz-section .memory-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 15px; 
-    max-width: 500px; 
+    gap: 15px;
+    /* Aumentado o tamanho máximo para que os cartões fiquem maiores */
+    max-width: 550px; 
     margin: 20px auto;
 }
 
@@ -411,7 +412,8 @@ body {
     position: relative;
     transform-style: preserve-3d;
     transition: transform 0.4s;
-    font-size: 3rem; 
+    /* Ajustado o tamanho da fonte para se encaixar melhor no cartão maior */
+    font-size: 3.5rem; 
     display: flex;
     justify-content: center;
     align-items: center;
@@ -911,6 +913,7 @@ body {
     transform: scale(1.05);
     box-shadow: 0 0 15px rgba(56, 139, 253, 0.6);
 }
+
 
 
 
