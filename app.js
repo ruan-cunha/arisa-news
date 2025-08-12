@@ -516,24 +516,39 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                         <div id="result-screen" class="screen">
                             <div class="header-logo"><h2>Assessment Complete</h2></div>
-                            <h3>Your Awakened Profile:</h3>
-                            <h1 id="hero-match-name"></h1>
-                            <p id="hero-match-description"></p>
-                            <div id="trait-breakdown">
-                                <h4>Dominant Traits:</h4>
-                                <p id="user-traits"></p>
+                            
+                            <div class="result-section">
+                                <h3>Primary Awakened Profile:</h3>
+                                <h1 id="primary-hero-name"></h1>
+                                <p id="primary-hero-description" class="hero-description"></p>
                             </div>
+    
+                            <div class="result-details-grid">
+                                <div class="result-section">
+                                    <h4>Secondary Alignment:</h4>
+                                    <p id="secondary-hero-name"></p>
+                                </div>
+                                <div class="result-section">
+                                    <h4>Primary Operational Style:</h4>
+                                    <p id="operational-style"></p>
+                                </div>
+                                <div class="result-section">
+                                    <h4>Area for Development:</h4>
+                                    <p id="development-area"></p>
+                                </div>
+                            </div>
+    
                             <p class="share-text">Share your Mark with the world! #WhatsYourMark</p>
                             <div class="result-buttons">
                                 <button id="restart-btn" class="btn">Take the Test Again</button>
-                                <a id="twitter-share-btn" class="btn twitter-btn" href="#" target="_blank" rel="noopener noreferrer">Share on Chirper</a>
+                                <a id="twitter-share-btn" class="btn twitter-btn" href="#" target="_blank" rel="noopener noreferrer">Share on 𝕏 (Twitter)</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
         `;
-        initializeNewQuiz();
+        initializeNewQuiz(); // Esta função irá conter toda a lógica do quiz
     }
     
 
@@ -581,6 +596,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const heroMatchName = document.getElementById('hero-match-name');
         const heroMatchDescription = document.getElementById('hero-match-description');
         const userTraitsText = document.getElementById('user-traits');
+
+        const primaryHeroName = document.getElementById('primary-hero-name');
+        const primaryHeroDescription = document.getElementById('primary-hero-description');
+        const secondaryHeroName = document.getElementById('secondary-hero-name');
+        const operationalStyle = document.getElementById('operational-style');
+        const developmentArea = document.getElementById('development-area');
         
         let currentQuestionIndex = 0;
         let userScores = {
@@ -687,10 +708,14 @@ document.addEventListener('DOMContentLoaded', () => {
         function showResult() {
             quizScreen.classList.remove('active');
             resultScreen.classList.add('active');
-
-            let bestMatch = null;
-            let highestScore = -Infinity;
-
+    
+            const sortedScores = Object.entries(userScores).sort(([, a], [, b]) => b - a);
+            const topTrait = sortedScores[0][0];
+            const lowestTrait = sortedScores[sortedScores.length - 1][0];
+    
+            let bestMatch = null, secondBestMatch = null;
+            let highestScore = -Infinity, secondHighestScore = -Infinity;
+    
             heroProfiles.forEach(hero => {
                 let score = 0;
                 for (const trait in hero.traits) {
@@ -698,27 +723,34 @@ document.addEventListener('DOMContentLoaded', () => {
                         score += userScores[trait] * hero.traits[trait];
                     }
                 }
-                score += Math.random() * 0.1; 
-
+                score += Math.random() * 0.1;
+    
                 if (score > highestScore) {
+                    secondHighestScore = highestScore;
+                    secondBestMatch = bestMatch;
                     highestScore = score;
                     bestMatch = hero;
+                } else if (score > secondHighestScore) {
+                    secondHighestScore = score;
+                    secondBestMatch = hero;
                 }
             });
             
-            const sortedUserTraits = Object.entries(userScores)
-                .sort(([, a], [, b]) => b - a)
-                .filter(([, score]) => score > 0)
-                .slice(0, 3)
-                .map(([trait]) => trait.charAt(0).toUpperCase() + trait.slice(1).replace('_', ' '));
-
-            heroMatchName.innerText = bestMatch.name;
-            heroMatchDescription.innerText = bestMatch.description;
-            userTraitsText.innerText = sortedUserTraits.length > 0 ? sortedUserTraits.join(', ') : 'Balanced Profile';
-
+            const styleMap = {
+                protective: "You are a defender, prioritizing civilian safety and team integrity above all.", direct: "You are a frontline combatant, meeting threats head-on with decisive force.", strategic: "You are a planner, controlling the battlefield through foresight and superior tactics.", analytical: "You are an investigator, valuing information as your most critical weapon.", empathetic: "You are a diplomat, seeking to understand and de-escalate conflict whenever possible.", independent: "You are a lone wolf, trusting your own instincts and methods above rigid protocols.", charismatic: "You are a leader, inspiring hope in the public and morale in your team.", disciplined: "You are a soldier, respecting structure, protocol, and the chain of command.", impulsive: "You are a force of nature, acting on instinct with unpredictable speed.", optimistic: "You are a beacon of hope, believing in the best possible outcome, even in the darkest times.", indirect: "You are a saboteur, preferring stealth and misdirection over open conflict.", tech_savvy: "You are an innovator, relying on superior gear and technology to gain the upper hand.", leader: "You are a commander, born to guide and coordinate the actions of others.", unconventional: "You are a wildcard, solving problems with creative, out-of-the-box solutions."
+            };
+            const developmentMap = {
+                protective: "While focusing on the objective is key, remember to consider the human element and potential collateral damage.", direct: "Force isn't always the answer. Sometimes, a situation requires subtlety and patience.", strategic: "A plan is only as good as its execution. Don't get lost in theory when action is required.", analytical: "Over-analyzing can lead to hesitation. Trust your instincts when time is short.", empathetic: "Compassion is a strength, but not all threats can be reasoned with. Know when to act decisively.", independent: "Teamwork multiplies force. Learn to trust and rely on your allies.", charismatic: "Public perception is important, but mission success is paramount. Focus on the objective.", disciplined: "Protocols are a guide, not a cage. Be prepared to adapt and improvise.", impulsive: "Acting on instinct can be fast, but a moment of forethought can prevent disaster.", optimistic: "Hope is vital, but don't let it blind you to the real dangers of a situation.", indirect: "Sometimes, a direct confrontation is unavoidable. Be prepared for a head-on fight.", tech_savvy: "Your gear is a tool, not a crutch. Be prepared to rely on your innate skills.", leader: "Leading is crucial, but sometimes you need to trust others to take charge.", unconventional: "Creativity is an asset, but proven, reliable methods often exist for a reason."
+            };
+    
+            primaryHeroName.innerText = bestMatch.name;
+            primaryHeroDescription.innerText = bestMatch.description;
+            secondaryHeroName.innerText = `Your profile also shows a strong alignment with ${secondBestMatch.name}.`;
+            operationalStyle.innerText = styleMap[topTrait] || "Your operational style is balanced and adaptable.";
+            developmentArea.innerText = developmentMap[lowestTrait] || "Your profile shows no significant areas for development at this time.";
+    
             const twitterBtn = document.getElementById('twitter-share-btn');
-            const heroName = bestMatch.name;
-            const shareText = `My ARISA Aptitude Test profile is ${heroName}! Find out what's your Mark. #WhatsYourMark`;
+            const shareText = `My ARISA Aptitude Test primary profile is ${bestMatch.name}, with a secondary alignment to ${secondBestMatch.name}! Find out your Mark. #WhatsYourMark`;
             const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}`;
             twitterBtn.href = twitterUrl;
         }
@@ -726,7 +758,7 @@ document.addEventListener('DOMContentLoaded', () => {
         function startMemoryGame() {
             let timer;
             let timeRemaining = 30;
-            const symbols = ['???', '??', '?', '??', '??', '??', '???', '??', '?', '??', '??', '??'];
+            const symbols = ['🛡️', '🌪️', '⏱️', '🔋', '💭', '🔫', '🛡️', '🌪️', '⏱️', '🔋', '💭', '🔫'];
             symbols.sort(() => 0.5 - Math.random()); 
 
             minigameContainer.innerHTML = `<div id="timer">Time: ${timeRemaining}s</div><div class="memory-grid" id="memory-grid"></div>`;
@@ -834,28 +866,3 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Portal Initialization ---
     setupNavigation();
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
