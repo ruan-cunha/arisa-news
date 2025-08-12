@@ -26,9 +26,6 @@ document.addEventListener('DOMContentLoaded', () => {
             case 'recruitment':
                 renderRecruitmentPage();
                 break;
-            case 'field-operator':
-                renderFieldOperatorPage();
-                break;
             default:
                 renderNotFoundPage(page);
         }
@@ -498,5 +495,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Portal Initialization ---
     setupNavigation();
 });
+
 
 
