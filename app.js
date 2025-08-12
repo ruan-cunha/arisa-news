@@ -171,6 +171,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 </div>
             </section>
+            <!-- CORREÇÃO: A linha abaixo foi adicionada para garantir que o modal exista -->
             <div class="modal-overlay" id="modal-overlay"></div>
         `;
         
@@ -813,6 +814,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Portal Initialization ---
     setupNavigation();
 });
+
 
 
 
