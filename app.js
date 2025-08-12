@@ -19,8 +19,8 @@ document.addEventListener('DOMContentLoaded', () => {
             case 'news':
                 renderNewsPage();
                 break;
-            case 'database':
-                renderOperativeDatabasePage();
+            case 'codex':
+                renderCodexPage();
                 break;
             case 'recruitment':
                 renderRecruitmentPage();
@@ -668,6 +668,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Portal Initialization ---
     setupNavigation();
 });
+
 
 
 
