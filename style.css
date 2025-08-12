@@ -870,6 +870,47 @@ body {
     color: var(--text-secondary);
     line-height: 1.6;
 }
+.briefing-container {
+    background-color: var(--panel-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 30px;
+}
+
+.briefing-container h3 {
+    margin: 0 0 15px 0;
+    font-size: 1.8em;
+    color: var(--accent-blue);
+}
+
+.briefing-container p {
+    color: var(--text-secondary);
+    line-height: 1.7;
+    font-size: 1.1em;
+    margin-bottom: 20px;
+}
+
+.launch-sim-button {
+    display: inline-block;
+    background-color: var(--accent-blue);
+    color: var(--bg-color);
+    font-family: var(--font-mono);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.1em;
+    padding: 15px 30px;
+    border-radius: 6px;
+    transition: all 0.2s ease-in-out;
+    text-transform: uppercase;
+    border: none;
+}
+
+.launch-sim-button:hover {
+    background-color: var(--accent-blue-hover);
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(56, 139, 253, 0.6);
+}
+
 
 
 
