@@ -3,78 +3,78 @@ const loreData = [
         "id": "aegis",
         "codinome": "Aegis",
         "afiliacao": "The Paramount / Axis Mundi",
-        "dossier": "Recognized as the gold standard for Awakened heroism and the public leader of The Paramount. Aegis combines immense physical prowess with a calm, diplomatic demeanor. He is a central cultural and political figure, often seen as the foundation of the modern awakened era. His public record is flawless, with zero known civilian casualties in any of his sanctioned operations. He operates under a mask and his true identity remains one of ARISA's most guarded secrets. His alleged abilities include enhanced physical performance, elevated mental clarity under stress, and an extreme resistance to pain and external powers."
+        "dossier": "Operative Aegis is the public face of sanctioned heroics and the field leader of The Paramount. His record is defined by an unparalleled ability to maintain stability in catastrophic-level events. Official reports consistently note his capacity to de-escalate situations through a commanding presence alone, resorting to physical intervention only when necessary. His involvement in any operation guarantees a significant boost in public confidence and team morale."
     },
     {
         "id": "seraphim",
         "codinome": "Seraphim",
-        "afiliacao": "ARISA",
-        "dossier": "Designated as the most advanced 'Cognivore' on record, Seraphim is less of a field combatant and more of a tactical nexus. Operating primarily from ARISA HQ, she processes probability trees and transforms complex tactical dilemmas into elegant, often non-violent, solutions. She is the credited creator of the S.E.R.A.P.H. public assistance AI. Her abilities include advanced cognitive-based battlefield prediction and seamless integration with strategic exosuits, which she modifies for each mission. Seraphim is known for her calm, empathetic demeanor and is a key mediator between international agencies and ARISA."
+        "afiliacao": "ARISA / The Paramount",
+        "dossier": "Designated as a 'Cognitive Oracle,' Operative Seraphim functions as a primary tactical and probability analyst for ARISA. She specializes in transforming complex, chaotic scenarios into viable, often non-violent, solutions. Her contributions are primarily strategic, providing critical intelligence and predictive modeling that have been instrumental in preventing numerous global incidents before they escalate."
     },
     {
         "id": "mosaic",
         "codinome": "Mosaic",
         "afiliacao": "The Paramount",
-        "dossier": "The team's primary cognitive specialist, Mosaic operates as a forensic mind-reader capable of reconstructing past events by reading psychic residue left on people, objects, or locations. He does not engage in direct combat; instead, he unravels threats by listening to psychic echoes and emotional stains. He is never seen without his featureless, reflective mask, which is rumored to filter out excess mental 'noise'. His presence at a scene almost always brings clarity, uncovering hidden motives and lost connections."
+        "dossier": "A forensic and investigative specialist, Operative Mosaic excels in missions requiring deep intelligence gathering. His expertise lies in reconstructing events from compromised or incomplete data, often uncovering hidden motives and connections that elude standard analysis. His involvement typically indicates a situation of high complexity where the 'why' is more critical than the 'what'. Operates exclusively in a non-combat role."
     },
     {
         "id": "battery",
         "codinome": "Battery",
         "afiliacao": "The Paramount",
-        "dossier": "A brutally efficient combatant with a unique mastery of kinetic energy. By remaining perfectly still, Battery can store vast amounts of potential energy, which she can then discharge in violent bursts of speed, strength, and electromagnetism. Her combat style is mechanical and precise: she enters a field, remains motionless to assess and charge, and then ends the confrontation with terrifying efficiency. She has a military background and is known for her cold demeanor and for disobeying orders in favor of 'better timing'."
+        "dossier": "Operative Battery is a high-impact tactical operative known for her brutally efficient and rapid resolution of hostile situations. Her operational pattern involves periods of static observation followed by bursts of decisive action. She is deployed in scenarios where a swift, overwhelming conclusion is the primary objective. Post-mission reports frequently highlight her exceptional timing and precision."
     },
     {
         "id": "downdraft",
         "codinome": "Downdraft",
         "afiliacao": "The Paramount",
-        "dossier": "A meteorological tactician who manipulates micro-atmospheric dynamics. Downdraft doesn't create storms; he weaponizes the air itself, creating sudden downdrafts, crosswinds, and pressure shifts to disorient enemies, deflect projectiles, and control the battlefield. An ex-atmospheric engineer, his power is about surgical control rather than brute force, making him a disorienting and elusive presence in urban environments. He is often accompanied by a custom climate-simulation drone nicknamed 'Nimbus'."
+        "dossier": "A field control and suppression specialist. Operative Downdraft's primary function is to manipulate and control the operational environment, creating tactical advantages for his team. He excels at crowd control, area denial, and non-lethal neutralization of hostiles by altering battlefield conditions to disorient and disable adversaries. His methods are noted for minimizing direct conflict."
     },
     {
         "id": "armory",
         "codinome": "Armory",
         "afiliacao": "The Paramount",
-        "dossier": "A composed and strategic combatant, Armory's ability is to manifest adaptive energy weaponry. She is the team's sentient arsenal, conjuring the right tool for the right moment. Her constructs, formed from a semi-sentient black and green energy, react to her intent and the moral weight of a situation, making her precision increase in high-stress ethical dilemmas. A philosophical and centered individual, she believes every weapon she creates is an external representation of a repressed emotion."
+        "dossier": "Operative Armory is an adaptive combat specialist, capable of manifesting the ideal tactical solution for any given threat. She serves as the team's versatile offensive cornerstone, consistently providing the precise tool needed to overcome unconventional defenses. Her operational record is marked by a high degree of strategic flexibility and problem-solving under pressure."
     },
     {
         "id": "loop",
         "codinome": "Loop",
         "afiliacao": "The Paramount",
-        "dossier": "The team's temporal specialist, Loop can create short-term 'echoes' of her own movements, striking multiple targets simultaneously or creating temporal duplicates to outmaneuver opponents. An ex-track athlete recruited by Battery, she is a relentless strategist and a merciless trash-talker. Her combat style is disorienting, with attacks seemingly violating linear time. She often fights with headphones on, which fans theorize helps her maintain her temporal rhythm."
+        "dossier": "A temporal specialist renowned for her ability to outmaneuver opponents in complex, multi-threat environments. Operative Loop's primary role is to create tactical impossibilities, engaging multiple targets or objectives in a manner that defies linear engagement. Her presence on a mission often results in a swift and disorienting resolution that leaves adversaries unable to form a coherent counter-strategy."
     },
     {
         "id": "flashpoint",
         "codinome": "Flashpoint",
         "afiliacao": "The Vanguards",
-        "dossier": "Impulsive, optimistic, and overflowing with energy, Flashpoint acts as the Vanguards' living rocket. He builds up kinetic energy through motion and releases it in explosive bursts of speed and impact. He thrives under pressure and often turns dangerous situations into a competitive game, acting as the team's morale-boosting 'older brother'. His explosive confidence is a hit with fans."
+        "dossier": "Operative Flashpoint is a high-energy vanguard, often serving as the initial point of engagement for his team. His operational style is characterized by overwhelming speed and impact, designed to disrupt enemy formations and create openings for his teammates. His boundless optimism and confidence are noted as significant morale boosters for the Vanguards initiative."
     },
     {
         "id": "spoiler",
         "codinome": "Spoiler",
         "afiliacao": "The Vanguards",
-        "dossier": "The silent conscience of the Vanguards, Spoiler's ability allows her to create fields of absolute sensory dampening. She can nullify light or sound within a specific radius, making her an expert in stealth and crowd control. Deliberate and observant, she rarely speaks, but when she does, it carries weight. Her calm and mysterious public persona contrasts with her dry, understated wit."
+        "dossier": "A stealth and infiltration specialist, Operative Spoiler excels in missions requiring absolute discretion. Her primary capability involves creating zones of sensory nullification, allowing for silent insertion, extraction, and neutralization of targets. She is the Vanguards' go-to operative for situations where detection would result in mission failure. Her communication is typically concise and direct."
     },
     {
         "id": "chisel",
         "codinome": "Chisel",
         "afiliacao": "The Vanguards",
-        "dossier": "The immovable anchor of the Vanguards, Chisel's strength and durability increase the longer he focuses on a single defensive task. He is the definition of perseverance, often seen holding up collapsing structures or forming an unbreakable defensive line. Humble and gentle-hearted, he is known as the 'gentle giant' of the team and frequently helps others with their training."
+        "dossier": "Operative Chisel serves as the immovable defensive anchor of the Vanguards. He specializes in asset protection and structural reinforcement during crisis scenarios. His operational value increases exponentially in prolonged defensive situations, making him invaluable for holding strategic positions or protecting civilians during evacuations. His record is noted for resilience and unwavering resolve."
     },
     {
         "id": "viceroy",
         "codinome": "Viceroy",
         "afiliacao": "The Vanguards",
-        "dossier": "Elegant, courteous, and always in control. Viceroy's power lies in precision: with a single touch, he can subtly alter an opponent's muscle responses, redirecting their momentum, causing them to lose balance, and neutralizing conflict before it can escalate. He is the team's 'master of chess', a debater and strategist who believes power can and should be elegant."
+        "dossier": "A precision and de-escalation specialist, Operative Viceroy excels at neutralizing threats with minimal force. His methods involve subtle, close-quarters engagement, often resolving conflicts before they can escalate into open combat. He is a master of leverage and control, frequently deployed in delicate situations where brute force would be counterproductive."
     },
     {
         "id": "kinesis",
         "codinome": "Kinesis",
         "afiliacao": "The Vanguards",
-        "dossier": "The team's tech-driven mobility expert, Kinesis designs, builds, and utilizes a personal arsenal of high-tech mobility gear, including grappling hooks, jump boots, and aerial skates. She is constantly innovating to make the team faster and more adaptable. She thinks fast, talks faster, and treats every challenge as a puzzle to be solved. Rumors suggest she is being mentored by The Paramount's Downdraft."
+        "dossier": "A tech-driven mobility expert and innovator. Operative Kinesis utilizes a custom-built arsenal of high-tech traversal gear, making her the fastest and most adaptable member of her team in complex urban environments. Her primary role is rapid insertion, flanking, and providing support to teammates from unexpected angles. She is also responsible for maintaining and upgrading the Vanguards' field equipment."
     },
     {
         "id": "lockshot",
         "codinome": "Lockshot",
         "afiliacao": "The Vanguards",
-        "dossier": "A reserved and introverted marksman with an extraordinary power: his projectiles can lock onto a target and will adjust their trajectory mid-flight to ensure they hit, regardless of cover or physics. If the rest of the team is jazz, he is the metronome: steady, focused, and unerringly precise. He avoids the spotlight and believes actions, especially his, speak louder than words."
+        "dossier": "A designated marksman and overwatch specialist. Operative Lockshot is tasked with neutralizing high-value targets from a distance with unerring accuracy. His operational hallmark is his absolute focus and ability to execute objectives under conditions that would be impossible for conventional marksmen. He operates with a reserved demeanor, letting his flawless mission success rate speak for itself."
     }
 ];
