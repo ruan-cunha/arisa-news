@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
     const mainNav = document.querySelector('.main-nav');
 
-    // --- Simple Page Router ---
     function navigateTo(page) {
         navLinks.forEach(link => {
             const linkPage = new URL(link.href).hash.substring(1) || 'home';
@@ -39,7 +38,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // --- Portal Content Rendering Functions ---
     function renderHomePage() {
         mainContent.innerHTML = `
             <section class="hero-section">
@@ -63,6 +61,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="section-container">
                     <h2>PUBLIC ADVISORIES</h2>
                     <div class="advisories-grid">
+                        <div class="advisory-card informational">
+                            <div class="advisory-header">
+                                <span class="advisory-type">INFORMATIONAL BULLETIN</span>
+                                <h3>Understanding the "Third Awakening"</h3>
+                            </div>
+                            <div class="advisory-body">
+                                <p>ARISA has received numerous reports regarding the recent global luminous event, now designated the "Third Awakening." This phenomenon may trigger latent Awakened abilities in the general populace.</p>
+                                <p>If you or someone you know experiences sudden anomalous phenomena or the appearance of a 'Saturn's Scar' mark, please remain calm. ARISA has established dedicated support channels to provide guidance and ensure public safety.</p>
+                            </div>
+                        </div>
+                        
                         <div class="advisory-card protocol">
                             <div class="advisory-header">
                                 <span class="advisory-type">CIVILIAN PROTOCOL</span>
@@ -79,34 +88,23 @@ document.addEventListener('DOMContentLoaded', () => {
                             </div>
                         </div>
 
-                        <div class="advisory-card hazard">
-                            <div class="advisory-header">
-                                <span class="advisory-type">COGNITIVE HAZARD ALERT</span>
-                                <h3>Advisory on Designated Cognitive Hazard Zones (CHZ)</h3>
-                            </div>
-                            <div class="advisory-body">
-                                <p>ARISA has identified and cordoned off areas with high concentrations of residual psychic energy. Unprotected exposure to these zones can cause severe sensory and cognitive disruption.</p>
-                                <p>Reported symptoms include:</p>
-                                <ul>
-                                    <li>Sudden and acute memory loss.</li>
-                                    <li>Auditory or visual hallucinations.</li>
-                                    <li>Intense, unprompted emotional shifts.</li>
-                                    <li>Minor temporal distortion (déjà vu, loss of time).</li>
-                                </ul>
-                                <p class="hazard-warning">Civilians are strictly advised to respect all ARISA quarantine perimeters around marked CHZs. If you believe you have been exposed, avoid operating heavy machinery and contact the ARISA health and safety division immediately.</p>
-                            </div>
-                        </div>
-
                         <div class="advisory-card informational">
                             <div class="advisory-header">
                                 <span class="advisory-type">INFORMATIONAL BULLETIN</span>
-                                <h3>Understanding the "Third Awakening"</h3>
+                                <h3>The National Awakened Registry</h3>
                             </div>
                             <div class="advisory-body">
-                                <p>ARISA has received numerous reports regarding the recent global luminous event, now designated the "Third Awakening." This phenomenon may trigger latent Awakened abilities in the general populace.</p>
-                                <p>If you or someone you know experiences sudden anomalous phenomena or the appearance of a 'Saturn's Scar' mark, please remain calm. ARISA has established dedicated support channels to provide guidance and ensure public safety.</p>
+                                <p>ARISA encourages all Awakened individuals to voluntarily enroll in the National Awakened Registry. Registration is a safe and secure process designed to provide support and legal protection.</p>
+                                <p>Benefits of registration include:</p>
+                                <ul>
+                                    <li>Legal immunity in certain pre-approved self-defense scenarios.</li>
+                                    <li>Access to sanctioned safe-use zones for ability testing and training.</li>
+                                    <li>Eligibility for licensed professions that utilize Awakened abilities.</li>
+                                    <li>Access to psychological and medical support tailored for Awakened individuals.</li>
+                                </ul>
+                                <p>While registration is not mandatory, unregistered public use of abilities may result in an official investigation.</p>
                             </div>
-                        </div>
+                        </div>                      
                     </div>
                 </div>
             </section>
@@ -257,17 +255,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
 
-    // --- Navigation Menu Logic ---
     function setupNavigation() {
         navLinks.forEach(link => {
             link.addEventListener('click', (e) => {
-                // CORREÇÃO: Verifica se o link é para uma página externa (não começa com '#')
-                // Se não for um link interno, deixa o navegador fazer o redirecionamento.
                 if (!link.getAttribute('href').startsWith('#')) {
-                    return; // Permite o comportamento padrão do link
+                    return; 
                 }
 
-                e.preventDefault(); // Impede o comportamento padrão apenas para links internos
+                e.preventDefault(); 
                 const page = new URL(link.href).hash.substring(1) || 'home';
                 history.pushState(null, '', `#${page}`);
                 navigateTo(page);
@@ -288,9 +283,6 @@ document.addEventListener('DOMContentLoaded', () => {
         navigateTo(initialPage);
     }
 
-    // =====================================================================
-    // --- INTEGRATED QUIZ LOGIC ---
-    // =====================================================================
     function initializeNewQuiz() {
         const startScreen = document.getElementById('start-screen');
         if (!startScreen) return; 
@@ -424,7 +416,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         score += userScores[trait] * hero.traits[trait];
                     }
                 }
-                score += Math.random() * 0.1; // Tie-breaker
+                score += Math.random() * 0.1; 
 
                 if (score > highestScore) {
                     highestScore = score;
@@ -560,6 +552,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Portal Initialization ---
     setupNavigation();
 });
+
 
 
 
