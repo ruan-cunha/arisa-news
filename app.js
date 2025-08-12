@@ -526,7 +526,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <p class="share-text">Share your Mark with the world! #WhatsYourMark</p>
                             <div class="result-buttons">
                                 <button id="restart-btn" class="btn">Take the Test Again</button>
-                                <a id="twitter-share-btn" class="btn twitter-btn" href="#" target="_blank" rel="noopener noreferrer">Share on ?? (Twitter)</a>
+                                <a id="twitter-share-btn" class="btn twitter-btn" href="#" target="_blank" rel="noopener noreferrer">Share on Chirper</a>
                             </div>
                         </div>
                     </div>
@@ -834,6 +834,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Portal Initialization ---
     setupNavigation();
 });
+
 
 
 
