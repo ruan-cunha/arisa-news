@@ -26,6 +26,9 @@ document.addEventListener('DOMContentLoaded', () => {
             case 'recruitment':
                 renderRecruitmentPage();
                 break;
+            case 'advisories':
+                renderAdvisoriesPage();
+                break;
             default:
                 renderNotFoundPage(page);
         }
@@ -54,6 +57,62 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
     }
 
+    function renderAdvisoriesPage() {
+        mainContent.innerHTML = `
+            <section class="content-section">
+                <div class="section-container">
+                    <h2>PUBLIC ADVISORIES</h2>
+                    <div class="advisories-grid">
+                        <div class="advisory-card protocol">
+                            <div class="advisory-header">
+                                <span class="advisory-type">CIVILIAN PROTOCOL</span>
+                                <h3>Standard Procedure: Unforeseen Awakened Events</h3>
+                            </div>
+                            <div class="advisory-body">
+                                <p>In the event of an unsanctioned Awakened incident in your vicinity, ARISA advises all civilians to adhere to the following protocol to ensure your safety:</p>
+                                <ul>
+                                    <li><strong>SHELTER:</strong> Immediately seek cover in a reinforced, indoor location away from windows.</li>
+                                    <li><strong>DISTANCE:</strong> Maintain a minimum safe distance of 500 meters from any active conflict.</li>
+                                    <li><strong>DO NOT ENGAGE:</strong> Never approach, film, or attempt to communicate with an active Awakened.</li>
+                                    <li><strong>REPORT:</strong> Use the official S.E.R.A.P.H. mobile app to anonymously report the incident to ARISA.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="advisory-card hazard">
+                            <div class="advisory-header">
+                                <span class="advisory-type">COGNITIVE HAZARD ALERT</span>
+                                <h3>Advisory on Designated Cognitive Hazard Zones (CHZ)</h3>
+                            </div>
+                            <div class="advisory-body">
+                                <p>ARISA has identified and cordoned off areas with high concentrations of residual psychic energy. Unprotected exposure to these zones can cause severe sensory and cognitive disruption.</p>
+                                <p>Reported symptoms include:</p>
+                                <ul>
+                                    <li>Sudden and acute memory loss.</li>
+                                    <li>Auditory or visual hallucinations.</li>
+                                    <li>Intense, unprompted emotional shifts.</li>
+                                    <li>Minor temporal distortion (déjà vu, loss of time).</li>
+                                </ul>
+                                <p class="hazard-warning">Civilians are strictly advised to respect all ARISA quarantine perimeters around marked CHZs. If you believe you have been exposed, avoid operating heavy machinery and contact the ARISA health and safety division immediately.</p>
+                            </div>
+                        </div>
+
+                        <div class="advisory-card informational">
+                            <div class="advisory-header">
+                                <span class="advisory-type">INFORMATIONAL BULLETIN</span>
+                                <h3>Understanding the "Third Awakening"</h3>
+                            </div>
+                            <div class="advisory-body">
+                                <p>ARISA has received numerous reports regarding the recent global luminous event, now designated the "Third Awakening." This phenomenon may trigger latent Awakened abilities in the general populace.</p>
+                                <p>If you or someone you know experiences sudden anomalous phenomena or the appearance of a 'Saturn's Scar' mark, please remain calm. ARISA has established dedicated support channels to provide guidance and ensure public safety.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        `;
+    }
+    
     function renderNewsPage() {
         const sortedNews = newsData.sort((a, b) => new Date(b.date) - new Date(a.date));
         let articlesHTML = sortedNews.map((article, index) => `
@@ -501,6 +560,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Portal Initialization ---
     setupNavigation();
 });
+
 
 
 
