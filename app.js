@@ -310,7 +310,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 description: "The Awakened Regulation & Justice Operations Code (ARJOC) is passed by Congress. This sweeping legislation grants ARISA broader powers and defines the legal framework for the use of abilities, formally establishing the National Awakened Registry."
             },
             {
-                date: "October 30, 2018",
+                date: "October 28, 2019",
                 title: "The Third Awakening",
                 description: "A second, more intense and chaotic global luminescence occurs. This event activates latent abilities in a massive, unpredictable new wave of individuals, marking the beginning of a new era."
             }
@@ -933,6 +933,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Portal Initialization ---
     setupNavigation();
 });
+
 
 
 
