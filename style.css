@@ -396,8 +396,9 @@ body {
 .quiz-section .memory-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 15px; /* Aumentado o espaçamento */
-    max-width: 550px; /* Aumentado o tamanho máximo para que os cartões fiquem maiores */
+    gap: 15px; 
+    max-width: 550px; 
+    width: 250px;
     margin: 20px auto;
 }
 
@@ -406,12 +407,12 @@ body {
     aspect-ratio: 1 / 1;
     background-color: #30363d;
     border: 2px solid #8b949e;
-    border-radius: 8px;
+    border-radius: 20px;
     cursor: pointer;
     position: relative;
     transform-style: preserve-3d;
     transition: transform 0.4s;
-    font-size: 3.5rem; /* Ajustado o tamanho da fonte para se encaixar melhor */
+    font-size: 2.5rem; /* Ajustado o tamanho da fonte para se encaixar melhor */
     display: flex;
     justify-content: center;
     align-items: center;
