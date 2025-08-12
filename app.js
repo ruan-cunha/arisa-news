@@ -194,34 +194,34 @@ document.addEventListener('DOMContentLoaded', () => {
                 description: "A mysterious, silent luminescence bathes the Earth. In the following months, the first 'Awakened' individuals with paranormal abilities and the 'Saturn's Scar' begin to emerge globally."
             },
             {
-                date: "April 16, 2007",
+                date: "December 24, 2004",
                 title: "First Public Appearance of 'Aegis'",
                 description: "During a catastrophic bridge collapse in Chicago, an unknown, armored individual single-handedly saves hundreds of civilians. Dubbed 'Aegis' by the press, he becomes the first publicly declared hero, operating independently and setting a new precedent for the Awakened."
             },
             {
-                date: "March 8, 2009",
+                date: "October 11, 2005",
                 title: "The Paramount Forms as an Independent Team",
-                description: "Inspired by Aegis's public heroism, a small group of powerful Awakened individuals form 'The Paramount'. Operating without government oversight, they aim to tackle larger-scale threats, gaining public support but raising concerns within federal agencies about unregulated power."
+                description: "Inspired by Aegis's public heroism, a small group of powerful Awakened individuals form 'The Paramount'. Operating without government oversight, they aim to tackle larger-scale threats, gaining public support but raising concerns within federal agencies about unregulated power.  Aegis joins the initiative, solidifying the team as the public face of heroes."
             },
             {
-                date: "May 20, 2011",
+                date: "August 18, 2008",
                 title: "ARISA is Founded",
                 description: "In response to the growing number of independent operatives like Aegis and The Paramount, the U.S. government establishes the Awakened Response, Investigation & Security Agency (ARISA). Its initial mandate is to monitor, investigate, and, if necessary, contain unsanctioned Awakened activity."
             },
             {
-                date: "February 2, 2012",
+                date: "February 5, 2010",
                 title: "The ARISA-Paramount Integration",
-                description: "After months of tense negotiations, The Paramount agrees to a landmark integration deal. They become a sanctioned team operating under ARISA's oversight in exchange for funding, intelligence, and legal authority. Aegis joins the initiative, solidifying the team as the public face of sanctioned heroics."
+                description: "After months of tense negotiations, The Paramount agrees to a landmark integration deal. They become a sanctioned team operating under ARISA's oversight in exchange for funding, intelligence, and legal authority."
             },
             {
-                date: "August 1, 2015",
+                date: "December 9, 2012",
                 title: "ARJOC Signed into Law",
                 description: "The Awakened Regulation & Justice Operations Code (ARJOC) is passed by Congress. This sweeping legislation grants ARISA broader powers and defines the legal framework for the use of abilities, formally establishing the National Awakened Registry."
             },
             {
                 date: "October 30, 2018",
                 title: "The Third Awakening",
-                description: "A second, more intense and chaotic global luminescence occurs. Unlike the first, this event triggers widespread emotional instability and activates latent abilities in a massive, unpredictable new wave of individuals, marking the beginning of a volatile new era."
+                description: "A second, more intense and chaotic global luminescence occurs. This event activates latent abilities in a massive, unpredictable new wave of individuals, marking the beginning of a new era."
             }
         ];
 
@@ -742,6 +742,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Portal Initialization ---
     setupNavigation();
 });
+
 
 
 
