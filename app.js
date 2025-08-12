@@ -428,7 +428,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function renderHeroDetailModal(hero) {
-        const modalOverlay = document.getElementById('hero-modal-overlay');
+        const modalOverlay = document.getElementById('modal-overlay');
         
         modalOverlay.innerHTML = `
             <div class="modal-content">
@@ -814,6 +814,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Portal Initialization ---
     setupNavigation();
 });
+
 
 
 
