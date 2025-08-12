@@ -133,7 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="section-container">
                     <h2>FIELD OPERATOR SIMULATION</h2>
                     <div class="briefing-container">
-                        <h3>Welcome, Operator Candidate.</h3>
+                        <h3>Welcome, Operator.</h3>
                         <p>The ARISA Field Operator Simulation is a tactical training program designed to test your decision-making capabilities under pressure. You will be presented with a series of real-world incident reports, complete with witness statements and analysis from our S.E.R.A.P.H. system.</p>
                         <p>Your objective is to analyze the available intelligence and dispatch the most suitable operative to resolve the crisis. Each decision has consequences. Time is a critical factor. Your performance will be evaluated based on efficiency, strategic thinking, and your ability to minimize collateral damage.</p>
                         <p>This is more than a test; it is a glimpse into the responsibilities of an ARISA dispatcher. Are you ready to take command?</p>
@@ -834,6 +834,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Portal Initialization ---
     setupNavigation();
 });
+
 
 
 
