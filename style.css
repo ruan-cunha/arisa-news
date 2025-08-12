@@ -396,9 +396,8 @@ body {
 .quiz-section .memory-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 15px;
-    /* Aumentado o tamanho máximo para que os cartões fiquem maiores */
-    max-width: 550px; 
+    gap: 15px; /* Aumentado o espaçamento */
+    max-width: 550px; /* Aumentado o tamanho máximo para que os cartões fiquem maiores */
     margin: 20px auto;
 }
 
@@ -412,8 +411,7 @@ body {
     position: relative;
     transform-style: preserve-3d;
     transition: transform 0.4s;
-    /* Ajustado o tamanho da fonte para se encaixar melhor no cartão maior */
-    font-size: 3.5rem; 
+    font-size: 3.5rem; /* Ajustado o tamanho da fonte para se encaixar melhor */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -913,6 +911,7 @@ body {
     transform: scale(1.05);
     box-shadow: 0 0 15px rgba(56, 139, 253, 0.6);
 }
+
 
 
 
