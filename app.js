@@ -126,36 +126,46 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderCodexPage(subpage = 'landing') {
         let contentHTML = '';
+        let pageTitle = "ARISA CODEX";
 
-        if (subpage === 'landing') {
-            contentHTML = `
-                <div class="codex-grid">
-                    <div class="codex-card" data-subpage="operatives">
-                        <h3>Operative Files</h3>
-                        <p>Access detailed dossiers on registered ARISA, Paramount, and Vanguards operatives.</p>
-                    </div>
-                    <div class="codex-card" data-subpage="timeline">
-                        <h3>Event Timeline</h3>
-                        <p>Review the timeline of major Awakened-related events, from the First Awakening to present day.</p>
-                    </div>
-                    <div class="codex-card" data-subpage="technology">
-                        <h3>Technology & Arsenal</h3>
-                        <p>Browse ARISA's non-lethal technology, vehicles, and the S.E.R.A.P.H. intelligence system.</p>
-                    </div>
+        const codexLandingHTML = `
+            <div class="codex-grid">
+                <div class="codex-card" data-subpage="operatives">
+                    <h3>Operative Files</h3>
+                    <p>Access detailed dossiers on registered ARISA, Paramount, and Vanguards operatives.</p>
                 </div>
-            `;
-        } else if (subpage === 'operatives') {
-            contentHTML = renderOperativeDatabasePage(true); 
-        } else if (subpage === 'timeline') {
-            contentHTML = `<h3>Event Timeline</h3><p>This section is currently under development. Please check back later.</p>`;
-        } else if (subpage === 'technology') {
-            contentHTML = `<h3>Technology & Arsenal</h3><p>This section is currently under development. Please check back later.</p>`;
+                <div class="codex-card" data-subpage="timeline">
+                    <h3>Event Timeline</h3>
+                    <p>Review the timeline of major Awakened-related events, from the First Awakening to present day.</p>
+                </div>
+                <div class="codex-card" data-subpage="technology">
+                    <h3>Technology & Arsenal</h3>
+                    <p>Browse ARISA's non-lethal technology, vehicles, and the S.E.R.A.P.H. intelligence system.</p>
+                </div>
+            </div>
+        `;
+
+        switch (subpage) {
+            case 'operatives':
+                pageTitle = "CODEX // OPERATIVE FILES";
+                contentHTML = renderOperativeDatabasePage(true);
+                break;
+            case 'timeline':
+                pageTitle = "CODEX // EVENT TIMELINE";
+                contentHTML = renderTimelinePage();
+                break;
+            case 'technology':
+                pageTitle = "CODEX // TECHNOLOGY & ARSENAL";
+                contentHTML = `<p>This section is currently under development. Please check back later.</p>`;
+                break;
+            default: // landing
+                contentHTML = codexLandingHTML;
         }
         
         mainContent.innerHTML = `
             <section class="content-section">
                 <div class="section-container">
-                    <h2>ARISA CODEX</h2>
+                    <h2>${pageTitle}</h2>
                     <div id="codex-content">
                         ${contentHTML}
                     </div>
@@ -172,6 +182,64 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             });
         }
+    }
+
+    function renderTimelinePage() {
+        const timelineEvents = [
+            {
+                date: "November 3, 2004",
+                title: "The First Awakening",
+                description: "A mysterious, silent luminescence bathes the Earth for seconds. In the following months, the first 'Awakened' individuals with paranormal abilities and the 'Saturn's Scar' begin to emerge globally."
+            },
+            {
+                date: "June 12, 2008",
+                title: "The Boston Incident",
+                description: "An uncontrolled and terrified Awakened causes a cascading energy event in downtown Boston, resulting in catastrophic infrastructure damage. The incident highlights the urgent need for a specialized national response."
+            },
+            {
+                date: "May 20, 2009",
+                title: "ARISA is Founded",
+                description: "The Awakened Response, Investigation & Security Agency (ARISA) is officially founded under the Department of Homeland Security. Its mandate: Contain, Protect, Inform, Adapt."
+            },
+            {
+                date: "October 29, 2011",
+                title: "The Paramount Initiative",
+                description: "ARISA officially launches 'The Paramount,' a team of highly skilled, publicly-vetted Awakened operatives. Led by the enigmatic 'Aegis,' the team becomes the gold standard for sanctioned heroics."
+            },
+            {
+                date: "August 1, 2015",
+                title: "ARJOC Signed into Law",
+                description: "The Awakened Regulation & Justice Operations Code (ARJOC) is passed by Congress. This sweeping legislation defines the legal use of abilities and establishes the National Awakened Registry."
+            },
+            {
+                date: "September 5, 2018",
+                title: "The Vanguards Program is Formed",
+                description: "In response to a rise in unsanctioned teenage vigilantism, ARISA establishes 'The Vanguards,' a youth initiative to train and deploy young, promising operatives under strict supervision."
+            },
+            {
+                date: "July 22, 2023",
+                title: "The Third Awakening",
+                description: "A second, more intense global luminescence occurs, causing widespread emotional instability and triggering latent abilities in a new wave of individuals. The event's chaotic nature marks a new, more unpredictable era for ARISA."
+            },
+            {
+                date: "August 9, 2025",
+                title: "Pacific Anomaly & Axis Mundi Convened",
+                description: "A massive gravimetric anomaly is detected in the Pacific Ocean. Due to its existential-threat potential, the 'Axis Mundi' global defense pact is convened for the first time in three years, with Aegis leading the joint task force."
+            }
+        ];
+
+        let timelineHTML = timelineEvents.map(event => `
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <p class="timeline-date">${event.date}</p>
+                    <h4 class="timeline-title">${event.title}</h4>
+                    <p class="timeline-description">${event.description}</p>
+                </div>
+            </div>
+        `).join('');
+
+        return `<div class="timeline-container">${timelineHTML}</div>`;
     }
     
     function renderNewsPage() {
@@ -659,6 +727,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Portal Initialization ---
     setupNavigation();
 });
+
 
 
 
