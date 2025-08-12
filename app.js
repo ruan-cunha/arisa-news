@@ -181,51 +181,21 @@ document.addEventListener('DOMContentLoaded', () => {
                     renderCodexPage(newSubpage);
                 });
             });
+        } else if (subpage === 'timeline') {
+            initializeTimelineAnimations();
         }
     }
 
     function renderTimelinePage() {
         const timelineEvents = [
-            {
-                date: "November 3, 2004",
-                title: "The First Awakening",
-                description: "A mysterious, silent luminescence bathes the Earth for seconds. In the following months, the first 'Awakened' individuals with paranormal abilities and the 'Saturn's Scar' begin to emerge globally."
-            },
-            {
-                date: "June 12, 2008",
-                title: "The Boston Incident",
-                description: "An uncontrolled and terrified Awakened causes a cascading energy event in downtown Boston, resulting in catastrophic infrastructure damage. The incident highlights the urgent need for a specialized national response."
-            },
-            {
-                date: "May 20, 2009",
-                title: "ARISA is Founded",
-                description: "The Awakened Response, Investigation & Security Agency (ARISA) is officially founded under the Department of Homeland Security. Its mandate: Contain, Protect, Inform, Adapt."
-            },
-            {
-                date: "October 29, 2011",
-                title: "The Paramount Initiative",
-                description: "ARISA officially launches 'The Paramount,' a team of highly skilled, publicly-vetted Awakened operatives. Led by the enigmatic 'Aegis,' the team becomes the gold standard for sanctioned heroics."
-            },
-            {
-                date: "August 1, 2015",
-                title: "ARJOC Signed into Law",
-                description: "The Awakened Regulation & Justice Operations Code (ARJOC) is passed by Congress. This sweeping legislation defines the legal use of abilities and establishes the National Awakened Registry."
-            },
-            {
-                date: "September 5, 2018",
-                title: "The Vanguards Program is Formed",
-                description: "In response to a rise in unsanctioned teenage vigilantism, ARISA establishes 'The Vanguards,' a youth initiative to train and deploy young, promising operatives under strict supervision."
-            },
-            {
-                date: "July 22, 2023",
-                title: "The Third Awakening",
-                description: "A second, more intense global luminescence occurs, causing widespread emotional instability and triggering latent abilities in a new wave of individuals. The event's chaotic nature marks a new, more unpredictable era for ARISA."
-            },
-            {
-                date: "August 9, 2025",
-                title: "Pacific Anomaly & Axis Mundi Convened",
-                description: "A massive gravimetric anomaly is detected in the Pacific Ocean. Due to its existential-threat potential, the 'Axis Mundi' global defense pact is convened for the first time in three years, with Aegis leading the joint task force."
-            }
+            { date: "November 3, 2004", title: "The First Awakening", description: "A mysterious, silent luminescence bathes the Earth. In the following months, the first 'Awakened' individuals with paranormal abilities and the 'Saturn's Scar' begin to emerge globally." },
+            { date: "June 12, 2008", title: "The Boston Incident", description: "An uncontrolled Awakened causes a cascading energy event in downtown Boston, resulting in catastrophic infrastructure damage. The incident highlights the urgent need for a specialized national response." },
+            { date: "May 20, 2009", title: "ARISA is Founded", description: "The Awakened Response, Investigation & Security Agency (ARISA) is officially founded under the Department of Homeland Security. Its mandate: Contain, Protect, Inform, Adapt." },
+            { date: "October 29, 2011", title: "The Paramount Initiative", description: "ARISA officially launches 'The Paramount,' a team of highly skilled, publicly-vetted Awakened operatives. Led by the enigmatic 'Aegis,' the team becomes the gold standard for sanctioned heroics." },
+            { date: "August 1, 2015", title: "ARJOC Signed into Law", description: "The Awakened Regulation & Justice Operations Code (ARJOC) is passed by Congress. This sweeping legislation defines the legal use of abilities and establishes the National Awakened Registry." },
+            { date: "September 5, 2018", title: "The Vanguards Program is Formed", description: "In response to a rise in unsanctioned teenage vigilantism, ARISA establishes 'The Vanguards,' a youth initiative to train and deploy young, promising operatives under strict supervision." },
+            { date: "July 22, 2023", title: "The Third Awakening", description: "A second, more intense global luminescence occurs, causing widespread emotional instability and triggering latent abilities in a new wave of individuals. The event's chaotic nature marks a new, more unpredictable era for ARISA." },
+            { date: "August 9, 2025", title: "Pacific Anomaly & Axis Mundi Convened", description: "A massive gravimetric anomaly is detected in the Pacific Ocean. Due to its existential-threat potential, the 'Axis Mundi' global defense pact is convened for the first time in three years, with Aegis leading the joint task force." }
         ];
 
         let timelineHTML = timelineEvents.map(event => `
@@ -240,6 +210,24 @@ document.addEventListener('DOMContentLoaded', () => {
         `).join('');
 
         return `<div class="timeline-container">${timelineHTML}</div>`;
+    }
+
+    function initializeTimelineAnimations() {
+        const timelineItems = document.querySelectorAll('.timeline-item');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.5 // O item aparece quando 50% dele está visível
+        });
+
+        timelineItems.forEach(item => {
+            observer.observe(item);
+        });
     }
     
     function renderNewsPage() {
@@ -727,6 +715,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Portal Initialization ---
     setupNavigation();
 });
+
 
 
 
