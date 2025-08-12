@@ -541,14 +541,14 @@ document.addEventListener('DOMContentLoaded', () => {
                             <p class="share-text">Share your Mark with the world! #WhatsYourMark</p>
                             <div class="result-buttons">
                                 <button id="restart-btn" class="btn">Take the Test Again</button>
-                                <a id="twitter-share-btn" class="btn twitter-btn" href="#" target="_blank" rel="noopener noreferrer">Share on 𝕏 (Twitter)</a>
+                                <a id="twitter-share-btn" class="btn twitter-btn" href="#" target="_blank" rel="noopener noreferrer">Share on Chirper</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
         `;
-        initializeNewQuiz(); // Esta função irá conter toda a lógica do quiz
+        initializeNewQuiz(); 
     }
     
 
@@ -613,6 +613,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const quizQuestions = [
             { type: 'personality', question: "A large public festival is happening. As a hero, what is your primary role in ensuring its safety?", answers: [ { text: 'Patrol the perimeter, keeping a visible and reassuring presence.', traits: { protective: 1, disciplined: 1 } }, { text: 'Stay in the command center, analyzing crowd flow for potential issues.', traits: { strategic: 1, analytical: 1 } }, { text: 'Mingle with the crowd, ready to respond instantly if trouble starts.', traits: { direct: 1, charismatic: 1 } }, { text: 'Set up defensive measures beforehand, anticipating every possibility.', traits: { strategic: 2, indirect: 1 } } ] },
+            {
+                type: 'dilemma',
+                question: "To prevent city-wide panic during a crisis, command gives you two options: tell a calculated lie that will keep everyone calm, or tell the absolute truth, which will likely cause a stampede.",
+                answers: [
+                    { text: 'Tell the lie. Order and safety are the top priorities; the truth can be clarified later.', traits: { strategic: 2, indirect: 1, leader: 1 } },
+                    { text: 'Tell the truth. The public has a right to know what they are facing, regardless of the consequences.', traits: { charismatic: 1, direct: 1, independent: 1 } },
+                    { text: 'Refuse to be the mouthpiece. My job is to resolve the crisis, not manage public relations.', traits: { disciplined: 1, protective: 1 } },
+                    { text: 'Create a third option: release partial, calming information while omitting the most terrifying details.', traits: { unconventional: 2, empathetic: 1 } }
+                ]
+            },
             { type: 'personality', question: 'A young, newly Awakened individual is scared of their powers. How do you approach them?', answers: [ { text: 'Show them how cool their powers can be to build their confidence.', traits: { optimistic: 1, charismatic: 1, impulsive: 1 } }, { text: 'Offer structured, patient guidance and share your own experiences.', traits: { empathetic: 2, disciplined: 1, leader: 1 } }, { text: 'Give them space but observe from a distance, ensuring they and others are safe.', traits: { protective: 1, indirect: 1 } }, { text: 'Provide them with technical manuals and safe, controlled training scenarios.', traits: { analytical: 1, tech_savvy: 1 } } ] },
             { type: 'dilemma', question: "Your team is facing an unknown threat. What's your first priority?", answers: [ { text: 'Engage directly to gauge its strength and weaknesses.', traits: { direct: 1, impulsive: 1 } }, { text: 'Evacuate all civilians and establish a secure perimeter.', traits: { protective: 2, leader: 1 } }, { text: 'Gather data. Information is the key to victory.', traits: { analytical: 2, strategic: 1 } }, { text: 'Rally the team, boost morale, and formulate a quick plan together.', traits: { charismatic: 1, optimistic: 1, leader: 1 } } ] },
             { type: 'personality', question: 'What does the word "power" mean to you?', answers: [ { text: 'A responsibility to protect those who cannot protect themselves.', traits: { protective: 1, empathetic: 1 } }, { text: 'A tool to achieve a specific, necessary objective.', traits: { disciplined: 1, direct: 1 } }, { text: 'A variable that must be understood and controlled.', traits: { analytical: 1, strategic: 1 } }, { text: 'A chance to make a real, positive difference in the world.', traits: { optimistic: 1, charismatic: 1 } } ] },
@@ -620,11 +630,41 @@ document.addEventListener('DOMContentLoaded', () => {
             { type: 'dilemma', question: "You witness a member of the public being harassed for having a 'Saturn's Scar'. How do you intervene?", answers: [ { text: 'Publicly and forcefully shame the aggressor to make an example of them.', traits: { direct: 2, impulsive: 1 } }, { text: 'Discreetly create a distraction, then offer the victim a safe way out.', traits: { indirect: 2, strategic: 1 } }, { text: 'Physically place yourself between them, de-escalating with a calm voice.', traits: { protective: 2, empathetic: 1 } }, { text: 'Record the incident as evidence and report it to ARISA, trusting official channels.', traits: { disciplined: 1, analytical: 1 } } ] },
             { type: 'personality', question: 'When you\'re not on a mission, how do you spend your time?', answers: [ { text: 'Training. Honing my skills and body is a round-the-clock commitment.', traits: { disciplined: 2, direct: 1 } }, { text: 'Building and tinkering with my gear. There\'s always a new upgrade to create.', traits: { tech_savvy: 2, unconventional: 1 } }, { text: 'Connecting with the community. It\'s important they see heroes as people.', traits: { charismatic: 1, empathetic: 1 } }, { text: 'Studying past incidents and potential future threats. Preparation is everything.', traits: { analytical: 1, strategic: 1 } } ] },
             { type: 'minigame', game: 'incident_report', question: 'ARISA Intel Drop: A preliminary report on the "Inferno" incident just came in. Quickly identify the key facts.' },
+            {
+                type: 'dilema',
+                question: "You can stop a major future threat by accessing the private thoughts of every citizen for one minute. The intrusion would be harmless and untraceable, but ethically questionable. Do you proceed?",
+                answers: [
+                    { text: 'Yes. The safety of millions justifies a momentary, harmless breach of privacy.', traits: { strategic: 2, protective: 1 } },
+                    { text: 'No. Certain lines must never be crossed, regardless of the potential benefit. Privacy is absolute.', traits: { disciplined: 2, empathetic: 1 } },
+                    { text: 'I seek an alternative. I use the information to find the source of the threat and focus only on them.', traits: { analytical: 2, indirect: 1 } },
+                    { text: 'I present the dilemma to a superior. A decision this significant should not be made alone.', traits: { leader: 1, charismatic: 1 } }
+                ]
+            },
             { type: 'personality', question: 'You are offered a new piece of experimental tech for your suit. You...', answers: [ { text: 'Immediately start tinkering with it to make it even better.', traits: { tech_savvy: 2, unconventional: 1 } }, { text: 'Test it rigorously in a simulation before ever using it in the field.', traits: { disciplined: 1, analytical: 1 } }, { text: 'Trust the engineers and incorporate it into your gear right away.', traits: { optimistic: 1, direct: 1 } }, { text: 'Analyze if it truly fits your established fighting style and methods.', traits: { strategic: 1, independent: 1 } } ] },
             { type: 'personality', question: 'How do you prefer to end a confrontation?', answers: [ { text: 'Decisively and quickly, with overwhelming action.', traits: { direct: 2, impulsive: 1 } }, { text: 'By outsmarting the opponent, making them realize they have lost.', traits: { strategic: 2, indirect: 1 } }, { text: 'With all parties safe and the threat neutralized without unnecessary damage.', traits: { protective: 2, empathetic: 1 } }, { text: 'By creating a situation where the conflict was prevented from the start.', traits: { leader: 1, analytical: 1 } } ] },
             { type: 'dilemma', question: 'A mission is complete, and the media wants a statement. What is your move?', answers: [ { text: 'Step up to the cameras. The public deserves to hear from us directly.', traits: { charismatic: 2, leader: 1 } }, { text: 'Let the team leader or designated spokesperson handle it.', traits: { disciplined: 1, indirect: 1 } }, { text: 'Send a pre-written statement through ARISA\'s press office.', traits: { strategic: 1, independent: 1 } }, { text: 'Avoid the cameras. The results of the mission speak for themselves.', traits: { indirect: 2 } } ] },
+            {
+                type: 'personality',
+                question: "Beyond any duty or obligation, what is the most profound reason you choose to act?",
+                answers: [
+                    { text: 'To protect the innocent. My purpose is to be a shield for those who cannot defend themselves.', traits: { protective: 2, empathetic: 1 } },
+                    { text: 'To bring order to chaos. My purpose is to create systems and strategies that make the world safer.', traits: { strategic: 2, leader: 1 } },
+                    { text: 'To push the limits of what is possible. My purpose is to innovate, adapt, and be the best version of myself.', traits: { tech_savvy: 1, unconventional: 1, optimistic: 1 } },
+                    { text: 'To uphold justice. My purpose is to ensure that rules have meaning and that there are consequences for breaking them.', traits: { disciplined: 2, direct: 1 } }
+                ]
+            },
             { type: 'dilemma', question: "A powerful, newly Awakened is causing massive property damage, not out of malice, but out of fear. What's your approach?", answers: [ { text: 'Engage them in conversation, trying to understand their fear and talk them down.', traits: { empathetic: 2, charismatic: 1, leader: 1 } }, { text: 'Use the environment against them, creating barriers and traps to limit their movement.', traits: { strategic: 2, unconventional: 1 } }, { text: 'Deploy a non-lethal, high-impact takedown. The fastest end to the chaos is the safest.', traits: { direct: 1, disciplined: 1 } }, { text: 'Analyze their power from a distance to calculate the most efficient way to neutralize their ability.', traits: { analytical: 2, tech_savvy: 1, indirect: 1 } } ] },
             { type: 'personality', question: 'Which environment are you most comfortable operating in?', answers: [ { text: 'On the front lines, in the thick of the action.', traits: { direct: 1, impulsive: 1 } }, { text: 'In a support role, providing tactical aid and protection.', traits: { protective: 1, strategic: 1 } }, { text: 'From a distance, analyzing the field and directing teammates.', traits: { analytical: 1, indirect: 1, leader: 1 } }, { text: 'Working on my own, using my unique skills to flank the enemy.', traits: { independent: 1, unconventional: 1 } } ] },
+            {
+                type: 'personality',
+                question: "After a mission where you made a critical error, what is your immediate focus?",
+                answers: [
+                    { text: 'Analyzing every detail to understand exactly what went wrong and ensure it never happens again.', traits: { analytical: 2, strategic: 1 } },
+                    { text: 'Focusing on the team. I check on my teammates and take responsibility to maintain morale.', traits: { leader: 2, empathetic: 1, charismatic: 1 } },
+                    { text: 'Getting back to training immediately. The best way to overcome a failure is with a future success.', traits: { direct: 1, disciplined: 1, optimistic: 1 } },
+                    { text: 'Taking some time alone to process it. I need to understand my own feelings before I can move on.', traits: { independent: 2, protective: -1 } } // Pontuação negativa para mostrar introspeção em vez de proteção externa
+                ]
+            },
             { type: 'dilemma', question: "You have the opportunity to join a highly structured, government-endorsed team like The Paramount. What's your reaction?", answers: [ { text: 'Accept immediately. The structure and resources are the best way to make a difference.', traits: { disciplined: 1, leader: 1 } }, { text: 'Decline. True heroism operates outside of bureaucracy and public relations.', traits: { independent: 2, unconventional: 1 } }, { text: 'Negotiate the terms. I\'ll work with them, but on my own terms.', traits: { strategic: 1, charismatic: 1 } }, { text: 'Consider it, but primarily as a way to understand the system from the inside.', traits: { analytical: 1, indirect: 1 } } ] },
             { type: 'personality', question: 'A complex problem requires a solution. You are most likely to:', answers: [ { text: 'Break it down into smaller, manageable parts to analyze.', traits: { analytical: 2, strategic: 1 } }, { text: 'Try a creative, out-of-the-box approach no one has considered.', traits: { unconventional: 2, impulsive: 1 } }, { text: 'Rely on established, proven methods that guarantee stability.', traits: { disciplined: 2, protective: 1 } }, { text: 'Collaborate with the team, believing a group solution is strongest.', traits: { charismatic: 1, empathetic: 1, leader: 1 } } ] }
         ];
@@ -893,5 +933,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Portal Initialization ---
     setupNavigation();
 });
+
 
 
