@@ -572,194 +572,62 @@ body {
     font-size: 0.95em;
 }
 
-
-/* --- Field Operator Simulation Section --- */
-.field-operator-section {
-    --sim-bg: #0A0C10;
-    --sim-panel: #161B22;
-    --sim-border: #30363D;
-    --sim-text-pri: #E6EDF3;
-    --sim-text-sec: #7D8590;
-    --sim-accent: #2ea043;
-    --sim-accent-hover: #3fb950;
-    --sim-red: #f85149;
-    --font-main: 'Inter', sans-serif;
-    --font-mono: 'Roboto Mono', monospace;
-}
-.field-operator-section .game-container {
-    width: 100%;
-    max-width: 1200px;
-    background-color: var(--sim-panel);
-    border: 1px solid var(--sim-border);
-    border-radius: 8px;
-    padding: 30px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    min-height: 80vh;
-}
-.field-operator-section .main-layout {
-    display: flex;
-    gap: 20px;
-    flex-grow: 1;
-}
-.field-operator-section .incident-panel {
-    flex-basis: 40%;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-.field-operator-section .dispatch-panel {
-    flex-basis: 60%;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-.field-operator-section .info-box {
-    background-color: var(--sim-bg);
-    border: 1px solid var(--sim-border);
-    border-radius: 6px;
-    padding: 20px;
-}
-.field-operator-section h3 {
-    font-family: var(--font-mono);
-    text-transform: uppercase;
-    color: var(--sim-accent);
-    margin: 0 0 15px 0;
-    font-size: 1.1em;
-    letter-spacing: 2px;
-    border-bottom: 1px solid var(--sim-border);
-    padding-bottom: 10px;
-}
-.field-operator-section #incident-title {
-    font-family: var(--font-main);
-    font-weight: 700;
-    font-size: 1.5em;
-    color: var(--sim-text-pri);
-    margin: 0 0 10px 0;
-    text-transform: none;
-    letter-spacing: 0;
-}
-.field-operator-section #incident-description,
-.field-operator-section .details-content p {
-    color: var(--sim-text-sec);
-    line-height: 1.6;
-    font-size: 0.95em;
-}
-.field-operator-section .details-content strong {
-    color: var(--sim-text-pri);
-    font-weight: 700;
-}
-.field-operator-section .dispatch-grid {
+.advisories-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 15px;
+    grid-template-columns: 1fr;
+    gap: 30px;
 }
-.field-operator-section .hero-card {
-    background-color: var(--sim-bg);
-    border: 1px solid var(--sim-border);
-    border-radius: 6px;
-    padding: 15px;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
-}
-.field-operator-section .hero-card:hover {
-    transform: translateY(-5px);
-    border-color: var(--sim-accent);
-}
-.field-operator-section .hero-card.selected {
-    border-color: var(--sim-accent);
-    box-shadow: 0 0 15px rgba(46, 160, 67, 0.3);
-}
-.field-operator-section .hero-name {
-    font-weight: 700;
-    font-size: 1.1em;
-    margin: 0;
-}
-.field-operator-section .hero-affiliation {
-    font-family: var(--font-mono);
-    color: var(--sim-text-sec);
-    font-size: 0.8em;
-}
-.field-operator-section .timer-bar-container {
-    width: 100%;
-    height: 8px;
-    background-color: var(--sim-border);
-    border-radius: 4px;
+.advisory-card {
+    background-color: var(--panel-color);
+    border: 1px solid var(--border-color);
+    border-left-width: 5px;
+    border-radius: 8px;
     overflow: hidden;
 }
-.field-operator-section #timer-bar {
-    height: 100%;
-    width: 100%;
-    background-color: var(--sim-accent);
-    transition: width 1s linear;
+.advisory-header {
+    padding: 20px;
+    border-bottom: 1px solid var(--border-color);
 }
-.field-operator-section #dispatch-button {
-    background-color: var(--sim-accent);
-    color: var(--sim-bg);
+.advisory-type {
     font-family: var(--font-mono);
+    font-size: 0.8em;
     font-weight: 700;
-    font-size: 1.2em;
     text-transform: uppercase;
-    border: none;
-    padding: 15px;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
+    letter-spacing: 1.5px;
 }
-.field-operator-section #dispatch-button:hover:not(:disabled) {
-    background-color: var(--sim-accent-hover);
+.advisory-header h3 {
+    margin: 5px 0 0;
+    font-size: 1.5em;
+    font-weight: 900;
 }
-.field-operator-section #dispatch-button:disabled {
-    background-color: var(--sim-text-sec);
-    cursor: not-allowed;
-}
-.field-operator-section .result-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(10, 12, 16, 0.9);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 3000;
-}
-.field-operator-section .result-modal {
-    background-color: var(--sim-panel);
-    border: 1px solid var(--sim-border);
-    padding: 40px;
-    border-radius: 8px;
-    text-align: center;
-    max-width: 600px;
-}
-.field-operator-section #result-title {
-    font-size: 2.5em;
-    margin: 0;
-    letter-spacing: 1px;
-}
-.field-operator-section #result-title.success { color: var(--sim-accent); }
-.field-operator-section #result-title.failure { color: var(--sim-red); }
-.field-operator-section #result-description {
-    color: var(--sim-text-sec);
+.advisory-body {
+    padding: 20px;
+    font-size: 1.05em;
     line-height: 1.7;
-    margin: 15px 0 30px 0;
+    color: var(--text-secondary);
 }
-.field-operator-section #next-incident-button {
-    background-color: var(--sim-accent);
-    color: var(--sim-bg);
-    font-family: var(--font-mono);
-    border: none;
-    padding: 12px 25px;
-    font-size: 1em;
-    cursor: pointer;
-    border-radius: 6px;
+.advisory-body ul {
+    padding-left: 20px;
+    margin: 15px 0 0;
 }
+.advisory-body li {
+    margin-bottom: 10px;
+}
+.advisory-body strong {
+    color: var(--text-primary);
+}
+.advisory-body p:not(:first-child) {
+    margin-top: 15px;
+}
+/* Protocol Card Type */
+.advisory-card.protocol { border-left-color: #388BFD; /* Blue */ }
+.advisory-card.protocol .advisory-type { color: #388BFD; }
+/* Hazard Card Type */
+.advisory-card.hazard { border-left-color: #db61ff; /* Purple */ }
+.advisory-card.hazard .advisory-type { color: #db61ff; }
+.hazard-warning { font-weight: 700; color: #db61ff; }
+/* Informational Card Type */
+.advisory-card.informational { border-left-color: #7D8590; /* Gray */ }
+.advisory-card.informational .advisory-type { color: #7D8590; }
 
-@media (max-width: 900px) {
-    .field-operator-section .main-layout {
-        flex-direction: column;
-    }
-}
+
