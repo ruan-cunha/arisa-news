@@ -148,7 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
         switch (subpage) {
             case 'operatives':
                 pageTitle = "CODEX // OPERATIVE FILES";
-                contentHTML = renderOperativeDatabasePage(true);
+                contentHTML = renderOperativeDatabasePage();
                 break;
             case 'timeline':
                 pageTitle = "CODEX // EVENT TIMELINE";
@@ -156,9 +156,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 break;
             case 'technology':
                 pageTitle = "CODEX // TECHNOLOGY & ARSENAL";
-                contentHTML = contentHTML = renderTechnologyPage();
+                contentHTML = renderTechnologyPage();
                 break;
-            default: 
+            default: // landing
                 contentHTML = codexLandingHTML;
         }
         
@@ -174,6 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="modal-overlay" id="modal-overlay"></div>
         `;
         
+        // CORREÇÃO: Os listeners são adicionados DEPOIS que o HTML é inserido na página.
         if (subpage === 'landing') {
             document.querySelectorAll('.codex-card').forEach(card => {
                 card.addEventListener('click', () => {
@@ -183,11 +184,12 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         } else if (subpage === 'timeline') {
             initializeTimelineAnimations();
+        } else if (subpage === 'operatives') {
+            attachOperativeCardListeners();
         }
     }
 
     function renderTechnologyPage() {
-        // Data based on lore (1).json
         const techData = {
             non_lethal_armament: [
                 { name: "Inhibitor Gel", description: "A rapidly expanding foam that immobilizes targets while disrupting the body's energy channels, effectively neutralizing most ability use on contact." },
@@ -810,6 +812,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Portal Initialization ---
     setupNavigation();
 });
+
 
 
 
