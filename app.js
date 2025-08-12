@@ -202,7 +202,13 @@ document.addEventListener('DOMContentLoaded', () => {
     function setupNavigation() {
         navLinks.forEach(link => {
             link.addEventListener('click', (e) => {
-                e.preventDefault();
+                // CORREÇÃO: Verifica se o link é para uma página externa (não começa com '#')
+                // Se não for um link interno, deixa o navegador fazer o redirecionamento.
+                if (!link.getAttribute('href').startsWith('#')) {
+                    return; // Permite o comportamento padrão do link
+                }
+
+                e.preventDefault(); // Impede o comportamento padrão apenas para links internos
                 const page = new URL(link.href).hash.substring(1) || 'home';
                 history.pushState(null, '', `#${page}`);
                 navigateTo(page);
@@ -495,6 +501,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Portal Initialization ---
     setupNavigation();
 });
+
 
 
 
