@@ -836,6 +836,43 @@ body {
     }
 }
 
+.tech-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+}
+.tech-card {
+    background-color: var(--panel-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 25px;
+}
+.tech-card h3 {
+    margin: 0 0 20px 0;
+    font-size: 1.5em;
+    color: var(--accent-blue);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 15px;
+}
+.tech-item-list {
+    display: grid;
+    gap: 20px;
+}
+.tech-item h4 {
+    margin: 0 0 5px 0;
+    font-family: var(--font-mono);
+    font-size: 1.1em;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+.tech-item p {
+    margin: 0;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+
+
 
 
 
