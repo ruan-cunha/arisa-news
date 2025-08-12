@@ -402,7 +402,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     
-    function renderOperativeDatabasePage(returnAsString = false) {
+    function renderOperativeDatabasePage() {
         let operativesHTML = loreData.map((operative, index) => `
             <div class="asset-card" data-id="${operative.id}" style="animation-delay: ${index * 0.05}s">
                 <p class="affiliation">${operative.afiliacao}</p>
@@ -410,19 +410,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 <p class="dossier-preview">${operative.dossier}</p>
             </div>
         `).join('');
-
-        const pageHTML = `<div class="asset-grid">${operativesHTML}</div>`;
-
-        if (returnAsString) {
-            // This is a temporary solution until we refactor the modal logic
-            setTimeout(() => {
-                attachOperativeCardListeners();
-            }, 0);
-            return pageHTML;
-        }
-        
-        // This part is now part of the codex logic
-        // mainContent.innerHTML = ...
+        // CORREÇÃO: A função agora devolve sempre o HTML.
+        return `<div class="asset-grid">${operativesHTML}</div>`;
     }
 
     function attachOperativeCardListeners() {
@@ -824,6 +813,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Portal Initialization ---
     setupNavigation();
 });
+
 
 
 
