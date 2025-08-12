@@ -25,6 +25,9 @@ document.addEventListener('DOMContentLoaded', () => {
             case 'recruitment':
                 renderRecruitmentPage();
                 break;
+            case 'field-operator':
+                renderFieldOperatorBriefingPage();
+                break;
             case 'advisories':
                 renderAdvisoriesPage();
                 break;
@@ -831,6 +834,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Portal Initialization ---
     setupNavigation();
 });
+
 
 
 
