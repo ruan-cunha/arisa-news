@@ -39,7 +39,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function renderHomePage() {
-        // Find the most recent news article
         const latestNews = newsData.sort((a, b) => new Date(b.date) - new Date(a.date))[0];
 
         mainContent.innerHTML = `
@@ -127,11 +126,22 @@ document.addEventListener('DOMContentLoaded', () => {
     
     function renderNewsPage() {
         const sortedNews = newsData.sort((a, b) => new Date(b.date) - new Date(a.date));
+        
+        const createSnippet = (htmlContent, length = 120) => {
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = htmlContent;
+            const plainText = tempDiv.textContent || tempDiv.innerText || "";
+            return plainText.substring(0, length) + (plainText.length > length ? "..." : "");
+        };
+
         let articlesHTML = sortedNews.map((article, index) => `
             <div class="news-article" style="animation-delay: ${index * 0.1}s">
-                <p class="meta">${article.category} // ${article.date}</p>
-                <h3>${article.headline}</h3>
-                <p>${article.body}</p>
+                <div>
+                    <p class="meta">${article.category} // ${article.date}</p>
+                    <h3>${article.headline}</h3>
+                    <p class="news-snippet">${createSnippet(article.body)}</p>
+                </div>
+                <button class="read-more-btn" data-id="${article.id}">Read More...</button>
             </div>
         `).join('');
 
@@ -144,9 +154,51 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 </div>
             </section>
+            <div class="modal-overlay" id="modal-overlay"></div>
         `;
+
+        document.querySelectorAll('.read-more-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                const newsId = button.dataset.id;
+                renderNewsDetailModal(newsId);
+            });
+        });
     }
 
+    function renderNewsDetailModal(newsId) {
+        const modalOverlay = document.getElementById('modal-overlay');
+        const article = newsData.find(item => item.id === newsId);
+
+        if (!article) return;
+
+        modalOverlay.innerHTML = `
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div>
+                        <h2 class="codename">${article.headline}</h2>
+                        <p class="affiliation">${article.category} // ${article.date}</p>
+                    </div>
+                    <button class="modal-close-button" id="modal-close">&times;</button>
+                </div>
+                <div class="modal-body news-modal-body">
+                    ${article.body}
+                </div>
+            </div>
+        `;
+        
+        modalOverlay.classList.add('active');
+        
+        document.getElementById('modal-close').addEventListener('click', () => {
+            modalOverlay.classList.remove('active');
+        });
+        
+        modalOverlay.addEventListener('click', (e) => {
+            if (e.target === modalOverlay) {
+                modalOverlay.classList.remove('active');
+            }
+        });
+    }
+    
     function renderAssetDatabasePage() {
         let assetsHTML = loreData.map((asset, index) => `
             <div class="asset-card" data-id="${asset.id}" style="animation-delay: ${index * 0.05}s">
@@ -566,6 +618,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Portal Initialization ---
     setupNavigation();
 });
+
 
 
 
