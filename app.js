@@ -39,6 +39,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function renderHomePage() {
+        // Find the most recent news article
+        const latestNews = newsData.sort((a, b) => new Date(b.date) - new Date(a.date))[0];
+
         mainContent.innerHTML = `
             <section class="hero-section">
                 <div class="hero-content">
@@ -48,11 +51,22 @@ document.addEventListener('DOMContentLoaded', () => {
             </section>
             <section class="content-section">
                 <div class="section-container">
-                    <h2>LATEST DIRECTIVES</h2>
-                    <p>Content for the latest news and public advisories will be displayed here.</p>
+                    <h2>LATEST DIRECTIVE</h2>
+                    <div class="latest-directive-card">
+                        <p class="meta">${latestNews.category} // ${latestNews.date}</p>
+                        <h3>${latestNews.headline}</h3>
+                        <p>${latestNews.body.substring(0, 150)}...</p>
+                        <a href="#news" class="read-more-link">Read More on the News Wire</a>
+                    </div>
                 </div>
             </section>
         `;
+
+        document.querySelector('.read-more-link').addEventListener('click', (e) => {
+            e.preventDefault();
+            navigateTo('news');
+            history.pushState(null, '', '#news');
+        });
     }
 
     function renderAdvisoriesPage() {
@@ -552,6 +566,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Portal Initialization ---
     setupNavigation();
 });
+
 
 
 
