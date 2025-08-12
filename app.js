@@ -425,6 +425,18 @@ document.addEventListener('DOMContentLoaded', () => {
         // mainContent.innerHTML = ...
     }
 
+    function attachOperativeCardListeners() {
+        document.querySelectorAll('.asset-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const heroId = card.dataset.id;
+                const heroData = loreData.find(h => h.id === heroId);
+                if (heroData) {
+                    renderHeroDetailModal(heroData);
+                }
+            });
+        });
+    }
+
     function renderHeroDetailModal(hero) {
         const modalOverlay = document.getElementById('hero-modal-overlay');
         
@@ -812,6 +824,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Portal Initialization ---
     setupNavigation();
 });
+
 
 
 
