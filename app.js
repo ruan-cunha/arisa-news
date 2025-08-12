@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 renderNewsPage();
                 break;
             case 'database':
-                renderAssetDatabasePage();
+                renderOperativeDatabasePage();
                 break;
             case 'recruitment':
                 renderRecruitmentPage();
@@ -123,6 +123,56 @@ document.addEventListener('DOMContentLoaded', () => {
             </section>
         `;
     }
+
+    function renderCodexPage(subpage = 'landing') {
+        let contentHTML = '';
+
+        if (subpage === 'landing') {
+            contentHTML = `
+                <div class="codex-grid">
+                    <div class="codex-card" data-subpage="operatives">
+                        <h3>Operative Files</h3>
+                        <p>Access detailed dossiers on registered ARISA, Paramount, and Vanguards operatives.</p>
+                    </div>
+                    <div class="codex-card" data-subpage="timeline">
+                        <h3>Event Timeline</h3>
+                        <p>Review the timeline of major Awakened-related events, from the First Awakening to present day.</p>
+                    </div>
+                    <div class="codex-card" data-subpage="technology">
+                        <h3>Technology & Arsenal</h3>
+                        <p>Browse ARISA's non-lethal technology, vehicles, and the S.E.R.A.P.H. intelligence system.</p>
+                    </div>
+                </div>
+            `;
+        } else if (subpage === 'operatives') {
+            contentHTML = renderOperativeDatabasePage(true); 
+        } else if (subpage === 'timeline') {
+            contentHTML = `<h3>Event Timeline</h3><p>This section is currently under development. Please check back later.</p>`;
+        } else if (subpage === 'technology') {
+            contentHTML = `<h3>Technology & Arsenal</h3><p>This section is currently under development. Please check back later.</p>`;
+        }
+        
+        mainContent.innerHTML = `
+            <section class="content-section">
+                <div class="section-container">
+                    <h2>ARISA CODEX</h2>
+                    <div id="codex-content">
+                        ${contentHTML}
+                    </div>
+                </div>
+            </section>
+            <div class="modal-overlay" id="modal-overlay"></div>
+        `;
+        
+        if (subpage === 'landing') {
+            document.querySelectorAll('.codex-card').forEach(card => {
+                card.addEventListener('click', () => {
+                    const newSubpage = card.dataset.subpage;
+                    renderCodexPage(newSubpage);
+                });
+            });
+        }
+    }
     
     function renderNewsPage() {
         const sortedNews = newsData.sort((a, b) => new Date(b.date) - new Date(a.date));
@@ -199,7 +249,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     
-    function renderAssetDatabasePage() {
+    function renderOperativeDatabasePage() {
         let assetsHTML = loreData.map((asset, index) => `
             <div class="asset-card" data-id="${asset.id}" style="animation-delay: ${index * 0.05}s">
                 <p class="affiliation">${asset.afiliacao}</p>
@@ -618,6 +668,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Portal Initialization ---
     setupNavigation();
 });
+
 
 
 
