@@ -156,9 +156,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 break;
             case 'technology':
                 pageTitle = "CODEX // TECHNOLOGY & ARSENAL";
-                contentHTML = `<p>This section is currently under development. Please check back later.</p>`;
+                contentHTML = contentHTML = renderTechnologyPage();
                 break;
-            default: // landing
+            default: 
                 contentHTML = codexLandingHTML;
         }
         
@@ -186,6 +186,74 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    function renderTechnologyPage() {
+        // Data based on lore (1).json
+        const techData = {
+            non_lethal_armament: [
+                { name: "Inhibitor Gel", description: "A rapidly expanding foam that immobilizes targets while disrupting the body's energy channels, effectively neutralizing most ability use on contact." },
+                { name: "Focus Disruptors", description: "Devices that emit low-frequency sonic pulses, impairing the concentration required for psychic, telekinetic, and other cognitive-based abilities." },
+                { name: "Vector Inhibitors", description: "Portable units that generate a localized field to limit high-speed movement, affecting abilities like teleportation, super-speed, and flight." }
+            ],
+            armor: {
+                name: "Personal Armor Units (PAUs)",
+                description: "Standard-issue for ARISA field agents, these multi-layered suits provide resistance to thermal, kinetic, and chemical-based powers. Integrated sensors monitor the user's vitals and ambient energy signatures."
+            },
+            vehicles: {
+                name: "Rapid Response Vehicles (RRVs)",
+                description: "A fleet of purpose-built, armored vehicles featuring signature green-and-white emergency lights. Each RRV is equipped with an onboard AI trained on Awakened behavior patterns to predict movements and suggest tactical responses."
+            },
+            software: {
+                name: "S.E.R.A.P.H. System",
+                description: "The Strategic Evaluation & Response Analysis for Paranormal Hazards is an AI assistant developed by Operative Seraphim. It serves as a public-facing reporting tool for civilians and a vital tactical advisor for operatives in the field, analyzing threats in real-time."
+            }
+        };
+
+        let nonLethalHTML = techData.non_lethal_armament.map(item => `
+            <div class="tech-item">
+                <h4>${item.name}</h4>
+                <p>${item.description}</p>
+            </div>
+        `).join('');
+
+        return `
+            <div class="tech-grid">
+                <div class="tech-card">
+                    <h3>Non-Lethal Armament</h3>
+                    <div class="tech-item-list">
+                        ${nonLethalHTML}
+                    </div>
+                </div>
+                <div class="tech-card">
+                    <h3>Personal Armor Units (PAUs)</h3>
+                    <div class="tech-item-list">
+                        <div class="tech-item">
+                            <h4>${techData.armor.name}</h4>
+                            <p>${techData.armor.description}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="tech-card">
+                    <h3>Vehicles</h3>
+                     <div class="tech-item-list">
+                        <div class="tech-item">
+                            <h4>${techData.vehicles.name}</h4>
+                            <p>${techData.vehicles.description}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="tech-card">
+                    <h3>Software</h3>
+                     <div class="tech-item-list">
+                        <div class="tech-item">
+                            <h4>${techData.software.name}</h4>
+                            <p>${techData.software.description}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+    
     function renderTimelinePage() {
         const timelineEvents = [
             {
@@ -742,6 +810,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Portal Initialization ---
     setupNavigation();
 });
+
 
 
 
