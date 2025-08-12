@@ -8,7 +8,7 @@ const loreData = [
     {
         "id": "seraphim",
         "codinome": "Seraphim",
-        "afiliacao": "ARISA / The Paramount",
+        "afiliacao": "ARISA",
         "dossier": "Designated as the most advanced 'Cognivore' on record, Seraphim is less of a field combatant and more of a tactical nexus. Operating primarily from ARISA HQ, she processes probability trees and transforms complex tactical dilemmas into elegant, often non-violent, solutions. She is the credited creator of the S.E.R.A.P.H. public assistance AI. Her abilities include advanced cognitive-based battlefield prediction and seamless integration with strategic exosuits, which she modifies for each mission. Seraphim is known for her calm, empathetic demeanor and is a key mediator between international agencies and ARISA."
     },
     {
