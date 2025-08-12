@@ -46,5 +46,17 @@ const newsData = [
             <p>Vanguards Operatives 'Flashpoint' and 'Chisel' were the first on the scene. Flashpoint used his kinetic acceleration to match the train's velocity, clearing debris from its path, while Chisel established a fortified position at a designated chokepoint, absorbing the train's immense momentum to bring it to a controlled halt.</p>
             <p>While damage to the transport line was significant, all passengers were evacuated safely. An ARISA liaison stated, "The incident underscores the value of the youth initiative. Their ability to respond and adapt under extreme pressure prevented a major catastrophe."</p>
         `
-    }
+    },
+    {
+        id: "news-paramount-andes-1015",
+        headline: "The Paramount Stabilizes Seismic Anomaly in the Andes",
+        category: "FIELD REPORT",
+        date: "2018-10-15",
+        author: "Global News Wire",
+        body: `
+            <p>A major geological catastrophe was averted in the Andes mountain range yesterday, thanks to the intervention of The Paramount. A powerful seismic anomaly, believed to be of Awakened origin, threatened to trigger a series of devastating earthquakes across the region.</p>
+            <p>Operative 'Aegis' led the mission, coordinating with 'Azoth' and local geological experts to pinpoint the anomaly's source. Reports indicate the team executed a complex containment procedure deep within the earth, stabilizing the tectonic activity with minutes to spare. The operation was conducted with zero public awareness, preventing widespread panic.</p>
+        `
+    },
 ];
+
