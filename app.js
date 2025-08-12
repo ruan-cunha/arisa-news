@@ -824,7 +824,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         function startMemoryGame() {
             let timer;
-            let timeRemaining = 5000;
+            let timeRemaining = 30;
             const symbols = ['🛡️', '🌪️', '⏱️', '🔋', '💭', '🔫', '🛡️', '🌪️', '⏱️', '🔋', '💭', '🔫'];
             symbols.sort(() => 0.5 - Math.random()); 
 
@@ -933,6 +933,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Portal Initialization ---
     setupNavigation();
 });
+
 
 
 
