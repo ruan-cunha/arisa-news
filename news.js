@@ -58,5 +58,17 @@ const newsData = [
             <p>Operative 'Aegis' led the mission, coordinating with 'Azoth' and local geological experts to pinpoint the anomaly's source. Reports indicate the team executed a complex containment procedure deep within the earth, stabilizing the tectonic activity with minutes to spare. The operation was conducted with zero public awareness, preventing widespread panic.</p>
         `
     },
+    {
+        id: "news-arisa-international-1017",
+        headline: "ARISA Establishes First International Headquarters in Geneva",
+        category: "GLOBAL EXPANSION",
+        date: "2018-09-30",
+        author: "ARISA Press Office",
+        body: `
+            <p>In a move to strengthen international cooperation, ARISA has officially opened its first headquarters outside of America, in Geneva, Switzerland. The new facility will serve as a central hub for coordinating with European and Asian agencies on cross-border Awakened incidents.</p>
+            <p>The Director of ARISA stated that the expansion is a "necessary step in a world where threats are no longer defined by borders." The Geneva headquarters will also house a new global data analysis wing, designed to monitor anomalous phenomena in real-time across the globe.</p>
+        `
+    }
 ];
+
 
