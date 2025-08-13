@@ -10,7 +10,7 @@
     --font-mono: 'Roboto Mono', monospace;
 }
 
-/* --- Basic Reset --- */
+/* --- Reset Básico --- */
 *, *::before, *::after {
     box-sizing: border-box;
 }
@@ -19,18 +19,33 @@ body {
     color: var(--text-primary);
     font-family: var(--font-sans);
     margin: 0;
-    padding-top: 70px; /* Space for fixed header */
+    padding-top: 70px;
 }
 
-/* --- Header & Navigation --- */
+/* --- Animações Globais --- */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.content-section {
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* --- Cabeçalho e Navegação --- */
 .main-header {
-    background-color: var(--panel-color);
+    background-color: rgba(22, 27, 34, 0.8); /* Fundo semi-transparente */
     border-bottom: 1px solid var(--border-color);
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 1000;
+    backdrop-filter: blur(8px); /* Efeito de desfoque moderno */
+    transition: background-color 0.3s ease;
+}
+.main-header.scrolled {
+    background-color: var(--panel-color); /* Cor sólida ao rolar */
 }
 .header-container {
     max-width: 1200px;
@@ -89,11 +104,30 @@ body {
 
 /* --- Hero Section (Homepage) --- */
 .hero-section {
+    position: relative; /* Necessário para o efeito de overlay */
     background-image: linear-gradient(rgba(10, 12, 16, 0.8), rgba(10, 12, 16, 0.8)), url('https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=1200&q=80');
     background-size: cover;
     background-position: center;
     padding: 100px 20px;
     text-align: center;
+    overflow: hidden;
+}
+/* Efeito Scanline Subtil */
+.hero-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(10, 12, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 255, 255, 0.06), rgba(0, 0, 0, 0.02));
+    background-size: 100% 4px, 3px 100%;
+    pointer-events: none;
+    animation: scanline 10s linear infinite;
+}
+@keyframes scanline {
+    from { background-position: 0 0; }
+    to { background-position: 0 -100px; }
 }
 .hero-content {
     max-width: 800px;
@@ -597,6 +631,15 @@ body {
     text-transform: uppercase;
     letter-spacing: 1.5px;
 }
+
+.codex-card, .news-article, .advisory-card, .latest-directive-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.codex-card:hover, .news-article:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    border-color: var(--accent-blue);
+}
 .advisory-header h3 {
     margin: 5px 0 0;
     font-size: 1.5em;
@@ -912,6 +955,7 @@ body {
     transform: scale(1.05);
     box-shadow: 0 0 15px rgba(56, 139, 253, 0.6);
 }
+
 
 
 
