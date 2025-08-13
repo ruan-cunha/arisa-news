@@ -108,7 +108,6 @@ body {
 
 .hero-section {
     position: relative; 
-    background-image: linear-gradient(rgba(10, 12, 16, 0.8), rgba(10, 12, 16, 0.8)), url('https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=1200&q=80');
     background-size: cover;
     background-position: center;
     padding: 100px 20px;
@@ -947,6 +946,7 @@ body {
     transform: scale(1.05);
     box-shadow: 0 0 15px rgba(56, 139, 253, 0.6);
 }
+
 
 
 
