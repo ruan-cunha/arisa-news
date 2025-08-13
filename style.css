@@ -10,11 +10,13 @@
     --font-mono: 'Roboto Mono', monospace;
 }
 
-/* --- Reset Básico --- */
 *, *::before, *::after {
     box-sizing: border-box;
 }
 body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
     background-color: var(--bg-color);
     color: var(--text-primary);
     font-family: var(--font-sans);
@@ -22,7 +24,10 @@ body {
     padding-top: 70px;
 }
 
-/* --- Animações Globais --- */
+#main-content {
+    flex-grow: 1;
+}
+
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(15px); }
     to { opacity: 1; transform: translateY(0); }
@@ -32,20 +37,19 @@ body {
     animation: fadeIn 0.5s ease-out forwards;
 }
 
-/* --- Cabeçalho e Navegação --- */
 .main-header {
-    background-color: rgba(22, 27, 34, 0.8); /* Fundo semi-transparente */
+    background-color: rgba(22, 27, 34, 0.8); 
     border-bottom: 1px solid var(--border-color);
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 1000;
-    backdrop-filter: blur(8px); /* Efeito de desfoque moderno */
+    backdrop-filter: blur(8px);
     transition: background-color 0.3s ease;
 }
 .main-header.scrolled {
-    background-color: var(--panel-color); /* Cor sólida ao rolar */
+    background-color: var(--panel-color); 
 }
 .header-container {
     max-width: 1200px;
@@ -102,9 +106,8 @@ body {
     color: var(--text-primary);
 }
 
-/* --- Hero Section (Homepage) --- */
 .hero-section {
-    position: relative; /* Necessário para o efeito de overlay */
+    position: relative; 
     background-image: linear-gradient(rgba(10, 12, 16, 0.8), rgba(10, 12, 16, 0.8)), url('https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=1200&q=80');
     background-size: cover;
     background-position: center;
@@ -112,7 +115,7 @@ body {
     text-align: center;
     overflow: hidden;
 }
-/* Efeito Scanline Subtil */
+
 .hero-section::after {
     content: '';
     position: absolute;
@@ -148,7 +151,6 @@ body {
     margin-top: 10px;
 }
 
-/* --- General Content Sections --- */
 .content-section {
     padding: 60px 20px;
 }
@@ -172,7 +174,6 @@ body {
     box-sizing: border-box;
 }
 
-/* --- Footer --- */
 .main-footer {
     background-color: var(--panel-color);
     border-top: 1px solid var(--border-color);
@@ -182,7 +183,6 @@ body {
     font-size: 0.9em;
 }
 
-/* --- Mobile Menu (hidden on large screens) --- */
 .mobile-nav-toggle {
     display: none;
 }
@@ -191,7 +191,6 @@ body {
     .mobile-nav-toggle { display: block; }
 }
 
-/* --- News Section --- */
 .news-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -225,7 +224,6 @@ body {
     color: var(--text-secondary);
 }
 
-/* --- Mobile Menu Logic --- */
 .mobile-nav-toggle {
     display: none;
     background: none;
@@ -288,7 +286,6 @@ body {
     }
 }
 
-/* --- Asset Database Section --- */
 .asset-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -332,7 +329,6 @@ body {
     overflow: hidden;
 }
 
-/* --- Aptitude Test (Quiz) Section --- */
 .quiz-section .container {
     width: 100%;
     max-width: 800px;
@@ -446,7 +442,7 @@ body {
     position: relative;
     transform-style: preserve-3d;
     transition: transform 0.4s;
-    font-size: 2.5rem; /* Ajustado o tamanho da fonte para se encaixar melhor */
+    font-size: 2.5rem; 
     display: flex;
     justify-content: center;
     align-items: center;
@@ -512,7 +508,6 @@ body {
     .quiz-section .result-buttons .btn { width: 100%; }
 }
 
-/* --- Asset Detail Modal --- */
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -664,14 +659,11 @@ body {
 .advisory-body p:not(:first-child) {
     margin-top: 15px;
 }
-/* Protocol Card Type */
 .advisory-card.protocol { border-left-color: #388BFD; /* Blue */ }
 .advisory-card.protocol .advisory-type { color: #388BFD; }
-/* Hazard Card Type */
 .advisory-card.hazard { border-left-color: #db61ff; /* Purple */ }
 .advisory-card.hazard .advisory-type { color: #db61ff; }
 .hazard-warning { font-weight: 700; color: #db61ff; }
-/* Informational Card Type */
 .advisory-card.informational { border-left-color: #7D8590; /* Gray */ }
 .advisory-card.informational .advisory-type { color: #7D8590; }
 
@@ -717,7 +709,7 @@ body {
     padding: 20px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Aligns button to the bottom */
+    justify-content: space-between; 
 }
 .news-article h3 {
     margin: 10px 0;
@@ -746,7 +738,7 @@ body {
     border-radius: 6px;
     cursor: pointer;
     transition: all 0.2s ease;
-    align-self: flex-start; /* Aligns button to the left */
+    align-self: flex-start;
 }
 .read-more-btn:hover {
     background-color: var(--accent-blue);
@@ -955,6 +947,7 @@ body {
     transform: scale(1.05);
     box-shadow: 0 0 15px rgba(56, 139, 253, 0.6);
 }
+
 
 
 
