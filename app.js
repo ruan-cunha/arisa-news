@@ -204,7 +204,6 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="modal-overlay" id="modal-overlay"></div>
         `;
         
-        // CORREÇÃO: Os listeners são adicionados DEPOIS que o HTML é inserido na página.
         if (subpage === 'landing') {
             document.querySelectorAll('.codex-card').forEach(card => {
                 card.addEventListener('click', () => {
@@ -440,7 +439,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 <p class="dossier-preview">${operative.dossier}</p>
             </div>
         `).join('');
-        // CORREÇÃO: A função agora devolve o HTML construído.
         return `<div class="asset-grid">${operativesHTML}</div>`;
     }
 
@@ -933,15 +931,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // =====================================================================
-    // --- FIELD OPERATOR SIMULATION LOGIC ---
-    // =====================================================================
-   
-
-
-    // --- Portal Initialization ---
     setupNavigation();
 });
+
 
 
 
