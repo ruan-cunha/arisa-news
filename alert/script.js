@@ -6,6 +6,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     alertSound.volume = 0.01;
     ambientSound.volume = 0.05;
+    document.body.addEventListener('click', () => {
+        alertSound.play();
+        ambientSound.play();
+    }, { once: true });
 
 
     alertSound.play().catch(error => console.warn("O autoplay do som de alerta foi bloqueado pelo navegador:", error));
@@ -64,6 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     displayNextMessage();
 });
+
 
 
 
