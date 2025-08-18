@@ -85,4 +85,25 @@ header h1 {
     padding: 10px;
     margin-top: 20px;
     color: var(--alert-color);
+
+}
+
+#proceed-button {
+    background-color: #ffc107; 
+    color: #1a1a1a; 
+    border: 2px solid #ffc107;
+    padding: 15px 30px;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 1em;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    margin-top: 20px;
+    align-self: center;
+}
+
+#proceed-button:hover {
+    background-color: transparent;
+    color: #ffc107;
 }
