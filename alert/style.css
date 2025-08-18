@@ -16,6 +16,14 @@ body {
     min-height: 100vh;
     padding: 20px;
     box-sizing: border-box;
+    overflow-y: auto; /* Adicionado para permitir a rolagem */
+    -ms-overflow-style: none;  /* Oculta a barra de rolagem no IE e Edge */
+    scrollbar-width: none;  /* Oculta a barra de rolagem no Firefox */
+}
+
+/* Oculta a barra de rolagem em navegadores WebKit (Chrome, Safari) */
+body::-webkit-scrollbar {
+    display: none;
 }
 
 .alert-container {
