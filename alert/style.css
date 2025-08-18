@@ -12,11 +12,11 @@ body {
     margin: 0;
     display: flex;
     justify-content: center;
-    align-items: center;
+    /* A propriedade align-items: center; foi removida para corrigir a rolagem */
     min-height: 100vh;
     padding: 20px;
     box-sizing: border-box;
-    overflow-y: auto; /* Adicionado para permitir a rolagem */
+    overflow-y: auto; /* Permite a rolagem */
     -ms-overflow-style: none;  /* Oculta a barra de rolagem no IE e Edge */
     scrollbar-width: none;  /* Oculta a barra de rolagem no Firefox */
 }
