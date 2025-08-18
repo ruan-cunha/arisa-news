@@ -18,8 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { once: true });
 
     const alertMessages = [
-        "<p><strong>DATE-TIME GROUP:</strong> 17 NOV 2018 // 12:32Z (UTC)</p>",
-        "<p><strong>CLASSIFICATION:</strong> THREAT CLASS: RED // EXISTENTIAL</p>",
+        "<p><strong>DATE-TIME GROUP:</strong> 17 NOV 2019 // 12:32 (UTC)</p>",
+        "<p><strong>CLASSIFICATION:</strong> THREAT CLASS: RED </p>",
         "<p><strong>LOCATION:</strong> CHENNAI METROPOLITAN REGION, INDIA (BAY OF BENGAL COASTLINE)</p>",
         "<p><strong>SUBJECT PROFILE:</strong> Single hostile entity, ~25 meters in height. Skeletal form with charred, ceramic-like carapace. Fissures in carapace emit high-temperature golden glow.</p>",
         "<p><strong>DIRECTIVE 1 [CIVILIAN POPULATIONS]: THIS IS NOT A DRILL.</strong> All civilians in the greater Chennai area must seek immediate, reinforced, subterranean shelter.</p>",
@@ -73,3 +73,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
     displayNextMessage();
 });
+
