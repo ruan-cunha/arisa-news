@@ -10,36 +10,58 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Roboto+Mono:wght@700&family=Exo+2:wght@700;800&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="logo2.png">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="alert/style.css">
 </head>
 <body>
-    <header class="main-header">
-        <div class="header-container">
-            <a href="#home" class="header-logo">A R I S A</a>
-            <nav class="main-nav">
-                <ul>
-                    <li><a href="#home" class="nav-link active">Home</a></li>
-                    <li><a href="#news" class="nav-link">News Wire</a></li>
-                    <li><a href="#advisories" class="nav-link">Public Advisories</a></li> 
-                    <li><a href="#codex" class="nav-link">Codex</a></li>
-                    <li><a href="#field-operator" class="nav-link">Field Operator Sim</a></li>                  
-                    <li><a href="#recruitment" class="nav-link">Aptitude Test</a></li>
-                </ul>
-            </nav>
-            <button class="mobile-nav-toggle" aria-label="Toggle Navigation">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+    <div id="global-alert-overlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: #000; z-index: 9999; display: flex; justify-content: center; align-items: center;">
+        <div class="alert-container">
+            <header>
+                <div class="logo">AXIS MUNDI</div>
+                <h1>GLOBAL COALITION THREAT ADVISORY</h1>
+            </header>
+
+            <main class="alert-content">
+                <h2 class="warning-text">EMERGENCY ALERT // THREAT LEVEL: MAXIMUM</h2>
+                <div id="alert-details">
+                    </div>
+            </main>
         </div>
-    </header>
 
-    <main id="main-content">
-        </main>
+        <audio id="alert-sound" src="alert/sounds/alerta.mp3" loop></audio>
+        <audio id="ambient-sound" src="alert/sounds/ambiente.mp3" loop></audio>
+    </div>
 
-    <footer class="main-footer">
-        <p>&copy; 2019 Awakened Response, Investigation & Security Agency. All rights reserved.</p>
-    </footer>
+    <div id="main-portal" style="display: none;">
+        <header class="main-header">
+            <div class="header-container">
+                <a href="#home" class="header-logo">A R I S A</a>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="#home" class="nav-link active">Home</a></li>
+                        <li><a href="#news" class="nav-link">News Wire</a></li>
+                        <li><a href="#advisories" class="nav-link">Public Advisories</a></li> 
+                        <li><a href="#codex" class="nav-link">Codex</a></li>
+                        <li><a href="#field-operator" class="nav-link">Field Operator Sim</a></li>                  
+                        <li><a href="#recruitment" class="nav-link">Aptitude Test</a></li>
+                    </ul>
+                </nav>
+                <button class="mobile-nav-toggle" aria-label="Toggle Navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </header>
 
+        <main id="main-content">
+            </main>
+
+        <footer class="main-footer">
+            <p>&copy; 2019 Awakened Response, Investigation & Security Agency. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="alert/script.js"></script>
     <script src="news.js"></script>
     <script src="lore.js"></script> 
     <script src="app.js"></script>
