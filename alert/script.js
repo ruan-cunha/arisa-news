@@ -4,21 +4,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const detailsContainer = document.getElementById('alert-details');
     const proceedButton = document.getElementById('proceed-button');
 
-    // --- MUDANÇA 1: VOLUME E AUTOPLAY ---
-    // Volumes foram reduzidos significativamente.
     alertSound.volume = 0.01;
     ambientSound.volume = 0.05;
 
-    // Tentativa de tocar o áudio assim que a página carrega.
-    // O antigo listener de clique foi removido.
-    // NOTA: A maioria dos navegadores modernos pode bloquear o som automático
-    // até que o usuário clique em algum lugar na página.
+
     alertSound.play().catch(error => console.warn("O autoplay do som de alerta foi bloqueado pelo navegador:", error));
     ambientSound.play().catch(error => console.warn("O autoplay do som de ambiente foi bloqueado pelo navegador:", error));
 
 
-    // --- MUDANÇA 2: REDIRECIONAMENTO IMEDIATO ---
-    // O código de fade-out do som foi removido para o redirecionamento ser instantâneo.
+
     proceedButton.addEventListener('click', () => {
         alertSound.pause();
         ambientSound.pause();
@@ -63,13 +57,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const delay = alertMessages[messageIndex - 1].includes('OMEGA PROTOCOL') ? 3000 : 2000;
             setTimeout(displayNextMessage, delay);
         } else {
-            // Mostra o botão após a última mensagem
+
             proceedButton.style.display = 'block';
         }
     }
 
     displayNextMessage();
 });
+
 
 
 
