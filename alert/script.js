@@ -44,6 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
         "<p><strong>DIRECTIVE 2 [NON-COMBAT ASSETS]: STAND DOWN.</strong> All local and independent Awakened without direct combat-rating are ordered to cease operations and assist with civilian evacuation efforts ONLY.</p>",
         "<p class='omega-protocol'>** // OMEGA PROTOCOL INITIATED // **</p>",
         "<p><strong>By order of the Axis Mundi Global Security Council, a general amnesty is in effect. All combat-capable assets, regardless of affiliation or prior designation, are now requested for emergency reinforcement to combat an Existential-Level Threat.</strong></p>",
+        "<p><strong>TRANSPORT:</strong> Transport will be dispatched globally for all capable capes responding to the call.</p>",
         "<p><strong>TRANSMISSION ACTIVE... AWAITING RESPONSE...</strong></p>"
     ];
 
@@ -76,3 +77,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
     displayNextMessage();
 });
+
