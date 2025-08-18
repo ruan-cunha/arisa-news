@@ -1,26 +1,29 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const alertOverlay = document.getElementById('global-alert-overlay');
+    const mainPortal = document.getElementById('main-portal');
+    
     const alertSound = document.getElementById('alert-sound');
-    const ambientSound = document.getElementById('ambient-sound');
     const detailsContainer = document.getElementById('alert-details');
-
+    const closeAlertBtn = document.createElement('button'); 
+    closeAlertBtn.id = 'close-alert-btn';
+    closeAlertBtn.textContent = 'ACCESS ARISA PORTAL';
 
     document.body.addEventListener('click', () => {
-        alertSound.volume = 0.015;
-        alertSound.play();
-        ambientSound.volume = 0.1;
-        ambientSound.play();
+        if (alertSound.paused) {
+            alertSound.volume = 0.02; 
+            alertSound.play();
+        }
     }, { once: true });
 
-
     const alertMessages = [
-        "<p><strong>DATE-TIME GROUP:</strong> <span id='date'></span> (UTC)</p>",
-        "<p><strong>CLASSIFICATION:</strong> THREAT CLASS: RED </p>",
+        "<p><strong>DATE-TIME GROUP:</strong> 171232Z NOV 18 (UTC)</p>",
+        "<p><strong>CLASSIFICATION:</strong> THREAT CLASS: RED // EXISTENTIAL</p>",
         "<p><strong>LOCATION:</strong> CHENNAI METROPOLITAN REGION, INDIA (BAY OF BENGAL COASTLINE)</p>",
         "<p><strong>SUBJECT PROFILE:</strong> Single hostile entity, ~25 meters in height. Skeletal form with charred, ceramic-like carapace. Fissures in carapace emit high-temperature golden glow.</p>",
-        "<p><strong>DIRECTIVE 1 [CIVILIAN POPULATIONS]: THIS IS NOT A DRILL.</strong> All civilians in the greater Chennai area must seek immediate, reinforced, subterranean shelter. Evacuate all coastal and open areas.</p>",
+        "<p><strong>DIRECTIVE 1 [CIVILIAN POPULATIONS]: THIS IS NOT A DRILL.</strong> All civilians in the greater Chennai area must seek immediate, reinforced, subterranean shelter.</p>",
         "<p><strong>DIRECTIVE 2 [NON-COMBAT ASSETS]: STAND DOWN.</strong> All local and independent Awakened without direct combat-rating are ordered to cease operations and assist with civilian evacuation efforts ONLY.</p>",
         "<p class='omega-protocol'>** // OMEGA PROTOCOL INITIATED // **</p>",
-        "<p><strong>By order of the Axis Mundi Global Security Council, a general amnesty is in effect. All combat-capable assets, regardless of affiliation or prior designation, are now requested for emergency reinforcement to combat an Existential-Level Threat.</strong></p>",
+        "<p><strong>By order of the Axis Mundi Global Security Council, a general amnesty is in effect. All combat-capable assets, regardless of affiliation or prior designation, are now requested for emergency reinforcement.</strong></p>",
         "<p><strong>TRANSMISSION ACTIVE... AWAITING RESPONSE...</strong></p>"
     ];
 
@@ -33,23 +36,34 @@ document.addEventListener('DOMContentLoaded', () => {
             p.innerHTML = alertMessages[messageIndex];
             detailsContainer.appendChild(p);
 
-
-            if (messageIndex === 0) {
-
-						    const eventDate = new Date('2017-11-17T12:32:30-03:00'); 
-						    const dateString = `${eventDate.toUTCString()}`;
-						    document.getElementById('date').textContent = dateString;
-						}
-
-            // Simple fade-in animation
             setTimeout(() => { p.style.transition = 'opacity 1s'; p.style.opacity = 1; }, 100);
 
             messageIndex++;
 
-            const delay = alertMessages[messageIndex - 1].includes('OMEGA PROTOCOL') ? 3000 : 2000;
+            const delay = alertMessages[messageIndex - 1].includes('OMEGA PROTOCOL') ? 2500 : 1500;
             setTimeout(displayNextMessage, delay);
+
+        } else {
+            const alertContent = document.querySelector('.alert-content');
+            alertContent.appendChild(closeAlertBtn);
+            setTimeout(() => { closeAlertBtn.style.transition = 'opacity 1s'; closeAlertBtn.style.opacity = 1; }, 100);
         }
     }
+
+    function closeAlert() {
+        alertSound.pause();
+        alertOverlay.style.transition = 'opacity 0.5s ease-out';
+        alertOverlay.style.opacity = 0;
+
+        setTimeout(() => {
+            alertOverlay.style.display = 'none';
+            mainPortal.style.display = 'block'; 
+
+            window.dispatchEvent(new Event('portalReady')); 
+        }, 500); 
+    }
+
+    closeAlertBtn.addEventListener('click', closeAlert);
 
     displayNextMessage();
 });
