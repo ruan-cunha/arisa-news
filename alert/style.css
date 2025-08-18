@@ -1,8 +1,20 @@
 :root {
-    --alert-color: #FFB700; /* Golden/orange for the creature's glow */
+    --alert-color: #FFB700;
     --background-dark: #111;
     --text-light: #f0f0f0;
     --border-color: #555;
+}
+
+/* Garante que a rolagem da página funcione e oculta a barra de rolagem */
+html {
+    overflow-y: scroll;
+    scrollbar-width: none; /* Para Firefox */
+    -ms-overflow-style: none;  /* Para Internet Explorer e Edge */
+}
+
+/* Oculta a barra de rolagem para navegadores Webkit (Chrome, Safari) */
+html::-webkit-scrollbar {
+    display: none;
 }
 
 body {
@@ -10,20 +22,9 @@ body {
     color: var(--text-light);
     font-family: 'Roboto Mono', monospace;
     margin: 0;
-    display: flex;
-    justify-content: center;
-    /* A propriedade align-items: center; foi removida para corrigir a rolagem */
-    min-height: 100vh;
     padding: 20px;
     box-sizing: border-box;
-    overflow-y: auto; /* Permite a rolagem */
-    -ms-overflow-style: none;  /* Oculta a barra de rolagem no IE e Edge */
-    scrollbar-width: none;  /* Oculta a barra de rolagem no Firefox */
-}
-
-/* Oculta a barra de rolagem em navegadores WebKit (Chrome, Safari) */
-body::-webkit-scrollbar {
-    display: none;
+    min-height: 100vh;
 }
 
 .alert-container {
@@ -33,6 +34,7 @@ body::-webkit-scrollbar {
     background-color: #000;
     padding: 20px;
     box-shadow: 0 0 50px rgba(255, 183, 0, 0.4);
+    margin: 0 auto; /* Centraliza o contêiner na página */
 }
 
 header {
