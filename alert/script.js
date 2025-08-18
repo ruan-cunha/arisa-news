@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const alertSound = document.getElementById('alert-sound');
     const ambientSound = document.getElementById('ambient-sound');
     const detailsContainer = document.getElementById('alert-details');
-    const proceedButton = document.getElementById('proceed-button'); // Botão adicionado
+    const proceedButton = document.getElementById('proceed-button'); 
 
     document.body.addEventListener('click', () => {
         alertSound.volume = 0.015;
@@ -11,9 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
         ambientSound.play();
     }, { once: true });
 
-    // Função para redirecionar
     proceedButton.addEventListener('click', () => {
-        // Desativa o som gradualmente
         let alertVolume = alertSound.volume;
         let ambientVolume = ambientSound.volume;
         const fadeOutInterval = setInterval(() => {
@@ -29,7 +27,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 clearInterval(fadeOutInterval);
                 alertSound.pause();
                 ambientSound.pause();
-                // Redireciona para a página do portal
                 window.location.href = 'portal.html'; 
             }
         }, 100);
@@ -63,18 +60,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.getElementById('date').textContent = dateString;
             }
 
-            // Animação de fade-in
             setTimeout(() => { p.style.transition = 'opacity 1s'; p.style.opacity = 1; }, 100);
 
             messageIndex++;
             const delay = alertMessages[messageIndex - 1].includes('OMEGA PROTOCOL') ? 3000 : 2000;
             setTimeout(displayNextMessage, delay);
         } else {
-            // Mostra o botão após a última mensagem
             proceedButton.style.display = 'block';
         }
     }
 
     displayNextMessage();
 });
+
 
