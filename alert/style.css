@@ -5,6 +5,12 @@
     --border-color: #555;
 }
 
+/* Garante que o HTML e o Body permitam a rolagem quando necessário */
+html, body {
+    height: auto;
+    overflow: visible;
+}
+
 body {
     background-color: var(--background-dark);
     color: var(--text-light);
@@ -21,7 +27,7 @@ body {
     background-color: #000;
     padding: 20px;
     box-shadow: 0 0 50px rgba(255, 183, 0, 0.4);
-    margin: 20px auto; /* Adiciona uma margem e centraliza o contêiner */
+    margin: 20px auto; /* Centraliza e adiciona margem superior/inferior */
 }
 
 header {
