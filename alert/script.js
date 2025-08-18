@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             messageIndex++;
 
-            const delay = alertMessages[messageIndex - 1].includes('OMEGA PROTOCOL') ? 3000 : 2000;
+            const delay = alertMessages[messageIndex - 1].includes('OMEGA PROTOCOL') ? 1500 : 1000;
             setTimeout(displayNextMessage, delay);
         } else {
 
@@ -64,6 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     displayNextMessage();
 });
+
 
 
 
