@@ -1,91 +1,116 @@
-:root {
-    --alert-color: #FFB700; 
-    --background-dark: #111;
-    --text-light: #f0f0f0;
-    --border-color: #555;
-}
-
 body {
-    background-color: var(--background-dark);
-    color: var(--text-light);
-    font-family: 'Roboto Mono', monospace;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 20px;
-    box-sizing: border-box;
-}
+     background-color: #000;
+     color: #00ff00;
+     font-family: 'Roboto Mono', monospace;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     min-height: 100vh;
+     margin: 0;
+     text-shadow: 0 0 5px #00ff00;
+     overflow: hidden; 
+ }
 
-.alert-container {
-    border: 2px solid #00ff00;
-    padding: 2rem;
-    max-width: 800px;
-    width: 90%;
-    text-align: center;
-    background-color: rgba(0, 20, 0, 0.85);
-    box-shadow: 0 0 20px #00ff00;
-    max-height: 90vh; 
-    overflow-y: auto;
+ .alert-container {
+     border: 2px solid #00ff00;
+     padding: 2rem;
+     max-width: 800px;
+     width: 90%;
+     text-align: center;
+     background-color: rgba(0, 20, 0, 0.85);
+     box-shadow: 0 0 20px #00ff00;
+     max-height: 90vh;
+     overflow-y: auto;
 
-header {
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid var(--border-color);
-    padding-bottom: 15px;
-    margin-bottom: 20px;
-}
+     -webkit-overflow-scrolling: touch; 
+ }
 
-.logo {
-    font-size: 1.5em;
-    font-weight: 700;
-    color: var(--alert-color);
-    letter-spacing: 5px;
-    margin-right: 20px;
-}
+ .alert-container::-webkit-scrollbar {
+     width: 0 !important;
+ }
 
-header h1 {
-    font-size: 1.2em;
-    margin: 0;
-}
+ .alert-container::-webkit-scrollbar-thumb {
+     background: transparent !important;
+ }
 
-.warning-text {
-    font-size: 2.5em;
-    font-weight: 700;
-    color: var(--alert-color);
-    text-align: center;
-    letter-spacing: 5px;
-    border: 2px solid var(--alert-color);
-    padding: 15px;
-    margin-bottom: 20px;
-    animation: blink 1.5s infinite;
-}
+ .alert-container::-webkit-scrollbar-track {
+     background: transparent !important;
+ }
 
-@keyframes blink {
-    50% { background-color: rgba(255, 183, 0, 0.1); }
-}
+ /* Remove a aparência da barra de rolagem para Firefox */
+ .alert-container {
+     scrollbar-width: none;
+ }
 
-#alert-details {
-    font-size: 1.1em;
-    line-height: 1.9;
-}
+ header {
+     margin-bottom: 2rem;
+ }
 
-#alert-details p {
-    margin: 0 0 15px 0;
-}
+ .logo {
+     font-size: 2rem;
+     font-weight: 700;
+     letter-spacing: 0.5rem;
+     margin-bottom: 0.5rem;
+ }
 
-#alert-details strong {
-    color: var(--alert-color);
-}
+ h1 {
+     font-size: 1.5rem;
+     color: #ff0000;
+     text-transform: uppercase;
+     letter-spacing: 2px;
+ }
 
-#alert-details .omega-protocol {
-    font-weight: 700;
-    text-align: center;
-    font-size: 1.2em;
-    border: 1px dashed var(--alert-color);
-    padding: 10px;
-    margin-top: 20px;
-    color: var(--alert-color);
+ .alert-content {
+     text-align: left;
+ }
 
-}
+ .warning-text {
+     color: #ff0000;
+     font-weight: 700;
+     font-size: 1.8rem;
+     text-align: center;
+     animation: blink 1s infinite;
+ }
+
+ #alert-details p {
+     margin: 1rem 0;
+     line-height: 1.6;
+     font-size: 1.1rem;
+     opacity: 0;
+     transition: opacity 1s;
+ }
+
+ .omega-protocol {
+     font-weight: 700;
+     color: #ffff00;
+ }
+
+ @keyframes blink {
+     0%, 100% { opacity: 1; }
+     50% { opacity: 0.5; }
+ }
+
+ #close-alert-btn {
+     background-color: #00ff00;
+     color: #000;
+     border: none;
+     padding: 1rem 2rem;
+     font-family: 'Roboto Mono', monospace;
+     font-size: 1rem;
+     font-weight: 700;
+     cursor: pointer;
+     margin-top: 2rem;
+     display: block;
+     margin-left: auto;
+     margin-right: auto;
+     text-transform: uppercase;
+     box-shadow: 0 0 10px #00ff00;
+     transition: background-color 0.3s, color 0.3s;
+     opacity: 0; 
+ }
+
+ #close-alert-btn:hover {
+     background-color: #000;
+     color: #00ff00;
+     border: 1px solid #00ff00;
+ }
