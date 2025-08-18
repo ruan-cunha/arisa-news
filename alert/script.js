@@ -2,6 +2,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const alertOverlay = document.getElementById('global-alert-overlay');
     const mainPortal = document.getElementById('main-portal');
     
+    document.body.style.overflow = 'hidden';
+
     const alertSound = document.getElementById('alert-sound');
     const detailsContainer = document.getElementById('alert-details');
     const closeAlertBtn = document.createElement('button'); 
@@ -16,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { once: true });
 
     const alertMessages = [
-        "<p><strong>DATE-TIME GROUP:</strong> 171232Z NOV 18 (UTC)</p>",
+        "<p><strong>DATE-TIME GROUP:</strong> 17 NOV 2018 // 12:32Z (UTC)</p>",
         "<p><strong>CLASSIFICATION:</strong> THREAT CLASS: RED // EXISTENTIAL</p>",
         "<p><strong>LOCATION:</strong> CHENNAI METROPOLITAN REGION, INDIA (BAY OF BENGAL COASTLINE)</p>",
         "<p><strong>SUBJECT PROFILE:</strong> Single hostile entity, ~25 meters in height. Skeletal form with charred, ceramic-like carapace. Fissures in carapace emit high-temperature golden glow.</p>",
@@ -24,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
         "<p><strong>DIRECTIVE 2 [NON-COMBAT ASSETS]: STAND DOWN.</strong> All local and independent Awakened without direct combat-rating are ordered to cease operations and assist with civilian evacuation efforts ONLY.</p>",
         "<p class='omega-protocol'>** // OMEGA PROTOCOL INITIATED // **</p>",
         "<p><strong>By order of the Axis Mundi Global Security Council, a general amnesty is in effect. All combat-capable assets, regardless of affiliation or prior designation, are now requested for emergency reinforcement.</strong></p>",
+        "<p><strong>GLOBAL RESPONSE:</strong> Transport for all combat-ready personnel is being coordinated globally. Designated heroes will be routed to the operational area.</p>",
         "<p><strong>TRANSMISSION ACTIVE... AWAITING RESPONSE...</strong></p>"
     ];
 
@@ -54,6 +57,9 @@ document.addEventListener('DOMContentLoaded', () => {
         alertSound.pause();
         alertOverlay.style.transition = 'opacity 0.5s ease-out';
         alertOverlay.style.opacity = 0;
+        
+        // Libera a rolagem da página novamente
+        document.body.style.overflow = 'auto';
 
         setTimeout(() => {
             alertOverlay.style.display = 'none';
