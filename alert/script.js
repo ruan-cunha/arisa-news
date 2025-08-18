@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- MUDANÇA 1: VOLUME E AUTOPLAY ---
     // Volumes foram reduzidos significativamente.
-    alertSound.volume = 0.010;
+    alertSound.volume = 0.01;
     ambientSound.volume = 0.05;
 
     // Tentativa de tocar o áudio assim que a página carrega.
@@ -70,5 +70,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     displayNextMessage();
 });
+
 
 
