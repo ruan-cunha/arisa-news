@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
             if (messageIndex === 0) {
-                const eventDate = new Date('2017-11-17T12:32:30-03:00');
+                const eventDate = new Date('2019-11-17T12:32:30-03:00');
                 const dateString = `${eventDate.toUTCString()}`;
                 document.getElementById('date').textContent = dateString;
             }
