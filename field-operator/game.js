@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const GAME_TICK_INTERVAL = 1000;
-    const INCIDENT_SPAWN_INTERVAL = 18000;
+    const INCIDENT_SPAWN_INTERVAL = 2000;
     const HERO_MISSION_COOLDOWN = 2;
     const INITIAL_PUBLIC_TRUST = 100;
     const GAME_OVER_THRESHOLD = 50; 
@@ -161,7 +161,10 @@ document.addEventListener('DOMContentLoaded', () => {
             isGameOver: false,
             operatorName: 'Operator',
             isDisplayingReport: false,
-            lastTypedIncidentId: null
+            lastTypedIncidentId: null,
+            totalScore: 0,
+            incidentsResolved: 0,
+            incidentsFailed: 0
         };
 
         ui.endGameModal.classList.add('hidden'); 
@@ -395,6 +398,8 @@ startShiftButton.addEventListener('click', () => {
         showCommsMessage("SYSTEM", `WARNING: Response time for incident ${incidentId} exceeded.`);
         console.log(`Incident ${incidentId} timed out.`);
         state.publicTrust += TRUST_CHANGE.TIMEOUT;
+        state.totalScore -= 100; 
+        state.incidentsFailed++;
         if (state.selectedIncidentId === incidentId) {
             state.isDisplayingReport = true;
             const reportText = `<h3>// MISSION FAILED //</h3><h3 style="color: ${OUTCOME_COLORS.FAILURE};">RESPONSE TIME EXCEEDED</h3><p>Operator, you failed to dispatch an asset in time.</p><p><strong>Public Trust Change: <span style="color: ${OUTCOME_COLORS.FAILURE};">${TRUST_CHANGE.TIMEOUT}</span></strong></p>`;
@@ -427,11 +432,12 @@ startShiftButton.addEventListener('click', () => {
             ui.incidentDetails.classList.remove('hidden');
             hero.cooldown = HERO_MISSION_COOLDOWN + 1;
 
-            let outcomeTitle, outcomeReport, trustChange, dialogueType, outcomeColor;
+            let outcomeTitle, outcomeReport, trustChange, dialogueType, outcomeColor, scoreChange;
 
             if (incident.highPenalty?.includes(hero.id)) {
                 outcomeTitle = "MISSION CRITICAL FAILURE";
                 trustChange = TRUST_CHANGE.CRITICAL;
+                scoreChange = -250;
                 outcomeReport = `Operator, your choice of [${hero.codinome}] was a catastrophic error, resulting in severe negative consequences.`;
                 dialogueType = 'onFailure';
                 outcomeColor = OUTCOME_COLORS.FAILURE;
@@ -440,6 +446,7 @@ startShiftButton.addEventListener('click', () => {
             } else if (hero.id === incident.solutions.optimal) {
                 outcomeTitle = "MISSION SUCCESSFUL (OPTIMAL)";
                 trustChange = TRUST_CHANGE.OPTIMAL;
+                scoreChange = 150 + Math.floor(incident.timeRemaining * 1.5);
                 outcomeReport = `Your choice of [${hero.codinome}] was optimal. The situation was resolved with maximum efficiency and zero complications.`;
                 dialogueType = 'onSuccess';
                 outcomeColor = OUTCOME_COLORS.SUCCESS;
@@ -447,6 +454,7 @@ startShiftButton.addEventListener('click', () => {
             } else if (incident.solutions.good?.includes(hero.id)) {
                 outcomeTitle = "MISSION SUCCESSFUL";
                 trustChange = TRUST_CHANGE.GOOD;
+                scoreChange = 100 + incident.timeRemaining;
                 outcomeReport = `Your choice of [${hero.codinome}] was effective. The mission was a success.`;
                 dialogueType = 'onSuccess';
                 outcomeColor = OUTCOME_COLORS.SUCCESS;
@@ -454,6 +462,7 @@ startShiftButton.addEventListener('click', () => {
             } else if (incident.solutions.complicated && incident.solutions.complicated[hero.id]) {
                 outcomeTitle = "MISSION COMPLICATED";
                 trustChange = TRUST_CHANGE.COMPLICATED;
+                scoreChange = 20;
                 outcomeReport = `[${hero.codinome}] resolved the primary threat, but with complications. <strong>Rationale:</strong> ${incident.solutions.complicated[hero.id]}`;
                 dialogueType = 'onFailure';
                 outcomeColor = OUTCOME_COLORS.COMPLICATED;
@@ -461,6 +470,7 @@ startShiftButton.addEventListener('click', () => {
             } else {
                 outcomeTitle = "MISSION FAILED";
                 trustChange = TRUST_CHANGE.FAILURE;
+                scoreChange = -50;
                 outcomeReport = `Your choice of [${hero.codinome}] was suboptimal. The mission objectives were not met effectively. <strong>Rationale:</strong> ${hero.failureReason}`;
                 dialogueType = 'onFailure';
                 outcomeColor = OUTCOME_COLORS.COMPLICATED;
@@ -468,6 +478,14 @@ startShiftButton.addEventListener('click', () => {
             }
 
             state.publicTrust += trustChange;
+            state.totalScore += scoreChange;
+
+            if (trustChange > 0) {
+                state.incidentsResolved++;
+            } else {
+                state.incidentsFailed++;
+            }
+            
             if (state.publicTrust > 150) state.publicTrust = 150;
 
             setTimeout(() => {
@@ -489,33 +507,89 @@ startShiftButton.addEventListener('click', () => {
 
 
     function resolveIncident(incidentId) {
-        state.activeIncidents = state.activeIncidents.filter(inc => inc.id !== incidentId);
-        state.allHeroes.forEach(h => {
-            if (h.cooldown > 0) {
-                h.cooldown--;
-            }
-        });
-        if (state.selectedIncidentId === incidentId) {
+    state.activeIncidents = state.activeIncidents.filter(inc => inc.id !== incidentId);
+    state.allHeroes.forEach(h => {
+        if (h.cooldown > 0) {
+            h.cooldown--;
+        }
+    });
+
+    if (state.selectedIncidentId === incidentId) {
+        state.selectedHeroId = null;
+        state.lastTypedIncidentId = null;
+        
+        if (state.activeIncidents.length > 0) {
+            state.selectedIncidentId = state.activeIncidents[0].id;        
+            state.isDisplayingReport = false; 
+        } else {
             state.selectedIncidentId = null;
-            state.selectedHeroId = null;
-            state.lastTypedIncidentId = null;
         }
     }
 
+    if (state.activeIncidents.length === 0 && state.incidentQueue.length === 0) {
+        endGame("All incidents resolved. Shift complete.");
+    }
+}
+
     function checkGameOver() {
-        if (state.publicTrust <= GAME_OVER_THRESHOLD) {
-            state.publicTrust = 0; 
-            state.isGameOver = true;
-            clearInterval(gameLoopInterval);
-            clearInterval(incidentSpawnerInterval);
-            playSound('game_over');
-            render();
+        if (state.publicTrust <= GAME_OVER_THRESHOLD && !state.isGameOver) {
+            endGame("Public trust has fallen below operational threshold. You have been relieved of duty.");
             return true;
         }
         return false;
     }
 
-    // --- Rendering & UI Functions ---
+    function endGame(endMessage) {
+        state.isGameOver = true;
+        clearInterval(gameLoopInterval);
+        clearInterval(incidentSpawnerInterval);
+        clearTimeout(commsTimeout);
+        clearInterval(idleDialogueInterval);
+        playSound('game_over');
+
+        let finalEvaluation = {};
+        if (state.totalScore >= 750) {
+            finalEvaluation = {
+                rank: "Exemplary Field Commander",
+                text: "Your performance exceeded all expectations. Your decision-making is a credit to this agency.",
+                color: OUTCOME_COLORS.SUCCESS
+            };
+        } else if (state.totalScore >= 500) {
+            finalEvaluation = {
+                rank: "Proficient Operator",
+                text: "A solid performance. You consistently made effective choices under pressure.",
+                color: OUTCOME_COLORS.SUCCESS
+            };
+        } else if (state.totalScore >= 200) {
+            finalEvaluation = {
+                rank: "Standard Duty Officer",
+                text: "Your performance meets ARISA standards. There is room for improvement in tactical efficiency.",
+                color: OUTCOME_COLORS.COMPLICATED
+            };
+        } else {
+            finalEvaluation = {
+                rank: "Performance Review Required",
+                text: "Your operational decisions led to suboptimal outcomes. Further training is recommended.",
+                color: OUTCOME_COLORS.FAILURE
+            };
+        }
+        
+        document.getElementById('end-game-message').textContent = endMessage;
+        document.getElementById('final-trust-stat').textContent = state.publicTrust;
+        document.getElementById('final-score-stat').textContent = state.totalScore;
+        document.getElementById('incidents-resolved-stat').textContent = state.incidentsResolved;
+        document.getElementById('incidents-failed-stat').textContent = state.incidentsFailed;
+        
+        const finalEvaluationEl = document.getElementById('final-evaluation-stat');
+        finalEvaluationEl.textContent = finalEvaluation.rank;
+        finalEvaluationEl.style.color = finalEvaluation.color;
+        
+        document.getElementById('final-evaluation-text').textContent = finalEvaluation.text;
+
+
+        ui.endGameModal.classList.remove('hidden');
+    }
+
     function render() {
         if (state.isGameOver) {
             ui.endGameModal.classList.remove('hidden'); 
@@ -634,18 +708,16 @@ startShiftButton.addEventListener('click', () => {
     }
 
     function handleIncidentClick(e) {
-        const targetLi = e.target.closest('li');
-        if (targetLi && targetLi.dataset.incidentId && !state.isGameOver) {
-            if (state.isDisplayingReport || state.selectedIncidentId !== targetLi.dataset.incidentId) {
-                playSound('click');
-                clearInterval(typewriterInterval);
-                state.isDisplayingReport = false;
-                state.selectedIncidentId = targetLi.dataset.incidentId;
-                state.selectedHeroId = null;
-                render();
-            }
-        }
+    const targetLi = e.target.closest('li');
+    if (targetLi && targetLi.dataset.incidentId && !state.isGameOver) {
+        playSound('click');
+        clearInterval(typewriterInterval);
+        state.isDisplayingReport = false; 
+        state.selectedIncidentId = targetLi.dataset.incidentId;
+        state.selectedHeroId = null;
+        render(); 
     }
+}
 
     function handleHeroClick(e) {
         const targetLi = e.target.closest('li');
