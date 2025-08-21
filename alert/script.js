@@ -53,7 +53,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.getElementById('date').textContent = dateString;
             }
 
-            // Simple fade-in animation
             setTimeout(() => { p.style.transition = 'opacity 1s'; p.style.opacity = 1; }, 100);
 
             messageIndex++;
@@ -68,6 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     displayNextMessage();
 });
+
 
 
 
