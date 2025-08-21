@@ -187,7 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 pageTitle = "CODEX // TECHNOLOGY & ARSENAL";
                 contentHTML = renderTechnologyPage();
                 break;
-            default: // landing
+            default: 
                 contentHTML = codexLandingHTML;
         }
         
@@ -200,7 +200,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 </div>
             </section>
-            <!-- CORREÇÃO: A linha abaixo foi adicionada para garantir que o modal exista -->
             <div class="modal-overlay" id="modal-overlay"></div>
         `;
         
@@ -348,7 +347,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         }, {
-            threshold: 0.5 // O item aparece quando 50% dele está visível
+            threshold: 0.5 
         });
 
         timelineItems.forEach(item => {
@@ -933,6 +932,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     setupNavigation();
 });
+
 
 
 
