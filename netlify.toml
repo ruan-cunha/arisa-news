@@ -1,0 +1,9 @@
+[[redirects]]
+  from = "/app.js"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/lore.js"
+  to = "/"
+  status = 301
