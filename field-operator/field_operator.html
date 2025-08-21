@@ -60,27 +60,32 @@
         <div class="modal-overlay"></div>
         <div class="modal-window">
             <div id="end-game-content">
-                <h2>// OPERATOR REVIEW //</h2>
-                <p>Public trust has fallen to unacceptable value. Your operational command has been suspended pending a full performance review.</p>
-                
-                <div class="stats-container hidden">
+                <h2>// SHIFT COMPLETE //</h2>
+                <p id="end-game-message">Your operational command has been suspended pending a full performance review.</p>
+                <div class="stat-line">
+                    <span>Final Trust:</span>
+                    <span id="final-trust-stat">0</span>
+                </div>
+                <div class="stats-container">
                     <div class="stat-line">
-                        <span>Final Public Trust:</span>
+                        <span>Final Score:</span>
                         <span id="final-score-stat">0</span>
                     </div>
                     <div class="stat-line">
                         <span>Incidents Resolved:</span>
-                        <span id="incidents-resolved-stat">--</span>
+                        <span id="incidents-resolved-stat">0</span>
                     </div>
                     <div class="stat-line">
-                        <span>Optimal Decisions:</span>
-                        <span id="optimal-decisions-stat">--</span>
+                        <span>Incidents Failed:</span>
+                        <span id="incidents-failed-stat">0</span>
                     </div>
-                     <div class="stat-line evaluation">
+                    <div class="stat-line evaluation">
                         <span>Final Evaluation:</span>
                         <span id="final-evaluation-stat">UNSATISFACTORY</span>
                     </div>
                 </div>
+                
+                <p id="final-evaluation-text" class="evaluation-text"></p>
 
                 <button id="restart-button">RESTART SIMULATION</button>
             </div>
