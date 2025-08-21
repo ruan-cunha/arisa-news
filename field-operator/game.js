@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const GAME_TICK_INTERVAL = 1000;
-    const INCIDENT_SPAWN_INTERVAL = 2000;
+    const INCIDENT_SPAWN_INTERVAL = 18000;
     const HERO_MISSION_COOLDOWN = 2;
     const INITIAL_PUBLIC_TRUST = 100;
     const GAME_OVER_THRESHOLD = 50; 
@@ -778,3 +778,4 @@ startShiftButton.addEventListener('click', () => {
     //initializeGame();
     handleLogin();
 });
+
