@@ -1,5 +1,21 @@
 const newsData = [
     {
+        id: "news-ashura-aftermath-1117",
+        headline: "Threat Entity 'Ashura' Repelled in Chennai; Containment Protocols Ongoing",
+        category: "GLOBAL OPERATIONS",
+        date: "2018-11-17",
+        author: "ARISA Global Command",
+        body: `
+            <p>Following an unprecedented 3-hour engagement, ARISA Command can confirm that the existential-level threat entity, designated ASHURA, has been successfully repelled from the Chennai metropolitan region. The entity was forced into a retreat through a coordinated, large-scale tactical strike.</p>
+            <p>The success of this operation was only possible due to the activation of the Sovereign Protocol. This contingency brought together a global coalition of operatives from The Paramount, The Vanguards, and numerous independent factions, all operating under the unified command of Axis Mundi. This marks the largest joint operation of Awakened individuals in recorded history.</p>
+            <p>This victory, however, was not without significant cost. We can confirm there were losses across all participating factions. The process of notifying the next of kin is currently underway and our deepest condolences go out to the families and teammates of the brave people who made the ultimate sacrifice. A formal list of the fallen will be released in due course, pending family consent. Their sacrifice prevented a global catastrophe.</p>
+            <p>The civilian toll is still being assessed. Preliminary estimates indicate hundreds of thousands casualties and displaced as a direct result of the battle and its residual effects. ARISA has deployed humanitarian divisions in cooperation with international aid organizations to provide immediate shelter, medical care, and psychological support for survivors.</p>
+            <p>A permanent 50-kilometer Quarantine Zone (QZ-CHENNAI) around the entity's manifestation point has been established. The area is now considered a high-risk zone due to residual energy. All recovery and decontamination efforts are being handled by ARISA's top scientific personnel. Further details on the nature of ASHURA and the long-term prognosis for the region will be released as they are declassified.</p>
+            <p>Several national governments have elevated their emergency threat level, while international humanitarian agencies coordinate refugee support for the millions displaced. Despite the devastation, the people of Chennai have shown remarkable resilience. Relief efforts are underway, with both Awakened and non-Awakened volunteers providing assistance to displaced families. ARISA leadership has emphasized vigilance, transparency, and continued cooperation between nations as essential in the days ahead.</p>
+            <p>Chennai stands, the world stands.</p>
+
+    },
+    {
         id: "news-op-africa-1116",
         headline: "ARISA Confirms Successful Joint Operation in Sub-Saharan Africa",
         category: "GLOBAL OPERATIONS",
@@ -70,5 +86,6 @@ const newsData = [
         `
     }
 ];
+
 
 
