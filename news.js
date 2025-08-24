@@ -13,7 +13,7 @@ const newsData = [
             <p>A permanent 50-kilometer Quarantine Zone (QZ-CHENNAI) around the entity's manifestation point has been established. The area is now considered a high-risk zone due to residual energy. All recovery and decontamination efforts are being handled by ARISA's top scientific personnel. Further details on the nature of ASHURA and the long-term prognosis for the region will be released as they are declassified.</p>
             <p>Several national governments have elevated their emergency threat level, while international humanitarian agencies coordinate refugee support for the millions displaced. Despite the devastation, the people of Chennai have shown remarkable resilience. Relief efforts are underway, with both Awakened and non-Awakened volunteers providing assistance to displaced families. ARISA leadership has emphasized vigilance, transparency, and continued cooperation between nations as essential in the days ahead.</p>
             <p>Chennai stands, the world stands.</p>
-
+            `
     },
     {
         id: "news-op-africa-1116",
@@ -86,6 +86,7 @@ const newsData = [
         `
     }
 ];
+
 
 
 
