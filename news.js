@@ -3,7 +3,7 @@ const newsData = [
         id: "news-ashura-aftermath-1117",
         headline: "Threat Entity 'Ashura' Repelled in Chennai; Containment Protocols Ongoing",
         category: "GLOBAL OPERATIONS",
-        date: "2018-11-17",
+        date: "2019-11-17",
         author: "ARISA Global Command",
         body: `
             <p>Following an unprecedented 3-hour engagement, ARISA Command can confirm that the existential-level threat entity, designated ASHURA, has been successfully repelled from the Chennai metropolitan region. The entity was forced into a retreat through a coordinated, large-scale tactical strike.</p>
@@ -19,7 +19,7 @@ const newsData = [
         id: "news-op-africa-1116",
         headline: "ARISA Confirms Successful Joint Operation in Sub-Saharan Africa",
         category: "GLOBAL OPERATIONS",
-        date: "2018-11-16",
+        date: "2019-11-16",
         author: "ARISA Global Command",
         body: `
             <p>ARISA has officially declassified a successful joint operation in the sub-Saharan region involving key operatives from both The Paramount and The Vanguards. The mission, which concluded last week, involved the stabilization of a rapidly escalating geopolitical event triggered by the unauthorized activation of a dormant pre-Awakening technology.</p>
@@ -31,7 +31,7 @@ const newsData = [
         id: "news-armory-tokyo-1112",
         headline: "The Paramount's 'Armory' Neutralizes High-Tech Threat in Neo-Tokyo",
         category: "TECHNOLOGY DIVISION",
-        date: "2018-11-12",
+        date: "2019-11-12",
         author: "ARISA Press Office",
         body: `
             <p>A significant threat involving an illegal, self-replicating sentient robotics network was neutralized in the commercial district of Neo-Tokyo by Paramount Operative 'Armory'. The network, which had infiltrated the city's infrastructure, threatened to trigger a complete communications and transport blackout.</p>
@@ -43,7 +43,7 @@ const newsData = [
         id: "news-un-briefing-1101",
         headline: "Director of ARISA to Address UN Security Council on 'The Third Awakening'",
         category: "POLITICAL BRIEFING",
-        date: "2018-11-01",
+        date: "2019-11-01",
         author: "Reuters",
         body: `
             <p>The Director of the Awakened Response, Investigation & Security Agency (ARISA) is scheduled to deliver a critical address to the United Nations Security Council in Geneva this week. The high-stakes briefing will focus on the global political and social ramifications of the 'Third Awakening' phenomenon.</p>
@@ -55,7 +55,7 @@ const newsData = [
         id: "news-vanguards-maglev-1030",
         headline: "Vanguards Team Praised for Rapid Response to Mag-Lev Incident",
         category: "DOMESTIC AFFAIRS",
-        date: "2018-10-30",
+        date: "2019-10-30",
         author: "ARISA Public Affairs",
         body: `
             <p>The Vanguards initiative has been publicly commended for its rapid and effective response to a critical mag-lev transport malfunction on the West Coast corridor. A central control failure sent a fully-occupied passenger train accelerating towards a terminal hub with its braking systems disabled.</p>
@@ -67,7 +67,7 @@ const newsData = [
         id: "news-paramount-andes-1015",
         headline: "The Paramount Stabilizes Seismic Anomaly in the Andes",
         category: "FIELD REPORT",
-        date: "2018-10-15",
+        date: "2019-10-15",
         author: "Global News Wire",
         body: `
             <p>A major geological catastrophe was averted in the Andes mountain range yesterday, thanks to the intervention of The Paramount. A powerful seismic anomaly, believed to be of Awakened origin, threatened to trigger a series of devastating earthquakes across the region.</p>
@@ -78,7 +78,7 @@ const newsData = [
         id: "news-arisa-international-1017",
         headline: "ARISA Establishes First International Headquarters in Geneva",
         category: "GLOBAL EXPANSION",
-        date: "2018-09-30",
+        date: "2019-09-30",
         author: "ARISA Press Office",
         body: `
             <p>In a move to strengthen international cooperation, ARISA has officially opened its first headquarters outside of America, in Geneva, Switzerland. The new facility will serve as a central hub for coordinating with European and Asian agencies on cross-border Awakened incidents.</p>
@@ -86,6 +86,7 @@ const newsData = [
         `
     }
 ];
+
 
 
 
