@@ -1,5 +1,73 @@
 const newsData = [
     {
+        id: "news-ashura-in-memoriam-1118",
+        headline: "In Memoriam: The Fallen of the Ashura Engagement",
+        category: "INTERNAL AFFAIRS",
+        date: "2018-11-19",
+        author: "ARISA & Axis Mundi Council",
+        body: `
+            <p>Following the successful repulsion of the entity designated ASHURA, it is with heavy hearts that ARISA and the Axis Mundi Global Security Council officially release the names of the sanctioned and independently registered operatives who fell in the line of duty. These individuals, from all walks of life, answered the Sovereign Protocol and stood on the front line against an existential threat. They paid the highest price to ensure our collective survival.</p>
+            <p>Let their names and their sacrifice never be forgotten.</p>
+            
+            <div class="fallen-list">
+                <h4>Confirmed Operational Losses (KIA):</h4>
+                <ul>
+                    <li><strong>Pink Robin</strong></li>
+                    <li><strong>Black Crow</strong></li>
+                    <li><strong>Yellow Warbler</strong></li>
+                    <li><strong>Blue Kingfisher</strong></li>
+                    <li><strong>White Owl</strong></li>
+                    <li><strong>Twistweaver</strong></li>
+                    <li><strong>Sundowner</strong></li>
+                    <li><strong>Helios</strong></li>
+                    <li><strong>Makeshift</strong></li>
+                    <li><strong>Ferrão</strong></li>
+                    <li><strong>Tallyman</strong></li>
+                    <li><strong>Strata</strong></li>
+                    <li><strong>Ironclad</strong></li>
+                    <li><strong>Quicksilver</strong></li>
+                    <li><strong>Tempest</strong></li>
+                    <li><strong>Solstice</strong></li>
+                    <li><strong>Rampart</strong></li>
+                    <li><strong>Javelin</strong></li>
+                    <li><strong>Keystone</strong></li>
+                    <li><strong>Argent</strong></li>
+                    <li><strong>Bulwark</strong></li>
+                    <li><strong>Fuse</strong></li>
+                    <li><strong>Outrider</strong></li>
+                    <li><strong>Deadlock</strong></li>
+                    <li><strong>Rémanence </strong></li></li>
+                    <li><strong>Scribe</strong></li></li>
+                    <li><strong>Tidal</strong></li></li>
+                    <li><strong>Stasis</strong></li></li>
+                    <li><strong>Kestrel</strong></li></li>
+                    <li><strong>Tracer</strong></li></li>
+                    <li><strong>Hush</strong></li></li>
+                    <li><strong>Phalanx</strong></li></li>
+                    <li><strong>Rook</strong></li></li>
+                    <li><strong>Cipher</strong></li></li>
+                    <li><strong>Bastion</strong></li></li>
+                    <li><strong>Wyvern</strong></li></li>
+                    <li><strong>Axiom</strong></li></li>
+                    <li><strong>Firewall</strong></li></li>
+                    <li><strong>Manifold</strong></li></li>
+                    <li><strong>Relic</strong></li></li>
+                    <li><strong>Shard</strong></li></li>
+                    <li><strong>Cinder</strong></li></li>
+                    <li><strong>Waypoint</strong></li></li>
+                    <li><strong>Glimmer</strong></li></li>
+                    <li><strong>Hardcase</strong></li></li>
+                    <li><strong>Tectonic</strong></li></li>
+                    <li><strong>Override</strong></li></li>
+                    <li><strong>Volt</strong></li></li>
+                    <li><strong>Warden</strong></li></li>
+                </ul>
+            </div>
+
+            <p>In addition to these confirmed losses, several operatives from various factions sustained critical injuries during the engagement. A number of independent operatives who answered the call also remain unaccounted for (MIA). ARISA's primary focus is now on the recovery of our people and the support of their families. Further details regarding a public memorial service will be released later this week.</p>
+        `
+    },
+    {
         id: "news-ashura-aftermath-1117",
         headline: "Threat Entity 'Ashura' Repelled in Chennai; Containment Protocols Ongoing",
         category: "GLOBAL OPERATIONS",
@@ -86,6 +154,7 @@ const newsData = [
         `
     }
 ];
+
 
 
 
