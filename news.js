@@ -72,10 +72,13 @@ const newsData = [
                     <li><strong>Override</strong></li></li>
                     <li><strong>Volt</strong></li></li>
                     <li><strong>Warden</strong></li></li>
+                    <li><strong>Yuga</strong></li>
+                    <li><strong>Sanyasi</strong></li>
+                    <li><strong>Ananta</strong></li>
                 </ul>
             </div>
 
-            <p>In addition to these confirmed losses, several operatives from various factions sustained critical injuries during the engagement. A number of independent operatives who answered the call also remain unaccounted for (MIA). ARISA's primary focus is now on the recovery of our people and the support of their families. Further details regarding a public memorial service will be released later this week.</p>
+            <p>In addition to these confirmed losses, several heroes from various factions sustained critical injuries during the engagement. A number of independent operatives who answered the call also remain unaccounted for (MIA). ARISA's primary focus is now on the recovery of our people and the support of their families. Further details regarding a public memorial service will be released later this week.</p>
         `
     },
     {
@@ -165,6 +168,7 @@ const newsData = [
         `
     }
 ];
+
 
 
 
