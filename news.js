@@ -3,7 +3,7 @@ const newsData = [
         id: "news-ashura-in-memoriam-1118",
         headline: "In Memoriam: The Fallen of the Ashura Engagement",
         category: "INTERNAL AFFAIRS",
-        date: "2018-11-19",
+        date: "2019-11-20",
         author: "ARISA & Axis Mundi Council",
         body: `
             <p>Following the successful repulsion of the entity designated ASHURA, it is with heavy hearts that ARISA and the Axis Mundi Global Security Council officially release the names of the sanctioned and independently registered operatives who fell in the line of duty. These individuals, from all walks of life, answered the Sovereign Protocol and stood on the front line against an existential threat. They paid the highest price to ensure our collective survival.</p>
@@ -154,6 +154,7 @@ const newsData = [
         `
     }
 ];
+
 
 
 
